@@ -12,10 +12,14 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'console\controllers',
     'controllerMap' => [
+        'schedule' => [
+            'class' => \omnilight\scheduling\ScheduleController::className(),
+            'scheduleFile' => '@app/schedule.php'
+        ],
         'fixture' => [
             'class' => 'yii\console\controllers\FixtureController',
             'namespace' => 'common\fixtures',
-          ],
+        ],
     ],
     'components' => [
         'log' => [

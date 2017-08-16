@@ -36,6 +36,10 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        /*'assetManager' => [
+            'basePath' => '@webroot/frontend/assets',
+            'baseUrl' => '@web/frontend/assets',
+        ],*/
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
