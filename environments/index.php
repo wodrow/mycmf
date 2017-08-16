@@ -33,17 +33,13 @@ return [
         'path' => 'dev',
         'setWritable' => [
             'backend/runtime',
-            'backend/web/assets',
+            'web/assets',
             'frontend/runtime',
-            'frontend/web/assets',
+            'web/assets',
         ],
         'setExecutable' => [
             'yii',
             'yii_test',
-        ],
-        'setCookieValidationKey' => [
-            'backend/config/main-local.php',
-            'frontend/config/main-local.php',
         ],
     ],
     'Production' => [
