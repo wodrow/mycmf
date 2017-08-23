@@ -19,7 +19,10 @@
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "omnilight/yii2-scheduling": "^1.0",
-        "yiisoft/yii2-httpclient": "^2.0"
+        "yiisoft/yii2-httpclient": "^2.0",
+        "deepziyu/yii-fast-api": "^0.2.1",
+        "johnitvn/yii2-ajaxcrud": "^2.1",
+        "mootensai/yii2-enhanced-gii": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
