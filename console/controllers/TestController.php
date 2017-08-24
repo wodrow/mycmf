@@ -13,6 +13,9 @@ use yii\console\Controller;
 
 class TestController extends Controller
 {
+    /**
+     * test swoole
+     */
     public function actionTest()
     {
         $serv = new \Swoole\Http\Server("127.0.0.1", 9502);
@@ -28,5 +31,10 @@ class TestController extends Controller
             $response->end("<h1>Hello Swoole!</h1>");
         });
         $serv->start();
+    }
+
+    public function actionTest1()
+    {
+        echo 123456;
     }
 }

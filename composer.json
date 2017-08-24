@@ -15,26 +15,33 @@
     "minimum-stability": "stable",
     "require": {
         "php": ">=5.4.0",
-        "yiisoft/yii2": "~2.0.6",
-        "yiisoft/yii2-bootstrap": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0",
+        "yiisoft/yii2": ">=2.0.12",
+        "yiisoft/yii2-bootstrap": ">=2.0.0",
+        "yiisoft/yii2-swiftmailer": ">=2.0.0",
         "omnilight/yii2-scheduling": "^1.0",
+        "bower-asset/angular": "^1.6",
         "yiisoft/yii2-httpclient": "^2.0",
         "deepziyu/yii-fast-api": "^0.2.1",
         "johnitvn/yii2-ajaxcrud": "^2.1",
-        "mootensai/yii2-enhanced-gii": "^1.0"
+        "mootensai/yii2-enhanced-gii": "^1.0",
+        "mdmsoft/yii2-admin": "~2.0",
+        "colee/yii2-vue": "^1.0",
+        "deesoft/yii2-adminlte": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
         "yiisoft/yii2-gii": "~2.0.0",
         "yiisoft/yii2-faker": "~2.0.0",
-
         "codeception/base": "^2.2.3",
-        "codeception/verify": "~0.3.1"
+        "codeception/verify": "~0.3.1",
+        "eaglewu/swoole-ide-helper": "dev-master"
     },
     "config": {
         "process-timeout": 1800,
         "fxp-asset":{
+            "optimize-with-installed-packages": false,
+            "pattern-skip-version": "(-patch)",
+            "optimize-with-conjunctive": false,
             "installer-paths": {
                 "npm-asset-library": "vendor/npm",
                 "bower-asset-library": "vendor/bower"

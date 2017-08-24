@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use common\config\Env;
 use Yii;
+use yii\base\ErrorException;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
