@@ -15,7 +15,7 @@ Yii::$container = new yii\di\Container;
  * Class BaseApplication
  * Used for properties that are identical for both WebApplication and ConsoleApplication
  *
- * @property \common\components\config\Config $config
+ * @property \pheme\settings\components\Settings $settings
  * @property \common\rewrite\web\User $user
  */
 abstract class BaseApplication extends yii\base\Application

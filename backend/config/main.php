@@ -47,7 +47,31 @@ return [
                 ],
 //                'user' => null, // disable menu
             ],
-        ]
+        ],
+        'settings' => [
+            'class' => 'pheme\settings\Module',
+//            'sourceLanguage' => 'en',
+        ],
+        'gridview' => [
+            'class' => \kartik\grid\Module::className(),
+            // see settings on http://demos.krajee.com/grid#module
+        ],
+        'datecontrol' => [
+            'class' => \kartik\datecontrol\Module::className(),
+            // see settings on http://demos.krajee.com/datecontrol#module
+        ],
+        // If you use tree table
+        /*'treemanager' =>  [
+            'class' => \kartik\tree\Module::className(),
+            // see settings on http://demos.krajee.com/tree-manager#module
+        ],*/
+        'dynagrid'=>[
+            'class'=>\kartik\dynagrid\Module::className(),
+            // other settings (refer documentation)
+        ],
+        'tag' => [
+            'class' => 'backend\modules\tag\TagModule',
+        ],
     ],
     'components' => [
         'request' => [

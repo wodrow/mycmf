@@ -26,6 +26,8 @@ return [
             'rules' => [
             ],
         ],
-        'config' => \common\components\config\Config::className(),
+        'settings' => [
+            'class' => 'pheme\settings\components\Settings',
+        ],
     ],
 ];
