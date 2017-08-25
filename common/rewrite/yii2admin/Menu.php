@@ -1,19 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: wodrow
- * Date: 4/5/17
- * Time: 8:35 AM
- */
 
-namespace backend\components\rewrite\yii2admin;
+namespace common\rewrite\yii2admin;
 
 use Yii;
 /**
  * Class Menu
  * Theme menu widget.
  */
-class Menu extends \mdm\admin\models\Menu
+class Menu extends \dmstr\widgets\Menu
 {
     /**
      * Checks whether a menu item is active.

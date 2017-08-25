@@ -1,6 +1,6 @@
 <?php
 use yii\widgets\Breadcrumbs;
-use kartik\alert\Alert;
+use dmstr\widgets\Alert;
 
 ?>
 <div class="content-wrapper">

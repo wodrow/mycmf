@@ -3,6 +3,7 @@ $items = [
     ['label' => Yii::t('app', 'Operate Menus'), 'options' => ['class' => 'header']],
     ['label' => 'Meter', 'icon'=>'dashboard', 'url' => ['/site'],],
 ];
+//$items[] = ['label' => 'Admin', 'icon'=>'dashboard', 'url' => ['/admin'],];
 
 $menus = \mdm\admin\components\MenuHelper::getAssignedMenu(Yii::$app->user->id,null,function($menu){
     $data = json_decode($menu['data'], true);
@@ -58,7 +59,7 @@ $items = array_merge($items,$menus);
         ?>
 
         <?php
-        echo \yii\widgets\Menu::widget([
+        echo \common\rewrite\yii2admin\Menu::widget([
             'options' => ['class' => 'sidebar-menu'],
             'items' => $items,
         ]);
