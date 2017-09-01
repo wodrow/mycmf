@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use common\config\Env;
+use common\models\db\Tag;
 use Yii;
 use yii\base\ErrorException;
 use yii\base\InvalidParamException;
@@ -74,6 +75,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $m = Tag::findOne(['title'=>'test']);
+        $m->created_at = 1234567;
+        $m->save();
 //        var_export(Yii::$app->version);exit;
         return $this->render('index');
     }

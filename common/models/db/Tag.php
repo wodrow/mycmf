@@ -3,6 +3,8 @@
 namespace common\models\db;
 
 use \common\models\db\base\Tag as BaseTag;
+use yii\behaviors\BlameableBehavior;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "mycmf_tag".
@@ -12,6 +14,24 @@ use \common\models\db\base\Tag as BaseTag;
  */
 class Tag extends BaseTag
 {
+    public function behaviors()
+    {
+        return [
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+//                'value' => new \yii\db\Expression('NOW()'),
+            ],
+            'blameable' => [
+                'class' => BlameableBehavior::className(),
+                'createdByAttribute' => 'created_by',
+                'updatedByAttribute' => false,
+                'value' => \Yii::$app->user->id,
+            ],
+        ];
+    }
+
     /**
      * @inheritdoc
      */
