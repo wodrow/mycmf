@@ -59,13 +59,29 @@ return [
             ]
         ],
     ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'label' => '创建者',
+        'attribute'=>'created_by',
+        'value' => function ($model) {
+            return $model->createdBy->username;
+        },
+    ],
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'label' => '修改者',
+        'attribute'=>'updated_by',
+        'value' => function ($model) {
+            return $model->updatedBy->username;
+        },
+    ],
 //    [
-//        'class'=>'\kartik\grid\DataColumn',
-//        'attribute'=>'created_by',
-//    ],
-//    [
-//        'class'=>'\kartik\grid\DataColumn',
-//        'attribute'=>'updated_by',
+//        'label' => '创建者',
+//        'filter' => \yii\helpers\Html::activeTextInput($searchModel, 'created_by', ['class' => 'form-control']),
+//        'format' => 'raw',
+//        'value' => function ($model) {
+//            return $model->createdBy->username;
+//        },
 //    ],
     [
         'class' => \common\components\grid\KEnumColumn::className(),

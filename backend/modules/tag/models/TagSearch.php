@@ -19,7 +19,7 @@ class TagSearch extends Tag
     {
         return [
             [['id', 'status'], 'integer'],
-            [['title', 'created_at', 'updated_at'], 'safe'],
+            [['title', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'safe'],
         ];
     }
 
@@ -41,7 +41,9 @@ class TagSearch extends Tag
      */
     public function search($params)
     {
-        $query = Tag::find();
+        $query = Tag::find()->alias('tag');
+        $query = $query->joinWith("createdBy AS c_u", true, 'LEFT JOIN');
+        $query = $query->joinWith("updatedBy AS u_u", true, 'LEFT JOIN');;
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -55,14 +57,21 @@ class TagSearch extends Tag
             return $dataProvider;
         }
 
+//        $dataProvider->sort['attributes']['created_by'] = [
+//            'asc' => ['c_u.username' => SORT_ASC],
+//            'desc' => ['c_u.username' => SORT_DESC],
+//        ];
+
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
-            'created_by' => $this->created_by,
-            'updated_by' => $this->updated_by,
+//            'created_by' => $this->created_by,
+//            'updated_by' => $this->updated_by,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title]);
+        $query->andFilterWhere(['like', 'c_u.username', $this->created_by]);
+        $query->andFilterWhere(['like', 'u_u.username', $this->updated_by]);
 
         if ( ! is_null($this->created_at) && strpos($this->created_at, ' - ') !== false ) {
             list($start_date, $end_date) = explode(' - ', $this->created_at);
