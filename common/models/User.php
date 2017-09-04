@@ -46,6 +46,20 @@ class User extends \common\models\db\User implements IdentityInterface
     }
 
     /**
+     * @return array
+     */
+    public function attributeLabels()
+    {
+        return [
+            'username' => '用户名',
+            'email' => '邮箱',
+            'created_at' => '创建时间',
+            'updated_at' => '更新时间',
+            'status' => '状态',
+        ];
+    }
+
+    /**
      * @inheritdoc
      */
     public function rules()
@@ -53,6 +67,14 @@ class User extends \common\models\db\User implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+        ];
+    }
+
+    public static function getStatus()
+    {
+        return [
+            self::STATUS_ACTIVE => '正常',
+            self::STATUS_DELETED => '已删除',
         ];
     }
 

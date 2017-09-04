@@ -22,21 +22,28 @@ return [
                     'extraColumns' => [
                         'email',
                         [
-                            'label' => 'created_at',
+                            'attribute' => 'created_at',
+//                            'label' => '创建时间',
                             'format' => ['date', 'php:Y-m-d H:i:s'],
                             'value' => function ($model) {
                                 return $model->created_at;
                             }
                         ],
                         [
-                            'label' => 'updated_at',
+                            'attribute' => 'updated_at',
+//                            'label' => '更新时间',
                             'format' => ['date', 'php:Y-m-d H:i:s'],
                             'value' => function ($model) {
                                 return $model->created_at;
                             }
                         ],
+                        [
+                            'class' => \common\components\grid\EnumColumn::className(),
+                            'attribute' => 'status',
+                            'enum' => \common\models\User::getStatus(),
+                        ],
                     ],
-//                    'searchClass' => 'backend\models\UserSearch',
+                    'searchClass' => 'backend\models\UserSearch',
                 ],
             ],
             'layout' => 'left-menu',

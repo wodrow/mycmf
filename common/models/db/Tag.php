@@ -21,12 +21,11 @@ class Tag extends BaseTag
                 'class' => TimestampBehavior::className(),
                 'createdAtAttribute' => 'created_at',
                 'updatedAtAttribute' => 'updated_at',
-//                'value' => new \yii\db\Expression('NOW()'),
             ],
             'blameable' => [
                 'class' => BlameableBehavior::className(),
                 'createdByAttribute' => 'created_by',
-                'updatedByAttribute' => false,
+                'updatedByAttribute' => 'updated_by',
                 'value' => \Yii::$app->user->id,
             ],
         ];
