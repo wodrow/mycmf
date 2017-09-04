@@ -10,7 +10,7 @@ use johnitvn\ajaxcrud\BulkButtonWidget;
 /* @var $searchModel backend\modules\tag\models\TagSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Tags');
+$this->title = Yii::t('app', '标签管理');
 $this->params['breadcrumbs'][] = $this->title;
 
 CrudAsset::register($this);

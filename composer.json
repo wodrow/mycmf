@@ -29,7 +29,8 @@
         "johnitvn/yii2-ajaxcrud": "^2.1",
         "mootensai/yii2-enhanced-gii": "^1.0",
         "schmunk42/yii2-giiant": "@stable",
-        "warrence/yii2-kartikgii": "dev-master"
+        "warrence/yii2-kartikgii": "dev-master",
+        "kartik-v/yii2-date-range": "^1.6"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

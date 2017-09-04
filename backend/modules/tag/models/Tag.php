@@ -11,5 +11,16 @@ namespace backend\modules\tag\models;
 
 class Tag extends \common\models\db\Tag
 {
-
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'title' => '标题',
+            'created_at' => '创建时间',
+            'updated_at' => '修改时间',
+            'created_by' => '创建者',
+            'updated_by' => '修改者',
+            'status' => '状态',
+        ];
+    }
 }

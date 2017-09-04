@@ -18,8 +18,8 @@ class TagSearch extends Tag
     public function rules()
     {
         return [
-            [['id', 'status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
-            [['title'], 'safe'],
+            [['id', 'status'], 'integer'],
+            [['title', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -58,13 +58,21 @@ class TagSearch extends Tag
         $query->andFilterWhere([
             'id' => $this->id,
             'status' => $this->status,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
             'created_by' => $this->created_by,
             'updated_by' => $this->updated_by,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title]);
+
+        if ( ! is_null($this->created_at) && strpos($this->created_at, ' - ') !== false ) {
+            list($start_date, $end_date) = explode(' - ', $this->created_at);
+            $query->andFilterWhere(['between', 'created_at', strtotime($start_date), strtotime($end_date.' 23:59:59')]);
+        }
+
+        if ( ! is_null($this->updated_at) && strpos($this->updated_at, ' - ') !== false ) {
+            list($start_date, $end_date) = explode(' - ', $this->updated_at);
+            $query->andFilterWhere(['between', 'updated_at', strtotime($start_date), strtotime($end_date.' 23:59:59')]);
+        }
 
         return $dataProvider;
     }

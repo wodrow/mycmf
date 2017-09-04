@@ -1,4 +1,7 @@
 <?php
+/**
+ * @var \backend\modules\tag\models\TagSearch $searchModel
+ */
 use yii\helpers\Url;
 
 return [
@@ -19,24 +22,55 @@ return [
         'attribute'=>'title',
     ],
     [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'status',
+        'attribute'=>'created_at',
+        'format' => ['date', 'php:Y-m-d'],
+        'filterType' => \kartik\grid\GridView::FILTER_DATE_RANGE,
+        'filterWidgetOptions' =>[
+            'model'=>$searchModel,
+            'attribute'=>'created_at',
+//                    'presetDropdown'=>TRUE,
+            'convertFormat'=>true,
+            'pluginOptions'=>[
+                'format'=>'Y-m-d',
+                'opens'=>'left',
+                'locale' => [
+                    'cancelLabel' => 'Clear',
+                    'format' => 'Y-m-d',
+                ],
+            ]
+        ],
     ],
-    // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'created_at',
-    // ],
-    // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'updated_at',
-    // ],
     [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'created_by',
+        'attribute'=>'updated_at',
+        'format' => ['date', 'php:Y-m-d'],
+        'filterType' => \kartik\grid\GridView::FILTER_DATE_RANGE,
+        'filterWidgetOptions' =>[
+            'model'=>$searchModel,
+            'attribute'=>'updated_at',
+//                    'presetDropdown'=>TRUE,
+            'convertFormat'=>true,
+            'pluginOptions'=>[
+                'format'=>'Y-m-d',
+                'opens'=>'left',
+                'locale' => [
+                    'cancelLabel' => 'Clear',
+                    'format' => 'Y-m-d',
+                ],
+            ]
+        ],
     ],
+//    [
+//        'class'=>'\kartik\grid\DataColumn',
+//        'attribute'=>'created_by',
+//    ],
+//    [
+//        'class'=>'\kartik\grid\DataColumn',
+//        'attribute'=>'updated_by',
+//    ],
     [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'updated_by',
+        'class' => \common\components\grid\KEnumColumn::className(),
+        'attribute' => 'status',
+        'enum' => \common\models\Enum::getStatus(),
     ],
     [
         'class' => 'kartik\grid\ActionColumn',

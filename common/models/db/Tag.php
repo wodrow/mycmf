@@ -14,6 +14,8 @@ use yii\behaviors\TimestampBehavior;
  */
 class Tag extends BaseTag
 {
+    const STATUS_ACTIVE = 10;
+
     public function behaviors()
     {
         return [
@@ -41,6 +43,13 @@ class Tag extends BaseTag
             [['status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
             [['title'], 'string', 'max' => 20],
             [['title'], 'unique']
+        ];
+    }
+
+    public static function getStatus()
+    {
+        return [
+            self::STATUS_ACTIVE => '正常',
         ];
     }
 
