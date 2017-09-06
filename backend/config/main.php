@@ -79,6 +79,9 @@ return [
         'tag' => [
             'class' => 'backend\modules\tag\TagModule',
         ],
+        'test' => [
+            'class' => 'backend\modules\test\TestModule',
+        ],
     ],
     'components' => [
         'request' => [

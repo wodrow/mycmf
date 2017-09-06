@@ -52,6 +52,11 @@ class Zip
         }
     }
 
+    /**
+     * 打包文件夹到文件
+     * @param $dir
+     * @param $filename
+     */
     public static function makeDirToZip($dir, $filename)
     {
         if (!file_exists($filename)){
