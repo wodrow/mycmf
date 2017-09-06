@@ -8,7 +8,12 @@
 
 namespace common\rewrite\web;
 
-
+/**
+ * Class User
+ * @package common\rewrite\web
+ *
+ * @property \common\models\User $identity
+ */
 class User extends \yii\web\User
 {
 

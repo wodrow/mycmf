@@ -17,14 +17,6 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        $query = Tree::find();
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
-//            'pagination' => false
-        ]);
-
-        return $this->render('index', [
-            'dataProvider' => $dataProvider
-        ]);
+        return $this->render('index');
     }
 }

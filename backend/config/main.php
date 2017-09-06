@@ -76,6 +76,10 @@ return [
             'class'=>\kartik\dynagrid\Module::className(),
             // other settings (refer documentation)
         ],
+        'treemanager' =>  [
+            'class' => '\kartik\tree\Module',
+            // other module settings, refer detailed documentation
+        ],
         'tag' => [
             'class' => 'backend\modules\tag\TagModule',
         ],
