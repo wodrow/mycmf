@@ -83,6 +83,9 @@ return [
         'tag' => [
             'class' => 'backend\modules\tag\TagModule',
         ],
+        'log' => [
+            'class' => 'backend\modules\log\LogModule',
+        ],
         'test' => [
             'class' => 'backend\modules\test\TestModule',
         ],

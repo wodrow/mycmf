@@ -5,6 +5,7 @@ namespace backend\modules\test\controllers;
 
 use common\models\test\Tree;
 use yii\data\ActiveDataProvider;
+use yii\db\Query;
 use yii\web\Controller;
 
 /**
@@ -37,5 +38,10 @@ class DefaultController extends Controller
         return $this->render('test1', [
             'dataProvider' => $dataProvider
         ]);
+    }
+
+    public function actionTest2()
+    {
+//        echo 654321;
     }
 }

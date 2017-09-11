@@ -1,5 +1,5 @@
 <?php
-return [
+$config = [
     'version' => \common\config\Env::VERSION,
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'language' => 'zh-CN',
@@ -31,3 +31,12 @@ return [
         ],
     ],
 ];
+
+Yii::$container->set('leandrogehlen\treegrid\TreeGridAsset',[
+    'js' => [
+        'js/jquery.cookie.js',
+        'js/jquery.treegrid.min.js',
+    ]
+]);
+
+return $config;
