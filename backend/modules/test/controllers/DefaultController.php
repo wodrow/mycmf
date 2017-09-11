@@ -2,6 +2,7 @@
 
 namespace backend\modules\test\controllers;
 
+
 use common\models\test\Tree;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
@@ -18,5 +19,23 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionTest()
+    {
+        echo 123456798;
+    }
+
+    public function actionTest1()
+    {
+        $query = Tree::find();
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => false
+        ]);
+
+        return $this->render('test1', [
+            'dataProvider' => $dataProvider
+        ]);
     }
 }
