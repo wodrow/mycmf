@@ -4,6 +4,7 @@ Yii::setAlias('@common', dirname(__DIR__));
 Yii::setAlias('@frontend', dirname(dirname(__DIR__)) . '/frontend');
 Yii::setAlias('@backend', dirname(dirname(__DIR__)) . '/backend');
 Yii::setAlias('@console', dirname(dirname(__DIR__)) . '/console');
+Yii::setAlias('@data', dirname(dirname(__DIR__)) . '/data');
 //Yii::setAlias('api', dirname(dirname(__DIR__)) . '/api');
 //Yii::setAlias('wechat', dirname(dirname(__DIR__)) . '/wechat');
 //Yii::setAlias('console', dirname(dirname(__DIR__)) . '/console');
@@ -17,3 +18,4 @@ Yii::setAlias('@wurl', \common\config\Env::HOME_URL);
 
 Yii::$container->set('yii\widgets\LinkPager', ['maxButtonCount' => 9, 'firstPageLabel' => '首页', 'prevPageLabel'=>'上一页', 'nextPageLabel'=>'下一页', 'lastPageLabel' => '末页']);
 Yii::$container->set('yii\widgets\Pjax', ['timeout' => false]);
+Yii::$container->set('yii\captcha\CaptchaAction', ['minLength' => 4, 'maxLength' => 4, 'fontFile' => '@data/fonts/ztgjkt.ttf',]);
