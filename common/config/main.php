@@ -1,4 +1,11 @@
 <?php
+$params = array_merge(
+    require(__DIR__ . '/../../common/config/params.php'),
+    require(__DIR__ . '/../../common/config/params-local.php'),
+    require(__DIR__ . '/params.php'),
+    require(__DIR__ . '/params-local.php')
+);
+
 $config = [
     'version' => \common\config\Env::VERSION,
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
@@ -37,6 +44,22 @@ $config = [
             'uploadUrl' => '@wurl/uploads',
         ],
     ],
+    'as access' => [
+        'class' => \frontend\components\behaviors\Check::className(),
+        'except' => [
+            'site/*',
+            'pub/*',
+            'gii/*',
+            'debug/*',
+        ],
+        'rules' => [
+            [
+                'allow' => true,
+                'roles' => ['@'],
+            ],
+        ],
+    ],
+    'params' => $params,
 ];
 
 Yii::$container->set('leandrogehlen\treegrid\TreeGridAsset',[
