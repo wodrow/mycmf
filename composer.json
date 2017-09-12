@@ -31,7 +31,8 @@
         "schmunk42/yii2-giiant": "@stable",
         "warrence/yii2-kartikgii": "dev-master",
         "kartik-v/yii2-date-range": "^1.6",
-        "leandrogehlen/yii2-treegrid": "*"
+        "leandrogehlen/yii2-treegrid": "*",
+        "2amigos/yii2-file-upload-widget": "~1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

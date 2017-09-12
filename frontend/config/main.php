@@ -35,5 +35,10 @@ return [
         ],
         */
     ],
+    'modules' => [
+        'pub' => [
+            'class' => 'frontend\modules\pub\PubModule',
+        ],
+    ],
     'params' => $params,
 ];
