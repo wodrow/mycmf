@@ -39,6 +39,9 @@ return [
         'pub' => [
             'class' => 'frontend\modules\pub\PubModule',
         ],
+        'user' => [
+            'class' => 'frontend\modules\user\UserModule',
+        ],
     ],
     'as access' => [
         'class' => \frontend\components\behaviors\Check::className(),

@@ -44,14 +44,25 @@ AppAsset::register($this);
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
+        $menuItems[] = [
+            'label' => Yii::$app->user->identity->username,
+            'items' => [
+                ['label' => '我的主页', 'url' => ['/user']],
+//                ['label' => '帐号设置', 'url' => ['/user/default/set']],
+                ['label' => '退出', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']],
+            ],
+            'linkOptions'=>[
+                'class'=>'avatar',
+            ],
+        ];
+//        $menuItems[] = '<li>'
+//            . Html::beginForm(['/site/logout'], 'post')
+//            . Html::submitButton(
+//                'Logout (' . Yii::$app->user->identity->username . ')',
+//                ['class' => 'btn btn-link logout']
+//            )
+//            . Html::endForm()
+//            . '</li>';
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
