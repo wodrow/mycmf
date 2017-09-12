@@ -29,6 +29,13 @@ $config = [
         'settings' => [
             'class' => 'pheme\settings\components\Settings',
         ],
+        'uploads' => [
+            'class' => 'herroffizier\yii2um\UploadManager',
+            // path to upload folder
+            'uploadDir' => '@wroot/uploads',
+            // url to upload filder
+            'uploadUrl' => '@wurl/uploads',
+        ],
     ],
 ];
 
