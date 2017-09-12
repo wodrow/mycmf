@@ -40,5 +40,20 @@ return [
             'class' => 'frontend\modules\pub\PubModule',
         ],
     ],
+    'as access' => [
+        'class' => \frontend\components\behaviors\Check::className(),
+        'except' => [
+            'site/*',
+            'pub/*',
+            'gii/*',
+            'debug/*',
+        ],
+        'rules' => [
+            [
+                'allow' => true,
+                'roles' => ['@'],
+            ],
+        ],
+    ],
     'params' => $params,
 ];

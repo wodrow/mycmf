@@ -15,5 +15,5 @@ Yii::setAlias('@wurl', \common\config\Env::HOME_URL);
 
 //Yii::$classMap['yii\helpers\Markdown'] = '@common/helpers/Markdown.php';
 
-Yii::$container->set('yii\widgets\LinkPager', ['maxButtonCount' => 5, 'firstPageLabel' => '首页', 'lastPageLabel' => '末页']);
+Yii::$container->set('yii\widgets\LinkPager', ['maxButtonCount' => 9, 'firstPageLabel' => '首页', 'prevPageLabel'=>'上一页', 'nextPageLabel'=>'下一页', 'lastPageLabel' => '末页']);
 Yii::$container->set('yii\widgets\Pjax', ['timeout' => false]);
