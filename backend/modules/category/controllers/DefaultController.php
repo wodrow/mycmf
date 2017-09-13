@@ -1,11 +1,11 @@
 <?php
 
-namespace frontend\modules\user\controllers;
+namespace backend\modules\category\controllers;
 
 use yii\web\Controller;
 
 /**
- * Default controller for the `user` module
+ * Default controller for the `category` module
  */
 class DefaultController extends Controller
 {
@@ -15,6 +15,6 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->redirect(['/category/category']);
     }
 }

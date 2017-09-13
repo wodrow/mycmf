@@ -1,16 +1,16 @@
 <?php
 
-namespace frontend\modules\user;
+namespace backend\modules\category;
 
 /**
- * user module definition class
+ * category module definition class
  */
-class UserModule extends \yii\base\Module
+class CategroyModule extends \yii\base\Module
 {
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'frontend\modules\user\controllers';
+    public $controllerNamespace = 'backend\modules\category\controllers';
 
     /**
      * @inheritdoc

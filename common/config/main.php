@@ -36,6 +36,11 @@ $config = [
             // url to upload filder
             'uploadUrl' => '@wurl/uploads',
         ],
+        'assetManager' => [
+            'assetMap' => [
+                'AdminLTE.css' => '@wurl/css/AdminLTE.css',
+            ],
+        ],
     ],
 ];
 
