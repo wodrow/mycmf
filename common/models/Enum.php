@@ -21,4 +21,15 @@ class Enum
             self::STATUS_DELETE => "已删除",
         ];
     }
+
+    const SEX_WOMAN = 0;
+    const SEX_MAN = 1;
+
+    public static function getSex()
+    {
+        return [
+            self::SEX_WOMAN => "女",
+            self::SEX_MAN => "男",
+        ];
+    }
 }
