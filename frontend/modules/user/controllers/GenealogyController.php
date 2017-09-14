@@ -67,6 +67,10 @@ class GenealogyController extends Controller
 
     public function actionGroupCreate()
     {
-        return $this->render('group-create');
+        $group = new Group();
+        $group->mark = time().\Yii::$app->security->generateRandomString(30);
+        return $this->render('group-create', [
+            'group' => $group,
+        ]);
     }
 }
