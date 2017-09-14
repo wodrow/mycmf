@@ -16,6 +16,26 @@ Yii::setAlias('@wurl', \common\config\Env::HOME_URL);
 
 //Yii::$classMap['yii\helpers\Markdown'] = '@common/helpers/Markdown.php';
 
-Yii::$container->set('yii\widgets\LinkPager', ['maxButtonCount' => 9, 'firstPageLabel' => '首页', 'prevPageLabel'=>'上一页', 'nextPageLabel'=>'下一页', 'lastPageLabel' => '末页']);
-Yii::$container->set('yii\widgets\Pjax', ['timeout' => false]);
-Yii::$container->set('yii\captcha\CaptchaAction', ['minLength' => 4, 'maxLength' => 4, 'fontFile' => '@data/fonts/ztgjkt.ttf',]);
+Yii::$container->set('yii\data\Pagination', [
+//    'totalCount', //为数据总数,
+    'pageSize' => 10, //为每页显示数,
+    'pageSizeParam'=>false, //可将分页路径中per-page参数隐藏去掉,
+    'pageParam' => 'p', //可更改分页url中分页参数name名称,
+    'route' => false, //分页在于首页时隐藏掉路由，将/site/index?p=1变为/?p=1,
+    'validatePage' => false, //取消分页验证,当手动输入page=20时不再跳到page=1,
+]);
+Yii::$container->set('yii\widgets\LinkPager', [
+    'maxButtonCount' => 9, 
+    'firstPageLabel' => '首页', 
+    'lastPageLabel' => '末页',
+    'prevPageLabel'=>'上一页', 
+    'nextPageLabel'=>'下一页',
+]);
+Yii::$container->set('yii\widgets\Pjax', [
+    'timeout' => false,
+]);
+Yii::$container->set('yii\captcha\CaptchaAction', [
+    'minLength' => 4, 
+    'maxLength' => 4, 
+    'fontFile' => '@data/fonts/ztgjkt.ttf',
+]);

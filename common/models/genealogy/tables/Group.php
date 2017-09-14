@@ -43,11 +43,12 @@ class Group extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'mark', 'created_at', 'created_by', 'updated_at', 'updated_by', 'status', 'info'], 'required'],
+            [['title', 'mark', 'created_at', 'created_by', 'updated_at', 'updated_by', 'info'], 'required'],
             [['created_at', 'created_by', 'updated_at', 'updated_by', 'status'], 'integer'],
             [['info'], 'string'],
             [['title'], 'string', 'max' => 50],
             [['mark'], 'string', 'max' => 40],
+            [['mark'], 'unique'],
         ];
     }
 
