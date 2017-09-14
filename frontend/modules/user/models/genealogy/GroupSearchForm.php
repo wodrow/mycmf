@@ -9,6 +9,7 @@
 namespace frontend\modules\user\models\genealogy;
 
 
+use common\models\Enum;
 use yii\base\Model;
 
 class GroupSearchForm extends Model
@@ -36,7 +37,8 @@ class GroupSearchForm extends Model
     public function search()
     {
         $query = Group::find()->orderBy(['created_at'=>SORT_DESC]);
-        $query->andFilterWhere(['mark'=>$this->mark])
+        $query->andFilterWhere(['status'=>Enum::STATUS_ACTIVE])
+            ->andFilterWhere(['mark'=>$this->mark])
             ->andFilterWhere(['title'=>$this->title])
             ->andFilterWhere(['like', 'info', $this->info]);
         return $query;

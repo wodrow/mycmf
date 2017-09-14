@@ -20,14 +20,28 @@
                     <?=$form->field($search_form, 'title')->textInput() ?>
                     <?=$form->field($search_form, 'info')->textInput() ?>
                     <?=\yii\helpers\Html::submitButton('搜索', ['class'=>"btn btn-primary"]) ?>
+                    <?=\yii\helpers\Html::a('没有找到？去创建', ['/user/genealogy/group-create'], ['class'=>"pull-right btn btn-warning"]) ?>
                     <?php \kartik\form\ActiveForm::end(); ?>
                 </div>
                 <div class="items">
-                    <?php foreach($groups as $k => $v): ?>
-                        <div class="item-list">
-                            <?=$v->info ?>
-                        </div>
-                    <?php endforeach; ?>
+                    <table class="table table-border">
+                        <thead>
+                        <tr>
+                            <th>标示</th>
+                            <th>名称</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($groups as $k => $v): ?>
+                            <tr>
+                                <td><?=$v->mark ?></td>
+                                <td><?=$v->title ?></td>
+                                <td><?=\yii\helpers\Html::a('xxx') ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="pages">
                     <?=\yii\widgets\LinkPager::widget([

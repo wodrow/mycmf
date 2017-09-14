@@ -5,7 +5,7 @@ namespace common\models\genealogy\tables;
 use Yii;
 
 /**
- * This is the model class for table "{{%user}}".
+ * This is the model class for table "{{%member}}".
  *
  * @property string $id
  * @property string $user_id
@@ -20,14 +20,14 @@ use Yii;
  *
  * @property Group $group
  */
-class User extends \yii\db\ActiveRecord
+class Member extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%user}}';
+        return '{{%member}}';
     }
 
     /**

@@ -9,7 +9,7 @@
 namespace frontend\modules\user\models\genealogy;
 
 
-class User extends \common\models\genealogy\User
+class Member extends \common\models\genealogy\Member
 {
 
 }

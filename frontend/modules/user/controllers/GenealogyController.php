@@ -9,6 +9,7 @@
 namespace frontend\modules\user\controllers;
 
 
+use common\models\Enum;
 use frontend\modules\user\models\genealogy\Group;
 use frontend\modules\user\models\genealogy\GroupSearchForm;
 use yii\data\Pagination;
@@ -18,7 +19,25 @@ class GenealogyController extends Controller
 {
     public function actionIndex()
     {
+        $search_form = new GroupSearchForm();
+        if ($search_form->load(\Yii::$app->request->post())){
+            $query = $search_form->search();
+        }else{
+            $query = Group::find()->orderBy(['created_at'=>SORT_DESC])->where(['status'=>Enum::STATUS_ACTIVE]);
+        }
+        $countQuery = clone $query;
+        $pages = new Pagination([
+            'totalCount' => $countQuery->count(),
+            'pageSize' => 10,
+        ]);
+        $groups = $query
+            ->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
         return $this->render('index', [
+            'groups' => $groups,
+            'pages' => $pages,
+            'search_form' => $search_form,
         ]);
     }
 
@@ -28,7 +47,7 @@ class GenealogyController extends Controller
         if ($search_form->load(\Yii::$app->request->post())){
             $query = $search_form->search();
         }else{
-            $query = Group::find()->orderBy(['created_at'=>SORT_DESC]);
+            $query = Group::find()->orderBy(['created_at'=>SORT_DESC])->where(['status'=>Enum::STATUS_ACTIVE]);
         }
         $countQuery = clone $query;
         $pages = new Pagination([
@@ -44,5 +63,10 @@ class GenealogyController extends Controller
             'pages' => $pages,
             'search_form' => $search_form,
         ]);
+    }
+
+    public function actionGroupCreate()
+    {
+        return $this->render('group-create');
     }
 }

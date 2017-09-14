@@ -14,7 +14,7 @@ namespace common\models\genealogy;
  *
  * @property Group $group
  */
-class User extends \common\models\genealogy\tables\User
+class Member extends \common\models\genealogy\tables\Member
 {
     /**
      * @return \yii\db\ActiveQuery

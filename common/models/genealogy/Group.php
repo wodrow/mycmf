@@ -12,15 +12,15 @@ namespace common\models\genealogy;
  * Class Group
  * @package common\models\genealogy
  *
- * @property User[] $users
+ * @property Member[] $members
  */
 class Group extends \common\models\genealogy\tables\Group
 {
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUsers()
+    public function getMembers()
     {
-        return $this->hasMany(User::className(), ['group_id' => 'id']);
+        return $this->hasMany(Member::className(), ['group_id' => 'id']);
     }
 }

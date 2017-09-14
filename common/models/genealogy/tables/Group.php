@@ -17,7 +17,7 @@ use Yii;
  * @property integer $status
  * @property string $info
  *
- * @property User[] $users
+ * @property Member[] $members
  */
 class Group extends \yii\db\ActiveRecord
 {
@@ -73,8 +73,8 @@ class Group extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUsers()
+    public function getMembers()
     {
-        return $this->hasMany(User::className(), ['group_id' => 'id']);
+        return $this->hasMany(Member::className(), ['group_id' => 'id']);
     }
 }
