@@ -18,6 +18,7 @@ Yii::$container = new yii\di\Container;
  * @property \pheme\settings\components\Settings $settings
  * @property \common\rewrite\web\User $user
  * @property \yii\db\Connection $db_test
+ * @property \yii\db\Connection $db_genealogy
  * @property \herroffizier\yii2um\UploadManager $uploads
  */
 abstract class BaseApplication extends yii\base\Application

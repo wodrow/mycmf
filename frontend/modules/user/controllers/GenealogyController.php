@@ -13,6 +13,7 @@ use common\models\Enum;
 use frontend\modules\user\models\genealogy\Group;
 use frontend\modules\user\models\genealogy\GroupSearchForm;
 use yii\data\Pagination;
+use yii\db\Exception;
 use yii\web\Controller;
 
 class GenealogyController extends Controller
@@ -69,6 +70,17 @@ class GenealogyController extends Controller
     {
         $group = new Group();
         $group->mark = time().\Yii::$app->security->generateRandomString(30);
+        if ($group->load(\Yii::$app->request->post())&&$group->validate()){
+            $trans = \Yii::$app->db_genealogy->beginTransaction();
+            try{
+                $group->save();
+                $trans->commit();
+                $this->redirect(['index']);
+            }catch (Exception $e){
+                $trans->rollBack();
+                throw $e;
+            }
+        }
         return $this->render('group-create', [
             'group' => $group,
         ]);
