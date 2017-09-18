@@ -5,7 +5,7 @@
  */
 ?>
 
-<div class="user-genealogy-group-create">
+<div class="user-genealogy-group-update">
     <div class="row">
         <div class="col-lg-12">
             <?=$this->render('_group_form', ['group'=>$group]) ?>

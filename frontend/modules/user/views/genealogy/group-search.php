@@ -37,7 +37,10 @@
                             <tr>
                                 <td><?=$v->mark ?></td>
                                 <td><?=$v->title ?></td>
-                                <td><?=\yii\helpers\Html::a('xxx') ?></td>
+                                <td>
+                                    <?php // echo \yii\helpers\Html::a('修改', ['/user/genealogy/group-update', 'id'=>$v->id]) ?>
+                                    <?php // echo \yii\helpers\Html::a('修改', ['/user/genealogy/group-update', 'id'=>$v->id]) ?>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>

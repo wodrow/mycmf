@@ -85,4 +85,23 @@ class GenealogyController extends Controller
             'group' => $group,
         ]);
     }
+
+    public function actionGroupUpdate($id)
+    {
+        $group = Group::findOne($id);
+        if ($group->load(\Yii::$app->request->post())&&$group->validate()){
+            $trans = \Yii::$app->db_genealogy->beginTransaction();
+            try{
+                $group->save();
+                $trans->commit();
+                $this->redirect(['index']);
+            }catch (Exception $e){
+                $trans->rollBack();
+                throw $e;
+            }
+        }
+        return $this->render('group-update', [
+            'group' => $group,
+        ]);
+    }
 }
