@@ -12,6 +12,7 @@ namespace frontend\modules\user\controllers;
 use common\models\Enum;
 use frontend\modules\user\models\genealogy\Group;
 use frontend\modules\user\models\genealogy\GroupSearchForm;
+use frontend\modules\user\models\genealogy\Member;
 use yii\data\Pagination;
 use yii\db\Exception;
 use yii\web\Controller;
@@ -102,6 +103,51 @@ class GenealogyController extends Controller
         }
         return $this->render('group-update', [
             'group' => $group,
+        ]);
+    }
+
+    public function actionGroupAdd($id)
+    {
+        #
+    }
+
+    public function actionGroupView($id)
+    {
+        $group = Group::findOne($id);
+        $query = Member::find()->orderBy(['borthday'=>SORT_ASC]);
+        $countQuery = clone $query;
+        $pages = new Pagination([
+            'totalCount' => $countQuery->count(),
+            'pageSize' => 10,
+        ]);
+        $members = $query
+            ->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+        return $this->render('group-view', [
+            'group' => $group,
+            'members' => $members,
+            'pages' => $pages,
+        ]);
+    }
+
+    public function actionMemberCreate($group_id)
+    {
+        $member = new Member();
+        $member->group_id = $group_id;
+        if ($member->load(\Yii::$app->request->post())&&$member->validate()){
+            $trans = \Yii::$app->db_genealogy->beginTransaction();
+            try{
+                $member->save();
+                $trans->commit();
+                $this->redirect(['group-view', 'id'=>$group_id]);
+            }catch (Exception $e){
+                $trans->rollBack();
+                throw $e;
+            }
+        }
+        return $this->render('member-create', [
+            'member' => $member,
         ]);
     }
 }

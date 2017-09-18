@@ -27,19 +27,23 @@
                     <table class="table table-border">
                         <thead>
                         <tr>
-                            <th>标示</th>
                             <th>名称</th>
+                            <th>标示</th>
+                            <th></th>
                             <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php foreach($groups as $k => $v): ?>
                             <tr>
+                                <td><?=\yii\helpers\Html::a($v->title, ['group-view', 'id' => $v->id], ['title' => $v->info]) ?></td>
                                 <td><?=$v->mark ?></td>
-                                <td><?=$v->title ?></td>
+                                <td>
+                                    <?=$v->owner_id==Yii::$app->user->id?"所有者":(\common\models\genealogy\UserGroup::findOne(['user_id'=>Yii::$app->user->id, 'group_id'=>$v->id])?"已加入":\yii\helpers\Html::a("加入", [''], ['class'=>"btn btn-primary btn-sm"])) ?>
+                                </td>
                                 <td>
                                     <?php // echo \yii\helpers\Html::a('修改', ['/user/genealogy/group-update', 'id'=>$v->id]) ?>
-                                    <?php // echo \yii\helpers\Html::a('修改', ['/user/genealogy/group-update', 'id'=>$v->id]) ?>
+                                    <?=\yii\helpers\Html::a('浏览谱图', ['', 'id'=>$v->id], ['class'=>"btn btn-info btn-xs"]) ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

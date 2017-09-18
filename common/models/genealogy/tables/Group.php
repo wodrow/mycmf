@@ -2,6 +2,7 @@
 
 namespace common\models\genealogy\tables;
 
+use common\models\db\tables\User;
 use Yii;
 
 /**
@@ -16,8 +17,10 @@ use Yii;
  * @property integer $updated_by
  * @property integer $status
  * @property string $info
+ * @property string $owner_id
  *
  * @property Member[] $members
+ * @property \common\models\User $owner
  */
 class Group extends \yii\db\ActiveRecord
 {
@@ -43,12 +46,13 @@ class Group extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'mark', 'created_at', 'created_by', 'updated_at', 'updated_by', 'info'], 'required'],
-            [['created_at', 'created_by', 'updated_at', 'updated_by', 'status'], 'integer'],
+            [['title', 'mark', 'created_at', 'created_by', 'updated_at', 'updated_by', 'info', 'owner_id'], 'required'],
+            [['created_at', 'created_by', 'updated_at', 'updated_by', 'status', 'owner_id'], 'integer'],
             [['info'], 'string'],
             [['title'], 'string', 'max' => 50],
             [['mark'], 'string', 'max' => 40],
             [['mark'], 'unique'],
+            [['owner'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['owner' => 'id']],
         ];
     }
 
@@ -67,6 +71,7 @@ class Group extends \yii\db\ActiveRecord
             'updated_by' => Yii::t('app', 'Updated By'),
             'status' => Yii::t('app', 'Status'),
             'info' => Yii::t('app', 'Info'),
+            'owner_id' => Yii::t('app', 'Owner ID'),
         ];
     }
 
@@ -76,5 +81,13 @@ class Group extends \yii\db\ActiveRecord
     public function getMembers()
     {
         return $this->hasMany(Member::className(), ['group_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getOwner()
+    {
+        return $this->hasOne(\common\models\User::className(), ['owner_id' => 'id']);
     }
 }

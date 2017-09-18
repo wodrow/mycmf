@@ -7,6 +7,7 @@
  */
 
 namespace common\models\genealogy;
+use common\models\User;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 
@@ -15,6 +16,7 @@ use yii\behaviors\TimestampBehavior;
  * @package common\models\genealogy
  *
  * @property Member[] $members
+ * @property User $owner
  */
 class Group extends \common\models\genealogy\tables\Group
 {
@@ -48,6 +50,9 @@ class Group extends \common\models\genealogy\tables\Group
             [['title'], 'string', 'max' => 50],
             [['mark'], 'string', 'max' => 40],
             [['mark'], 'unique'],
+            [['owner_id'], 'unique'],
+            [['owner_id'], 'integer'],
+            [['owner'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['owner' => 'id']],
         ];
     }
 
@@ -57,6 +62,14 @@ class Group extends \common\models\genealogy\tables\Group
     public function getMembers()
     {
         return $this->hasMany(Member::className(), ['group_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getOwner()
+    {
+        return $this->hasOne(\common\models\User::className(), ['owner_id' => 'id']);
     }
 
     public function afterSave($insert, $changedAttributes)
