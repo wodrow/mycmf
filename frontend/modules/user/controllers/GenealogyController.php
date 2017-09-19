@@ -150,4 +150,24 @@ class GenealogyController extends Controller
             'member' => $member,
         ]);
     }
+
+    public function actionMemberUpdate($id)
+    {
+        $member = Member::findOne(['id'=>$id]);
+        $group = $member->group;
+        if ($member->load(\Yii::$app->request->post())&&$member->validate()){
+            $trans = \Yii::$app->db_genealogy->beginTransaction();
+            try{
+                $member->save();
+                $trans->commit();
+                $this->redirect(['group-view', 'id'=>$group->id]);
+            }catch (Exception $e){
+                $trans->rollBack();
+                throw $e;
+            }
+        }
+        return $this->render('member-update', [
+            'member' => $member,
+        ]);
+    }
 }

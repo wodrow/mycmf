@@ -5,7 +5,7 @@
  */
 ?>
 
-<div class="user-genealogy-member-create">
+<div class="user-genealogy-member-update">
     <div class="row">
         <div class="col-lg-12">
             <?=$this->render('_member_form', ['member'=>$member]) ?>

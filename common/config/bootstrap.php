@@ -21,7 +21,7 @@ Yii::$container->set('yii\data\Pagination', [
     'pageSize' => 10, //为每页显示数,
     'pageSizeParam'=>false, //可将分页路径中per-page参数隐藏去掉,
     'pageParam' => 'p', //可更改分页url中分页参数name名称,
-    'route' => false, //分页在于首页时隐藏掉路由，将/site/index?p=1变为/?p=1,
+//    'route' => false, //分页在于首页时隐藏掉路由，将/site/index?p=1变为/?p=1,
     'validatePage' => false, //取消分页验证,当手动输入page=20时不再跳到page=1,
 ]);
 Yii::$container->set('yii\widgets\LinkPager', [

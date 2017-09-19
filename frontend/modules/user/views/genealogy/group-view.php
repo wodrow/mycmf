@@ -23,9 +23,10 @@
                             <th>生日</th>
                             <th>父亲</th>
                             <th>母亲</th>
-                            <th>出生地</th>
+                            <th>户口地</th>
                             <th>其他信息</th>
-                            <th>族谱名</th>
+                            <th>族谱</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -34,11 +35,14 @@
                                 <td><?=$v->name ?></td>
                                 <td><?=\common\models\Enum::getSex()[$v->sex] ?></td>
                                 <td><?=$v->borthday ?></td>
-                                <td><?=$v->father_id ?></td>
-                                <td><?=$v->mother_id ?></td>
+                                <td><?=@$v->father->name ?></td>
+                                <td><?=@$v->mother->name ?></td>
                                 <td><?=$v->borth_place ?></td>
                                 <td><?=$v->info ?></td>
                                 <td><?=$group->title ?></td>
+                                <td>
+                                    <?=\yii\helpers\Html::a('修改', ['member-update', 'id'=>$v->id], ['class'=>"btn btn-warning btn-xs"]) ?>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                         </tbody>

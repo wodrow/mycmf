@@ -13,6 +13,8 @@ namespace common\models\genealogy;
  * @package common\models\genealogy
  *
  * @property Group $group
+ * @property Member $father
+ * @property Member $mother
  */
 class Member extends \common\models\genealogy\tables\Member
 {
@@ -22,6 +24,22 @@ class Member extends \common\models\genealogy\tables\Member
     public function getGroup()
     {
         return $this->hasOne(Group::className(), ['id' => 'group_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFather()
+    {
+        return $this->hasOne(self::className(), ['id' => 'father_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMother()
+    {
+        return $this->hasOne(self::className(), ['id' => 'mother_id']);
     }
 
     public function attributeLabels()
