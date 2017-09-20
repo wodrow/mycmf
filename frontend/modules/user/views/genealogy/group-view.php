@@ -31,7 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             <th>父亲</th>
                             <th>母亲</th>
                             <th>户口地</th>
-                            <th>其他信息</th>
                             <th>配偶</th>
                             <th>操作</th>
                         </tr>
@@ -46,7 +45,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <td><?=@$v->father->name ?></td>
                                 <td><?=@$v->mother->name ?></td>
                                 <td><?=$v->borth_place ?></td>
-                                <td><?=$v->info ?></td>
                                 <td><?=@$v->spouse->name ?></td>
                                 <td>
                                     <?=\yii\helpers\Html::a('修改', ['member-update', 'id'=>$v->id], ['class'=>"btn btn-warning btn-xs"]) ?>

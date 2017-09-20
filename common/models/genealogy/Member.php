@@ -62,7 +62,7 @@ class Member extends \common\models\genealogy\tables\Member
             'mother_id' => "母亲",
             'spouse_id' => "配偶",
             'borth_place' => "户口地",
-            'info' => "其他信息",
+            'info' => "个人介绍",
         ];
     }
 

@@ -36,6 +36,12 @@ return [
         */
     ],
     'modules' => [
+        'redactor' => [
+            'class' => 'yii\redactor\RedactorModule',
+            'uploadDir' => '@wroot/uploads',
+            'uploadUrl' => '@wurl/uploads',
+            'imageAllowExtensions'=>['jpg','png','gif']
+        ],
         'pub' => [
             'class' => 'frontend\modules\pub\PubModule',
         ],
