@@ -5,6 +5,10 @@
  * @var \yii\data\Pagination $pages
  * @var \frontend\modules\user\models\genealogy\GroupSearchForm $search_form
  */
+$this->title = "寻找族谱";
+$this->params['breadcrumbs'][] = \yii\helpers\Html::a('用户中心', ['/user']);
+$this->params['breadcrumbs'][] = \yii\helpers\Html::a('我的族谱', ['/user/genealogy']);
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="user-genealogy-group-search">
@@ -43,7 +47,7 @@
                                 </td>
                                 <td>
                                     <?php // echo \yii\helpers\Html::a('修改', ['/user/genealogy/group-update', 'id'=>$v->id]) ?>
-                                    <?=\yii\helpers\Html::a('浏览谱图', ['', 'id'=>$v->id], ['class'=>"btn btn-info btn-xs"]) ?>
+                                    <?=\yii\helpers\Html::a('浏览谱图', ['/user/genealogy/map-view', 'id'=>$v->id], ['class'=>"btn btn-info btn-xs"]) ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

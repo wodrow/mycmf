@@ -5,14 +5,20 @@
  * @var \common\models\genealogy\Member[] $members
  * @var \yii\data\Pagination $pages
  */
+$this->title = $group->title;
+$this->params['breadcrumbs'][] = \yii\helpers\Html::a('用户中心', ['/user']);
+$this->params['breadcrumbs'][] = \yii\helpers\Html::a('我的族谱', ['/user/genealogy']);
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="user-genealogy-group-view">
+    <h4><?=$this->title ?></h4>
     <div class="row">
         <div class="col-lg-12">
             <div class="row">
                 <div class="search" style="margin-bottom: 10px;">
                     <?=\yii\helpers\Html::a("添加成员", ['member-create', 'group_id'=>$group->id], ['class'=>"btn btn-primary"]) ?>
+                    <?=\yii\helpers\Html::a("浏览谱图", ['map-view', 'id'=>$group->id], ['class'=>"btn btn-info", 'target'=>"_blank"]) ?>
                 </div>
                 <div class="items">
                     <table class="table table-border">
@@ -27,7 +33,6 @@
                             <th>户口地</th>
                             <th>其他信息</th>
                             <th>配偶</th>
-                            <th>族谱</th>
                             <th>操作</th>
                         </tr>
                         </thead>
@@ -43,7 +48,6 @@
                                 <td><?=$v->borth_place ?></td>
                                 <td><?=$v->info ?></td>
                                 <td><?=@$v->spouse->name ?></td>
-                                <td><?=$group->title ?></td>
                                 <td>
                                     <?=\yii\helpers\Html::a('修改', ['member-update', 'id'=>$v->id], ['class'=>"btn btn-warning btn-xs"]) ?>
                                 </td>

@@ -3,6 +3,11 @@
  * @var \yii\web\View $this
  * @var \frontend\modules\user\models\genealogy\Member $member
  */
+$this->title = "修改成员";
+$this->params['breadcrumbs'][] = \yii\helpers\Html::a('用户中心', ['/user']);
+$this->params['breadcrumbs'][] = \yii\helpers\Html::a('我的族谱', ['/user/genealogy']);
+$this->params['breadcrumbs'][] = \yii\helpers\Html::a($member->group->title, ['/user/genealogy/group-view', 'id'=>$member->group_id]);
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="user-genealogy-member-update">
