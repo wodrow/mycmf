@@ -118,7 +118,7 @@ class GenealogyController extends Controller
         $countQuery = clone $query;
         $pages = new Pagination([
             'totalCount' => $countQuery->count(),
-            'pageSize' => 10,
+            'pageSize' => 50,
         ]);
         $members = $query
             ->offset($pages->offset)
@@ -139,6 +139,7 @@ class GenealogyController extends Controller
             $trans = \Yii::$app->db_genealogy->beginTransaction();
             try{
                 $member->save();
+                $member->spouseEdit();
                 $trans->commit();
                 $this->redirect(['group-view', 'id'=>$group_id]);
             }catch (Exception $e){
@@ -159,6 +160,7 @@ class GenealogyController extends Controller
             $trans = \Yii::$app->db_genealogy->beginTransaction();
             try{
                 $member->save();
+                $member->spouseEdit();
                 $trans->commit();
                 $this->redirect(['group-view', 'id'=>$group->id]);
             }catch (Exception $e){

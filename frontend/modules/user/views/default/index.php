@@ -1,7 +1,7 @@
 <div class="user-default-index">
     <div class="row">
         <div class="col-lg-12">
-            <?= \yii\helpers\Html::a('我的家谱', ['/user/genealogy'], ['class' => "btn btn-info"]) ?>
+            <?= \yii\helpers\Html::a('家谱', ['/user/genealogy'], ['class' => "btn btn-info"]) ?>
         </div>
         <div class="col-lg-12">
             <div id="myDiagramDiv"
@@ -15,6 +15,52 @@
 
 <?php \common\components\widgets\JsBlock::begin(); ?>
 <script id="code">
+    var family_data = [
+        {key: 0, n: "Aaron", s: "M", m: -10, f: -11, ux: 1, a: ["C", "F", "K"]},
+        {key: 1, n: "Alice", s: "F", m: -12, f: -13, a: ["B", "H", "K"]},
+        {key: 2, n: "Bob", s: "M", m: 1, f: 0, ux: 3, a: ["C", "H", "L"]},
+        {key: 3, n: "Barbara", s: "F", a: ["C"]},
+        {key: 4, n: "测试", s: "M", m: 1, f: 0, ux: 5, a: ["E", "H"]},
+        {key: 5, n: "测试1", s: "F", a: ["B", "H", "L"]},
+        {key: 6, n: "Claire", s: "F", m: 1, f: 0, a: ["C"]},
+        {key: 7, n: "Carol", s: "F", m: 1, f: 0, a: ["C", "I"]},
+        {key: 8, n: "Chloe", s: "F", m: 1, f: 0, vir: 9, a: ["E"]},
+        {key: 9, n: "Chris", s: "M", a: ["B", "H"]},
+        {key: 10, n: "Ellie", s: "F", m: 3, f: 2, a: ["E", "G"]},
+        {key: 11, n: "Dan", s: "M", m: 3, f: 2, a: ["B", "J"]},
+        {key: 12, n: "Elizabeth", s: "F", vir: 13, a: ["J"]},
+        {key: 13, n: "David", s: "M", m: 5, f: 4, a: ["B", "H"]},
+        {key: 14, n: "Emma", s: "F", m: 5, f: 4, a: ["E", "G"]},
+        {key: 15, n: "Evan", s: "M", m: 8, f: 9, a: ["F", "H"]},
+        {key: 16, n: "Ethan", s: "M", m: 8, f: 9, a: ["D", "K"]},
+        {key: 17, n: "Eve", s: "F", vir: 16, a: ["B", "F", "L"]},
+        {key: 18, n: "Emily", s: "F", m: 8, f: 9},
+        {key: 19, n: "Fred", s: "M", m: 17, f: 16, a: ["B"]},
+        {key: 20, n: "Faith", s: "F", m: 17, f: 16, a: ["L"]},
+        {key: 21, n: "Felicia", s: "F", m: 12, f: 13, a: ["H"]},
+        {key: 22, n: "Frank", s: "M", m: 12, f: 13, a: ["B", "H"]},
+        {key: 23, n: "wodrow", s: "M", m: 12, f: 13, a: ["B", "H"]},
+        // "Aaron"'s ancestors
+        {key: -10, n: "Paternal Grandfather", s: "M", m: -33, f: -32, ux: -11, a: ["A", "S"]},
+        {key: -11, n: "Paternal Grandmother", s: "F", a: ["E", "S"]},
+        {key: -32, n: "Paternal Great", s: "M", ux: -33, a: ["F", "H", "S"]},
+        {key: -33, n: "Paternal Great", s: "F", a: ["S"]},
+        {key: -40, n: "Great Uncle", s: "M", m: -33, f: -32, a: ["F", "H", "S"]},
+        {key: -41, n: "Great Aunt", s: "F", m: -33, f: -32, a: ["B", "I", "S"]},
+        {key: -20, n: "Uncle", s: "M", m: -11, f: -10, a: ["A", "S"]},
+        // "Alice"'s ancestors
+        {key: -12, n: "Maternal Grandfather", s: "M", ux: -13, a: ["D", "L", "S"]},
+        {key: -13, n: "Maternal Grandmother", s: "F", m: -31, f: -30, a: ["H", "S"]},
+        {key: -21, n: "Aunt", s: "F", m: -13, f: -12, a: ["C", "I"]},
+        {key: -22, n: "Uncle", s: "M", ux: -21},
+        {key: -23, n: "Cousin", s: "M", m: -21, f: -22},
+        {key: -30, n: "Maternal Great", s: "M", ux: -31, a: ["D", "J", "S"]},
+        {key: -31, n: "Maternal Great", s: "F", m: -50, f: -51, a: ["B", "H", "L", "S"]},
+        {key: -42, n: "Great Uncle", s: "M", m: -30, f: -31, a: ["C", "J", "S"]},
+        {key: -43, n: "Great Aunt", s: "F", m: -30, f: -31, a: ["E", "G", "S"]},
+        {key: -50, n: "噶啥地方", s: "F", ux: -51, a: ["D", "I", "S"]},
+        {key: -51, n: "阿斯蒂芬", s: "M", ux: -50, a: ["B", "H", "S"]}
+    ];
     function init() {
         if (window.goSamples) goSamples();  // init for these samples -- you don't need to call this
         var GOJS = go.GraphObject.make;
@@ -36,7 +82,7 @@
         // determine the color for each attribute shape
         function attrFill(a) {
             switch (a) {
-                case "A":
+                /*case "A":
                     return "green";
                 case "B":
                     return "orange";
@@ -61,7 +107,7 @@
                 case "L":
                     return "magenta";
                 case "S":
-                    return "red";
+                    return "red";*/
                 default:
                     return "transparent";
             }
@@ -155,8 +201,8 @@
                 {locationSpot: go.Spot.Center, locationObjectName: "ICON"},
                 GOJS(go.Panel,
                     {name: "ICON"},
-                    GOJS(go.Shape, "Square",
-                        {width: 40, height: 40, strokeWidth: 2, fill: "white", portId: ""}),
+                    GOJS(go.Shape, "Rectangle",
+                        {width: 100, height: 40, strokeWidth: 2, fill: "white", portId: ""}),
                     GOJS(go.Panel,
                         { // for each attribute show a Shape at a particular place in the overall square
                             itemTemplate: GOJS(go.Panel,
@@ -168,19 +214,19 @@
                             margin: 1
                         },
                         new go.Binding("itemArray", "a")
-                    )
-                ),
-                GOJS(go.TextBlock,
-                    {textAlign: "center", maxSize: new go.Size(80, NaN)},
-                    new go.Binding("text", "n"))
+                    ),
+                    GOJS(go.TextBlock,
+                        {textAlign: "center", margin: 12, maxSize: new go.Size(80, NaN)},
+                        new go.Binding("text", "n"))
+                )
             ));
         myDiagram.nodeTemplateMap.add("F",  // female
             GOJS(go.Node, "Vertical",
                 {locationSpot: go.Spot.Center, locationObjectName: "ICON"},
                 GOJS(go.Panel,
                     {name: "ICON"},
-                    GOJS(go.Shape, "Circle",
-                        {width: 40, height: 40, strokeWidth: 2, fill: "white", portId: ""}),
+                    GOJS(go.Shape, "RoundedRectangle",
+                        {width: 100, height: 40, strokeWidth: 2, fill: "white", portId: ""}),
                     GOJS(go.Panel,
                         { // for each attribute show a Shape at a particular place in the overall circle
                             itemTemplate: GOJS(go.Panel,
@@ -192,11 +238,11 @@
                             margin: 1
                         },
                         new go.Binding("itemArray", "a")
-                    )
-                ),
-                GOJS(go.TextBlock,
-                    {textAlign: "center", maxSize: new go.Size(80, NaN)},
-                    new go.Binding("text", "n"))
+                    ),
+                    GOJS(go.TextBlock,
+                        {textAlign: "center", margin: 12, maxSize: new go.Size(80, NaN)},
+                        new go.Binding("text", "n"))
+                )
             ));
         // the representation of each label node -- nothing shows on a Marriage Link
         myDiagram.nodeTemplateMap.add("LinkLabel",
@@ -216,52 +262,7 @@
                 GOJS(go.Shape, {strokeWidth: 2, stroke: "blue"})
             ));
         // n: name, s: sex, m: mother, f: father, ux: wife, vir: husband, a: attributes/markers
-        setupDiagram(myDiagram, [
-                {key: 0, n: "Aaron", s: "M", m: -10, f: -11, ux: 1, a: ["C", "F", "K"]},
-                {key: 1, n: "Alice", s: "F", m: -12, f: -13, a: ["B", "H", "K"]},
-                {key: 2, n: "Bob", s: "M", m: 1, f: 0, ux: 3, a: ["C", "H", "L"]},
-                {key: 3, n: "Barbara", s: "F", a: ["C"]},
-                {key: 4, n: "Bill", s: "M", m: 1, f: 0, ux: 5, a: ["E", "H"]},
-                {key: 5, n: "Brooke", s: "F", a: ["B", "H", "L"]},
-                {key: 6, n: "Claire", s: "F", m: 1, f: 0, a: ["C"]},
-                {key: 7, n: "Carol", s: "F", m: 1, f: 0, a: ["C", "I"]},
-                {key: 8, n: "Chloe", s: "F", m: 1, f: 0, vir: 9, a: ["E"]},
-                {key: 9, n: "Chris", s: "M", a: ["B", "H"]},
-                {key: 10, n: "Ellie", s: "F", m: 3, f: 2, a: ["E", "G"]},
-                {key: 11, n: "Dan", s: "M", m: 3, f: 2, a: ["B", "J"]},
-                {key: 12, n: "Elizabeth", s: "F", vir: 13, a: ["J"]},
-                {key: 13, n: "David", s: "M", m: 5, f: 4, a: ["B", "H"]},
-                {key: 14, n: "Emma", s: "F", m: 5, f: 4, a: ["E", "G"]},
-                {key: 15, n: "Evan", s: "M", m: 8, f: 9, a: ["F", "H"]},
-                {key: 16, n: "Ethan", s: "M", m: 8, f: 9, a: ["D", "K"]},
-                {key: 17, n: "Eve", s: "F", vir: 16, a: ["B", "F", "L"]},
-                {key: 18, n: "Emily", s: "F", m: 8, f: 9},
-                {key: 19, n: "Fred", s: "M", m: 17, f: 16, a: ["B"]},
-                {key: 20, n: "Faith", s: "F", m: 17, f: 16, a: ["L"]},
-                {key: 21, n: "Felicia", s: "F", m: 12, f: 13, a: ["H"]},
-                {key: 22, n: "Frank", s: "M", m: 12, f: 13, a: ["B", "H"]},
-                {key: 23, n: "wodrow", s: "M", m: 12, f: 13, a: ["B", "H"]},
-                // "Aaron"'s ancestors
-                {key: -10, n: "Paternal Grandfather", s: "M", m: -33, f: -32, ux: -11, a: ["A", "S"]},
-                {key: -11, n: "Paternal Grandmother", s: "F", a: ["E", "S"]},
-                {key: -32, n: "Paternal Great", s: "M", ux: -33, a: ["F", "H", "S"]},
-                {key: -33, n: "Paternal Great", s: "F", a: ["S"]},
-                {key: -40, n: "Great Uncle", s: "M", m: -33, f: -32, a: ["F", "H", "S"]},
-                {key: -41, n: "Great Aunt", s: "F", m: -33, f: -32, a: ["B", "I", "S"]},
-                {key: -20, n: "Uncle", s: "M", m: -11, f: -10, a: ["A", "S"]},
-                // "Alice"'s ancestors
-                {key: -12, n: "Maternal Grandfather", s: "M", ux: -13, a: ["D", "L", "S"]},
-                {key: -13, n: "Maternal Grandmother", s: "F", m: -31, f: -30, a: ["H", "S"]},
-                {key: -21, n: "Aunt", s: "F", m: -13, f: -12, a: ["C", "I"]},
-                {key: -22, n: "Uncle", s: "M", ux: -21},
-                {key: -23, n: "Cousin", s: "M", m: -21, f: -22},
-                {key: -30, n: "Maternal Great", s: "M", ux: -31, a: ["D", "J", "S"]},
-                {key: -31, n: "Maternal Great", s: "F", m: -50, f: -51, a: ["B", "H", "L", "S"]},
-                {key: -42, n: "Great Uncle", s: "M", m: -30, f: -31, a: ["C", "J", "S"]},
-                {key: -43, n: "Great Aunt", s: "F", m: -30, f: -31, a: ["E", "G", "S"]},
-                {key: -50, n: "Maternal Great Great", s: "F", ux: -51, a: ["D", "I", "S"]},
-                {key: -51, n: "Maternal Great Great", s: "M", a: ["B", "H", "S"]}
-            ],
+        setupDiagram(myDiagram, family_data,
             4 /* focus on this person */);
     }
     // create and initialize the Diagram.model given an array of node data representing people
