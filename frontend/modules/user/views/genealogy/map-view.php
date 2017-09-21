@@ -4,6 +4,7 @@
  * @var \common\models\genealogy\Group $group
  * @var \common\models\genealogy\Member[] $members
  */
+\common\components\assets\Gojs::register($this);
 $this->title = "族谱图-".$group->title;
 $this->params['breadcrumbs'][] = \yii\helpers\Html::a('用户中心', ['/user']);
 $this->params['breadcrumbs'][] = \yii\helpers\Html::a('所有族谱', ['/user/genealogy/group-search']);

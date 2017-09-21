@@ -48,6 +48,9 @@ return [
         'user' => [
             'class' => 'frontend\modules\user\UserModule',
         ],
+        'td' => [ // 3d
+            'class' => 'frontend\modules\td\TdModule',
+        ],
     ],
     'as access' => [
         'class' => \frontend\components\behaviors\Check::className(),
