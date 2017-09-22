@@ -27,6 +27,7 @@ class AppAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
+        'colee\vue\VueAsset',
 //        'common\components\assets\Gojs',
         'common\components\assets\ThreeJs',
     ];
