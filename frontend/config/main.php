@@ -51,6 +51,9 @@ return [
         'td' => [ // 3d
             'class' => 'frontend\modules\td\TdModule',
         ],
+        'test' => [ // test
+            'class' => 'frontend\modules\test\TestModule',
+        ],
     ],
     'as access' => [
         'class' => \frontend\components\behaviors\Check::className(),
