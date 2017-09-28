@@ -26,8 +26,6 @@ class TestController extends Controller
 
     public function actionTest1()
     {
-        echo (new \TesseractOCR("/var/www/mycmf/web/uploads/DeepinScreenshot_select-area_20170927143745.png"))
-            ->lang('eng', 'jpn', 'por')
-            ->run();
+
     }
 }
