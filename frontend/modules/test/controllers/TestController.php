@@ -26,6 +26,6 @@ class TestController extends Controller
 
     public function actionTest1()
     {
-
+        return $this->render('test1');
     }
 }

@@ -42,6 +42,35 @@ $config = [
             ],
         ],
     ],
+    'modules' => [
+        'filemanager' => [
+            'class' => 'pendalf89\filemanager\Module',
+            // Upload routes
+            'routes' => [
+                // Base absolute path to web directory
+                'baseUrl' => '',
+                // Base web directory url
+                'basePath' => '@wroot',
+                // Path for uploaded files in web directory
+                'uploadPath' => 'uploads',
+            ],
+            // Thumbnails info
+            'thumbs' => [
+                'small' => [
+                    'name' => 's11',
+                    'size' => [100, 100],
+                ],
+                'medium' => [
+                    'name' => 's32',
+                    'size' => [300, 200],
+                ],
+                'large' => [
+                    'name' => 's54',
+                    'size' => [500, 400],
+                ],
+            ],
+        ],
+    ],
 ];
 
 Yii::$container->set('leandrogehlen\treegrid\TreeGridAsset',[

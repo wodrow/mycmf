@@ -19,7 +19,7 @@ class DefaultController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+//        return $this->render('index');
     }
 
     public function actionTest()
@@ -42,6 +42,6 @@ class DefaultController extends Controller
 
     public function actionTest2()
     {
-//        echo 654321;
+        return $this->render('test2');
     }
 }
