@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="search" style="margin-bottom: 10px;">
                     <?php $form = \kartik\form\ActiveForm::begin([
                         'type' => \kartik\form\ActiveForm::TYPE_INLINE,
-                        'options' => []
+                        'options' => [],
                     ]); ?>
                     <?=$form->field($search_form, 'mark')->textInput() ?>
                     <?=$form->field($search_form, 'title')->textInput() ?>
