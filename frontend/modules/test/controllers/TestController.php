@@ -9,6 +9,7 @@
 namespace frontend\modules\test\controllers;
 
 
+use frontend\modules\test\models\Test1;
 use Phpml\Association\Apriori;
 use yii\web\Controller;
 
@@ -27,5 +28,20 @@ class TestController extends Controller
     public function actionTest1()
     {
         return $this->render('test1');
+    }
+
+    public function actionTest2()
+    {
+        $model = new Test1();
+        if ($model->load(\Yii::$app->request->post())){
+            if ($model->save()){
+                var_dump($model->toArray());
+            }else{
+                var_dump($model->getErrors());
+            }
+        }
+        return $this->render('test2', [
+            'model' => $model,
+        ]);
     }
 }
