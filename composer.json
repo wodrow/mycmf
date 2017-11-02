@@ -43,9 +43,14 @@
         "pendalf89/yii2-tinymce": "dev-master",
         "pendalf89/yii2-filemanager": "dev-master",
         "yiisoft/yii2-jui": "^2.0",
-        "ruskid/yii2-ip-behavior": "dev-master",
         "paulzi/yii2-file-behavior": "~1.1.0",
-        "mkiselev/yii2-serialize-attribute-behavior": "*"
+        "mkiselev/yii2-serialize-attribute-behavior": "*",
+        "zelenin/yii2-slug-behavior": "~1.5.1",
+        "la-haute-societe/yii2-save-relations-behavior": "*",
+        "yii-dream-team/yii2-upload-behavior": "*",
+        "sjaakp/yii2-illustrated-behavior": "*",
+        "paulzi/yii2-nested-sets": "^1.0",
+        "paulzi/yii2-json-behavior": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
