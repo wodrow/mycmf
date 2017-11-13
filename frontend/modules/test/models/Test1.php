@@ -22,6 +22,7 @@ use Yii;
  * @property string $updated_ip
  * @property string $text
  * @property string $json
+ * @property string $attachment
  */
 class Test1 extends \yii\db\ActiveRecord
 {
@@ -62,6 +63,8 @@ class Test1 extends \yii\db\ActiveRecord
         return [
             [['text'], 'required'],
             [['uuid', 'created_ip', 'updated_ip', 'text', 'json'], 'string', 'max' => 50],
+//            ['attachment', 'string', 'max' => 255],
+            ['attachment', 'safe'],
         ];
     }
 
