@@ -23,6 +23,8 @@ use Yii;
  * @property string $text
  * @property string $json
  * @property string $attachment
+ *
+ * @property Test1Files[] $test1_files
  */
 class Test1 extends \yii\db\ActiveRecord
 {
@@ -79,5 +81,13 @@ class Test1 extends \yii\db\ActiveRecord
             'created_ip' => Yii::t('app', 'Created Ip'),
             'updated_ip' => Yii::t('app', 'Updated Ip'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTest1Files()
+    {
+        return $this->hasMany(Test1Files::className(), ['id' => 'test1_id']);
     }
 }
