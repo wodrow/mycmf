@@ -19,7 +19,8 @@
             'uploadUrl' => \yii\helpers\Url::toRoute(['/test/test/test3-file-upload']),
             // 异步上传需要携带的其他参数，比如商品id等
             'uploadExtraData' => [
-//                'test1_id' => $id,
+                'model_name' => 'Test1',
+                'attr_name' => 'attachment',
             ],
             'uploadAsync' => true,
             // 最少上传的文件个数限制

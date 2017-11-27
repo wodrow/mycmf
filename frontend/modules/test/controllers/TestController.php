@@ -34,6 +34,8 @@ class TestController extends Controller
     {
         $model = new Test1();
         if ($model->load(\Yii::$app->request->post())){
+            var_dump($_REQUEST);
+            exit;
             if ($model->save()){
                 var_dump($model->toArray());
             }else{
@@ -49,28 +51,29 @@ class TestController extends Controller
     {
         $model = new Test1();
         if ($model->load(\Yii::$app->request->post())){
-            \Yii::$app->session->addFlash('info', var_export($model->toArray(), true));
-            \Yii::$app->session->addFlash('info', var_export($model->attachment, true));
+            \Yii::$app->session->addFlash('info', var_export($_REQUEST, true));
+//            \Yii::$app->session->addFlash('info', var_export($model->toArray(), true));
+//            \Yii::$app->session->addFlash('info', var_export($model->attachment, true));
+//            exit;
         }
         return $this->render('test3', ['model' => $model]);
     }
 
-
-
     public function actionTest3FileUpload()
     {
+        $model_name = \Yii::$app->request->post('model_name');
+        $attr_name = \Yii::$app->request->post('attr_name');
         \Yii::$app->response->format = 'json';
-        $out = [];
         if (empty($_FILES['Test1'])) {
             return ['error'=>'没有找到上传的文件.'];
         }
-        $file = $_FILES['Test1'];
+        $file = $_FILES[$model_name];
         $filenames = $file['name'];
         $success = null;
         $paths = [];
         foreach ($filenames as $k => $v){
             $ext = explode('.', basename($filenames[$k][0]));
-            $target = \Yii::getAlias("@wroot").DIRECTORY_SEPARATOR."uploads" . DIRECTORY_SEPARATOR . md5(uniqid()) . "." . array_pop($ext);
+            $target = \Yii::getAlias("@wroot/uploads").DIRECTORY_SEPARATOR."test" . DIRECTORY_SEPARATOR . md5(uniqid()) . "." . array_pop($ext);
             if(move_uploaded_file($file['tmp_name'][$k][0], $target)) {
                 $success = true;
                 $paths[] = $target;
@@ -80,13 +83,14 @@ class TestController extends Controller
             }
         }
         if ($success === true) {
+            $out = ['test'=>'test'];
         } elseif ($success === false) {
-            $out = ['error'=>'Error while uploading images. Contact the system administrator'];
+            $out = ['error'=>"上传失败，请联系站长"];
             foreach ($paths as $file) {
                 unlink($file);
             }
         } else {
-            $out = ['error'=>'No files were processed.'];
+            $out = ['error'=>'没有进行上传'];
         }
         return $out;
     }
