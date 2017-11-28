@@ -32,7 +32,6 @@
         "warrence/yii2-kartikgii": "dev-master",
         "kartik-v/yii2-date-range": "^1.6",
         "leandrogehlen/yii2-treegrid": "*",
-        "zh/yii2-qiniu-images": "dev-master",
         "yiidoc/yii2-redactor": "^2.0",
         "php-ai/php-ml": "^0.4.1",
         "yiisoft/yii2-queue": "^2.0",
@@ -52,7 +51,10 @@
         "herroffizier/yii2-upload-manager": "@stable",
         "kartik-v/yii2-widget-fileinput": "@dev",
         "paulzi/yii2-nested-sets": "^1.0",
-        "jaeger/querylist": "^4.0"
+        "jaeger/querylist": "^4.0",
+        "lajax/yii2-asset-minifier": "^1.0",
+        "weyii/yii2-filesystem": "^2.0",
+        "philippfrenzel/yii2masonry": "^1.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
