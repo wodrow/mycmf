@@ -34,6 +34,10 @@ return [
         'setWritable' => [
             'backend/runtime',
             'web/assets',
+            'web/css',
+            'web/uploads',
+            'web/backend/assets',
+            'web/backend/css',
             'frontend/runtime',
             'web/assets',
         ],
