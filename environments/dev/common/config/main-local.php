@@ -7,6 +7,7 @@ $config = [
             'username' => 'root',
             'password' => 'root',
             'charset' => 'utf8',
+            'tablePrefix' => '',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
