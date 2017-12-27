@@ -1,5 +1,5 @@
 {
-    "name": "yiisoft/yii2-app-advanced",
+    "name": "wodrow/mycmf",
     "description": "Yii 2 Advanced Project Template",
     "keywords": ["yii2", "framework", "advanced", "project template"],
     "homepage": "http://www.yiiframework.com/",
@@ -52,7 +52,6 @@
         "kartik-v/yii2-widget-fileinput": "@dev",
         "paulzi/yii2-nested-sets": "^1.0",
         "jaeger/querylist": "^4.0",
-        "yii2mod/yii2-array-query": "*",
         "kriss/yii2-filesystem-qiniu": "^1.0"
     },
     "require-dev": {

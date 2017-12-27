@@ -8,7 +8,6 @@
 
 namespace common\components\assets;
 
-
 use yii\web\AssetBundle;
 
 class Gojs extends AssetBundle
