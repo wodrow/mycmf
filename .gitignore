@@ -50,3 +50,6 @@ phpunit.phar
 
 # env config
 .env
+
+# index.php
+index.php
