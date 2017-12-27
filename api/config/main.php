@@ -32,18 +32,8 @@ $config = [
             'enableSession' => false,
         ],
         'session' => [
-            // this is the name of the session cookie used for login on the api
             'name' => 'advanced-api',
         ],
-        /*'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
-                ],
-            ],
-        ],*/
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -61,6 +51,12 @@ $config = [
             'site/get-token-and-key',
             'route/api/index',
             'other/*',
+        ],
+        'rules' => [
+            [
+                'allow' => true,
+                'roles' => ['@'],
+            ],
         ],
     ],
 ];
