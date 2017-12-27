@@ -51,5 +51,6 @@ phpunit.phar
 # env config
 .env
 
-# index.php
+# init
 index.php
+/dev
