@@ -51,12 +51,12 @@ $config = [
             'route/api/index',
             'other/*',
         ],
-//        'rules' => [
-//            [
-//                'allow' => true,
-//                'roles' => ['@'],
-//            ],
-//        ],
+        'rules' => [
+            [
+                'allow' => true,
+                'roles' => ['@'],
+            ],
+        ],
     ],
 ];
 
