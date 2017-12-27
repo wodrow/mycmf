@@ -1,6 +1,11 @@
 <?php
-defined('YII_DEBUG') or define('YII_DEBUG', true);
-defined('YII_ENV') or define('YII_ENV', 'dev');
+if (substr($_SERVER['HTTP_HOST'], 0, 5) == 'test.'){
+    defined('YII_DEBUG') or define('YII_DEBUG', true);
+    defined('YII_ENV') or define('YII_ENV', 'dev');
+}else{
+    defined('YII_DEBUG') or define('YII_DEBUG', false);
+    defined('YII_ENV') or define('YII_ENV', 'prod');
+}
 
 require __DIR__.'/../vendor/autoload.php';
 require __DIR__.'/../yii.php';
