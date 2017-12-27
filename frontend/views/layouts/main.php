@@ -65,7 +65,7 @@ AppAsset::register($this);
 //            . '</li>';
     }
     $menuItems[] = ['label' => '后台', 'url' => \common\config\Env::BACKEND_URL, 'linkOptions' => ['target'=>'_blank']];
-    $menuItems[] = ['label' => 'api', 'url' => \common\config\Env::API_URL, 'linkOptions' => ['target'=>'_blank']];
+    $menuItems[] = ['label' => 'api', 'url' => \common\config\Env::API_URL."/route/api/index", 'linkOptions' => ['target'=>'_blank']];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,

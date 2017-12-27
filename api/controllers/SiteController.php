@@ -10,7 +10,6 @@ namespace api\controllers;
 
 
 use api\models\User;
-use common\components\tools\Tools;
 use deepziyu\yii\rest\Controller;
 use yii\base\ErrorException;
 
@@ -102,7 +101,7 @@ class SiteController extends Controller
         }
         return [
             'token' => $user->token,
-            'key' => $user->sign_key,
+            'key' => $user->key,
         ];
     }
 

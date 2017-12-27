@@ -10,7 +10,6 @@ $config = [
     'id' => 'app-api',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'api\controllers',
-    'bootstrap' => ['log'],
     'modules' => [
         'other' => [ // 其他对接
             'class' => 'api\modules\other\OtherModule',
@@ -52,19 +51,19 @@ $config = [
             'route/api/index',
             'other/*',
         ],
-        'rules' => [
-            [
-                'allow' => true,
-                'roles' => ['@'],
-            ],
-        ],
+//        'rules' => [
+//            [
+//                'allow' => true,
+//                'roles' => ['@'],
+//            ],
+//        ],
     ],
 ];
 
 if (YII_ENV_DEV) {
-    $config['modules']['test'] = [
+    /*$config['modules']['test'] = [
         'class' => 'api\modules\test\Test',
-    ];
+    ];*/
 }
 
 $config = yii\helpers\ArrayHelper::merge(
