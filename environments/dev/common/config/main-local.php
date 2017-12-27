@@ -20,4 +20,10 @@ $config = [
     ],
 ];
 
+if (YII_ENV=='dev'){
+    $config['components']['db']['dsn'] = 'mysql:host=127.0.0.1;dbname=mycmf';
+    $config['components']['db']['username'] = 'root';
+    $config['components']['db']['password'] = 'root';
+}
+
 return $config;
