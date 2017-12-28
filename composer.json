@@ -52,7 +52,8 @@
         "kartik-v/yii2-widget-fileinput": "@dev",
         "paulzi/yii2-nested-sets": "^1.0",
         "jaeger/querylist": "^4.0",
-        "kriss/yii2-filesystem-qiniu": "^1.0"
+        "kriss/yii2-filesystem-qiniu": "^1.0",
+        "xutl/yii2-layui-widget": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

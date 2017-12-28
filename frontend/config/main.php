@@ -8,6 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
+    'name' => 'MyCMF',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'frontend\controllers',
     'components' => [

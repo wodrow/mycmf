@@ -12,6 +12,18 @@ namespace common\components\tools;
 class Tools
 {
     /**
+     * log message
+     * @param $msg
+     */
+    public static function log($msg)
+    {
+        $log = New \yii\log\FileTarget();
+        $log->logFile = \Yii::$app->getRuntimePath().DIRECTORY_SEPARATOR."logs".DIRECTORY_SEPARATOR."app.log";
+        $log->messages[] = [$msg];
+        $log->export();
+    }
+
+    /**
      * 浏览器友好的变量输出
      * @param mixed $var 变量
      * @param boolean $echo 是否输出 默认为True 如果为false 则返回输出字符串
@@ -42,6 +54,17 @@ class Tools
             return null;
         }else
             return $output;
+    }
+
+    /**
+     * 字符串中是数组格式化为数组
+     * @param $data
+     * @return array
+     */
+    public static function formatArrStrToArr($data)
+    {
+        eval("\$data = ".$data.'; ');
+        return $data;
     }
 
     /**
