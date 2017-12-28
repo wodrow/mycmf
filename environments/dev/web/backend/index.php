@@ -1,5 +1,6 @@
 <?php
-if (substr($_SERVER['HTTP_HOST'], 0, 5) == 'test.'){
+define('DOMAIN', $_SERVER['HTTP_HOST']);
+if (substr(DOMAIN, 0, 5) == 'test.'){
     defined('YII_DEBUG') or define('YII_DEBUG', true);
     defined('YII_ENV') or define('YII_ENV', 'dev');
 }else{
