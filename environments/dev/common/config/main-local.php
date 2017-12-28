@@ -7,7 +7,7 @@ $config = [
             'username' => 'root',
             'password' => 'root',
             'charset' => 'utf8',
-            'tablePrefix' => '',
+            'tablePrefix' => 'mycmf_',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
