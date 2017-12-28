@@ -4,7 +4,7 @@ if (substr(DOMAIN, 0, 5) == 'test.'){
     defined('YII_DEBUG') or define('YII_DEBUG', true);
     defined('YII_ENV') or define('YII_ENV', 'dev');
 }else{
-    defined('YII_DEBUG') or define('YII_DEBUG', false);
+    defined('YII_DEBUG') or define('YII_DEBUG', true);
     defined('YII_ENV') or define('YII_ENV', 'prod');
 }
 
