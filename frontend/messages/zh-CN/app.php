@@ -11,6 +11,8 @@ $data = [
     'Repassword' => '确认密码',
     'Code' => '验证码',
     'Login' => '登录',
+    'Remember Me' => '记住我',
+    'Reset Password' => '重置密码',
     'About' => '关于',
     'Api' => 'API',
 ];

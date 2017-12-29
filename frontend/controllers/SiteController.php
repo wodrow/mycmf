@@ -1,21 +1,14 @@
 <?php
 namespace frontend\controllers;
 
-use common\config\Env;
-use common\models\db\Tag;
 use frontend\models\GetEmailCodeForm;
+use frontend\models\ResetPasswordForm;
 use Yii;
-use yii\base\ErrorException;
-use yii\base\InvalidParamException;
-use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use common\models\LoginForm;
-use frontend\models\PasswordResetRequestForm;
-use frontend\models\ResetPasswordForm;
+use frontend\models\LoginForm;
 use frontend\models\SignupForm;
-use frontend\models\ContactForm;
 
 /**
  * Site controller
@@ -151,6 +144,37 @@ class SiteController extends Controller
             }
         }
         return $this->render('signup', [
+            'get_email_code_form' => $get_email_code_form,
+            'model' => $model,
+            'wait' => $wait,
+        ]);
+    }
+
+    /**
+     * reset password
+     */
+    public function actionResetPassword()
+    {
+        $get_email_code_form = new GetEmailCodeForm();
+        $model = new ResetPasswordForm();
+        $wait = 0;
+        if ($get_email_code_form->load(Yii::$app->request->post())){
+            if ($get_email_code_form->sendCode()){
+                Yii::$app->session->setFlash('success', '邮箱校验码发送成功，请进入邮箱查看。');
+                $wait = 120;
+            }else{
+                Yii::$app->session->setFlash('error', '邮箱校验码发送失败！请稍后重试。');
+                $wait = 10;
+            }
+        }
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->resetPassword()) {
+                return $this->redirect(['login']);
+            }else{
+                Yii::$app->session->setFlash('error', '重置密码失败！');
+            }
+        }
+        return $this->render('reset-password', [
             'get_email_code_form' => $get_email_code_form,
             'model' => $model,
             'wait' => $wait,

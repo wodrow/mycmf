@@ -1,6 +1,7 @@
 <?php
-namespace common\models;
+namespace frontend\models;
 
+use common\models\User;
 use Yii;
 use yii\base\Model;
 
@@ -12,6 +13,7 @@ class LoginForm extends Model
     public $username;
     public $password;
     public $rememberMe = true;
+    public $code;
 
     private $_user;
 
@@ -21,6 +23,7 @@ class LoginForm extends Model
             'username' => Yii::t('app', 'Username'),
             'password' => Yii::t('app', 'Password'),
             'rememberMe' => Yii::t('app', 'Remember Me'),
+            'code' => Yii::t('app', 'Code'),
         ];
     }
 
@@ -36,6 +39,10 @@ class LoginForm extends Model
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
+
+            ['code', 'trim'],
+            ['code', 'required'],
+            ['code', 'captcha'],
         ];
     }
 
