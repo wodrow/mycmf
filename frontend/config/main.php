@@ -64,6 +64,7 @@ return [
             'pub/*',
             'gii/*',
             'debug/*',
+            'test/test/*',
         ],
         'rules' => [
             [

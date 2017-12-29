@@ -17,6 +17,7 @@ use Yii;
  * @property integer $updated_at
  * @property string $token
  * @property string $key
+ * @property string $tp_pwd
  *
  * @property AuthAssignment[] $authAssignments
  * @property AuthItem[] $itemNames
@@ -39,9 +40,9 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at', 'token', 'key'], 'required'],
+            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at', 'token', 'key', 'tp_pwd'], 'required'],
             [['status', 'created_at', 'updated_at'], 'integer'],
-            [['username', 'password_hash', 'email'], 'string', 'max' => 255],
+            [['username', 'password_hash', 'email', 'tp_pwd'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['token', 'key'], 'string', 'max' => 50],
             [['username'], 'unique'],
@@ -67,6 +68,7 @@ class User extends \yii\db\ActiveRecord
             'updated_at' => Yii::t('app', 'Updated At'),
             'token' => Yii::t('app', 'Token'),
             'key' => Yii::t('app', 'Key'),
+            'tp_pwd' => Yii::t('app', 'Tp Pwd'),
         ];
     }
 

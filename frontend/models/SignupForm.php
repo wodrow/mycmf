@@ -1,6 +1,7 @@
 <?php
 namespace frontend\models;
 
+use common\components\tools\Security;
 use yii\base\Model;
 use common\models\User;
 
@@ -34,14 +35,15 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            ['email', 'trim'],
-            ['email', 'required'],
-            ['email', 'email'],
-            ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+//            ['email', 'trim'],
+//            ['email', 'required'],
+//            ['email', 'email'],
+//            ['email', 'string', 'max' => 255],
+//            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
             ['email_code', 'trim'],
             ['email_code', 'required'],
             ['email_code', 'string', 'min'=>32, 'max' => 32],
+            ['email_code', 'ruleCheckEmailCode'],
 
             ['username', 'trim'],
             ['username', 'required'],
@@ -49,7 +51,7 @@ class SignupForm extends Model
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['password', 'required'],
-            ['password', 'string', 'min' => 6],
+            ['password', 'string', 'min' => 6, 'max' => 18],
 
             ['repassword', 'required'],
             ['repassword', 'compare', 'compareAttribute' => 'password'],
@@ -57,6 +59,17 @@ class SignupForm extends Model
             ['code', 'required'],
             ['code', 'captcha'],
         ];
+    }
+
+    public function ruleCheckEmailCode($attribute, $params)
+    {
+        if (!$this->getErrors()) {
+            if ($email = \Yii::$app->cache->get($this->email_code)){
+                $this->email = $email;
+            }else{
+                $this->addError($attribute, '邮箱校验码错误或过期，你可以重新发送校验码。');
+            }
+        }
     }
 
     /**
@@ -74,6 +87,19 @@ class SignupForm extends Model
         $user->email = $this->email;
         $user->setPassword($this->password);
         $user->generateAuthKey();
+        $user->tp_pwd = Security::think_encrypt($this->password);
+        $user->token = $this->generateToken();
+        $user->key = \Yii::$app->security->generateRandomString(50);
         return $user->save() ? $user : null;
+    }
+
+    public function generateToken()
+    {
+        $s = \Yii::$app->security->generateRandomString(50);
+        if (User::findOne(['token' => $s])){
+            return $this->generateToken();
+        }else{
+            return $s;
+        }
     }
 }

@@ -9,6 +9,7 @@
 namespace frontend\modules\test\controllers;
 
 
+use frontend\models\GetEmailCodeForm;
 use frontend\modules\test\models\Test1;
 use Phpml\Association\Apriori;
 use yii\web\Controller;
@@ -93,5 +94,18 @@ class TestController extends Controller
             $out = ['error'=>'没有进行上传'];
         }
         return $out;
+    }
+
+    public function actionTest4()
+    {
+        $model = new GetEmailCodeForm();
+        if ($model->load(\Yii::$app->request->post())){
+            var_dump($model->toArray());
+            var_dump($model->toArray());
+            var_dump($model->toArray());
+        }
+        return $this->render('test4', [
+            'model' => $model,
+        ]);
     }
 }
