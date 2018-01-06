@@ -20,4 +20,13 @@ class TieBaController extends Controller
     {
         echo 123456;
     }
+
+    /**
+     * php yii crawler/tie-ba/test
+     * @param $url
+     */
+    public function actionGetTieBaStory($url)
+    {
+        echo $url;
+    }
 }
