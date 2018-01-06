@@ -8,11 +8,17 @@
  * @license http://www.yiiframework.com/license/
  */
 
-defined('YII_DEBUG') or define('YII_DEBUG', true);
-defined('YII_ENV') or define('YII_ENV', 'dev');
+define('DOMAIN', "");
+if (substr(DOMAIN, 0, 5) == 'test.'){
+    defined('YII_DEBUG') or define('YII_DEBUG', true);
+    defined('YII_ENV') or define('YII_ENV', 'dev');
+}else{
+    defined('YII_DEBUG') or define('YII_DEBUG', true);
+    defined('YII_ENV') or define('YII_ENV', 'prod');
+}
 
 require(__DIR__ . '/vendor/autoload.php');
-require(__DIR__ . '/vendor/yiisoft/yii2/Yii.php');
+require __DIR__.'/yii.php';
 require(__DIR__ . '/common/config/bootstrap.php');
 require(__DIR__ . '/console/config/bootstrap.php');
 

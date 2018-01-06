@@ -20,5 +20,10 @@ return [
             'namespace' => 'common\fixtures',
         ],
     ],
+    'modules' => [
+        'crawler' => [
+            'class' => \console\modules\crawler\CrawlerModule::className(),
+        ],
+    ],
     'params' => $params,
 ];
