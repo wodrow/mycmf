@@ -14,6 +14,9 @@ $config = [
         'other' => [ // 其他对接
             'class' => 'api\modules\other\OtherModule',
         ],
+        'crawler' => [
+            'class' => \api\modules\crawler\CrawlerModule::className(),
+        ],
     ],
     'components' => [
         'request' => [
@@ -50,6 +53,7 @@ $config = [
             'site/get-token-and-key',
             'route/api/index',
             'other/*',
+            'crawler/*',
         ],
         'rules' => [
             [

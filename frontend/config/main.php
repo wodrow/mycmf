@@ -56,6 +56,9 @@ return [
         'test' => [ // test
             'class' => 'frontend\modules\test\TestModule',
         ],
+        'crawler' => [
+            'class' => \frontend\modules\crawler\CrawlerModule::className(),
+        ],
     ],
     'as access' => [
         'class' => \frontend\components\behaviors\Check::className(),
