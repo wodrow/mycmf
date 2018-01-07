@@ -14,11 +14,13 @@ use yii\base\Model;
 class TieBaStoryForm extends Model
 {
     public $url;
+    public $waters;
 
     public function attributeLabels()
     {
         return [
             'url' => 'URL',
+            'waters' => '水贴关键字',
         ];
     }
 
@@ -27,6 +29,8 @@ class TieBaStoryForm extends Model
         return [
             ['url', 'required'],
             ['url', 'url'],
+
+            ['waters', 'safe'],
         ];
     }
 }

@@ -16,6 +16,7 @@
         <div class="col-lg-6">
             <?php $form = \kartik\form\ActiveForm::begin(); ?>
             <?=$form->field($model, 'url')->textInput() ?>
+            <?=$form->field($model, 'waters')->textInput() ?>
             <?=\kartik\helpers\Html::submitButton('提交', ['class'=>"btn btn-primary"]) ?>
             <?php \kartik\form\ActiveForm::end(); ?>
         </div>
