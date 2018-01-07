@@ -19,7 +19,7 @@ class TieBaStoryForm extends Model
     public function attributeLabels()
     {
         return [
-            'url' => 'URL',
+            'url' => '帖子URL',
             'waters' => '水贴关键字',
         ];
     }
