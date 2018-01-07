@@ -29,8 +29,20 @@ class TieBaStoryForm extends Model
         return [
             ['url', 'required'],
             ['url', 'url'],
+            ['url', 'checkIsTieZi'],
 
             ['waters', 'safe'],
         ];
+    }
+
+    public function checkIsTieZi($attribute, $params)
+    {
+        if (!$this->getErrors()) {
+            $str = "://tieba.baidu.com/p/";
+            if (strpos($this->$attribute, $str)!==false) {
+            } else {
+                $this->addError($attribute, '不是帖子');
+            }
+        }
     }
 }

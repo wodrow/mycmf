@@ -26,7 +26,7 @@ class TieBaController extends Controller
     {
         $model = new TieBaStoryForm();
         $save_form = new TieBaStorySaveForm();
-        if ($model->load(\Yii::$app->request->post())){
+        if ($model->load(\Yii::$app->request->post())&&$model->validate()){
             $ql = QueryList::getInstance()->get($model->url);
             $save_form->title = $ql->find('title')->text();
             $pages = $ql->find('.l_reply_num')->find('.red:eq(1)')->text();
