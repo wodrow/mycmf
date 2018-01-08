@@ -53,7 +53,8 @@
         "paulzi/yii2-nested-sets": "^1.0",
         "jaeger/querylist": "^4.0",
         "kriss/yii2-filesystem-qiniu": "^1.0",
-        "xutl/yii2-layui-widget": "dev-master"
+        "xutl/yii2-layui-widget": "dev-master",
+        "leoshtika/yii2-nav-sidebar": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

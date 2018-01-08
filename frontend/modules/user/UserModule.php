@@ -12,6 +12,10 @@ class UserModule extends \yii\base\Module
      */
     public $controllerNamespace = 'frontend\modules\user\controllers';
 
+    public $layoutPath = '@frontend/modules/user/views/layout';
+
+    public $layout = 'show-sidebar';
+
     /**
      * @inheritdoc
      */
