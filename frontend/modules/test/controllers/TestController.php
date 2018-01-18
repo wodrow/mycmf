@@ -9,6 +9,7 @@
 namespace frontend\modules\test\controllers;
 
 
+use common\models\db\Test;
 use frontend\models\GetEmailCodeForm;
 use frontend\modules\test\models\Test1;
 use Phpml\Association\Apriori;
@@ -106,6 +107,30 @@ class TestController extends Controller
         }
         return $this->render('test4', [
             'model' => $model,
+        ]);
+    }
+
+    public function actionTest5()
+    {
+        $test = new Test();
+        return $this->render('test5', [
+            'test' => $test,
+        ]);
+    }
+
+    public function actionTest6()
+    {
+        $test = new Test();
+        return $this->render('test6', [
+            'test' => $test,
+        ]);
+    }
+
+    public function actionTest7()
+    {
+        $test = new Test();
+        return $this->render('test7', [
+            'test' => $test,
         ]);
     }
 }
