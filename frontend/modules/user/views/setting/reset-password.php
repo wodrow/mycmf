@@ -3,7 +3,8 @@
  * @var \yii\web\View $this
  * @var \frontend\modules\user\models\ResetPasswordForm $resetPasswordForm
  */
-$this->title = "用户中心";
+$this->title = "重置密码";
+$this->params['breadcrumbs'][] = \kartik\helpers\Html::a('用户中心', ['/user']);
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-default-reset-password">

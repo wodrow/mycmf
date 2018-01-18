@@ -28,6 +28,12 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'assetManager' => [
+            'class' => 'yii\web\AssetManager',
+//            'appendTimestamp' => true,
+//            'forceCopy' => true,
+//            'linkAssets' => true,
+        ],
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,

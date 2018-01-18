@@ -2,6 +2,9 @@
 /**
  * @var \yii\web\View $this
  */
+$this->title = "账号设置";
+$this->params['breadcrumbs'][] = \kartik\helpers\Html::a('用户中心', ['/user']);
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="user-setting-index">

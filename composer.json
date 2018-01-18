@@ -54,7 +54,8 @@
         "jaeger/querylist": "^4.0",
         "kriss/yii2-filesystem-qiniu": "^1.0",
         "xutl/yii2-layui-widget": "dev-master",
-        "leoshtika/yii2-nav-sidebar": "*"
+        "leoshtika/yii2-nav-sidebar": "*",
+        "skeeks/yii2-assets-auto-compress": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
