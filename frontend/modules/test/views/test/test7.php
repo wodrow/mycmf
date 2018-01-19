@@ -11,7 +11,9 @@
 
 <div class="test-test-test7">
     <div class="col-lg-12">
-
+        <?php $form = \kartik\form\ActiveForm::begin(); ?>
+        <?php echo $form->field($test,'video')->widget('yidashi\uploader\SingleWidget'); ?>
+        <?php \kartik\form\ActiveForm::end(); ?>
     </div>
     <dov class="col-lg-12">
 

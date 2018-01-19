@@ -9,11 +9,13 @@
 namespace frontend\modules\test\controllers;
 
 
+use common\components\tools\Tools;
 use common\models\db\Test;
 use frontend\models\GetEmailCodeForm;
-use frontend\modules\test\models\Test1;
 use Phpml\Association\Apriori;
+use common\components\tools\FileHelper;
 use yii\web\Controller;
+use yii\web\UploadedFile;
 
 class TestController extends Controller
 {
@@ -130,6 +132,38 @@ class TestController extends Controller
     {
         $test = new Test();
         return $this->render('test7', [
+            'test' => $test,
+        ]);
+    }
+
+    public function actionTest8()
+    {
+        $test = new \frontend\modules\test\models\Test();
+        if ($test->load(\Yii::$app->request->post())&&$test->validate()){
+            $video = UploadedFile::getInstance($test, 'file');
+//            Tools::dump($video->name);exit;
+            if (!is_null($video)) {
+                $test->video = $video->name;
+                $ext = FileHelper::getExtensionName1($video->name);
+                Tools::dump($ext);
+                // generate a unique file name to prevent duplicate filenames
+                $test->video = \Yii::$app->security->generateRandomString().".{$ext}";
+                // the path to save file, you can set an uploadPath
+                // in Yii::$app->params (as used in example below)
+                $video_upload_path = \Yii::getAlias('@wroot') . DIRECTORY_SEPARATOR . 'uploads/videos/';
+                if (!is_dir($video_upload_path)){
+                    FileHelper::createDirectory($video_upload_path);
+                }
+                $path = $video_upload_path . $test->video;
+                $video->saveAs($path);
+            }
+            if ($test->validate()) {
+                var_dump($test->toArray());exit;
+            }  else {
+                var_dump ($test->getErrors()); die();
+            }
+        }
+        return $this->render('test8', [
             'test' => $test,
         ]);
     }

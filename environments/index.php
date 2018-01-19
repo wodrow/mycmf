@@ -35,7 +35,6 @@ return [
             'web/assets',
             'web/css',
             'web/uploads',
-            'web/assets',
             'frontend/runtime',
             'web/backend/assets',
             'web/backend/css',
