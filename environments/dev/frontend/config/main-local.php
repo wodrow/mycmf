@@ -13,7 +13,8 @@ if (!YII_ENV_TEST) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
-        'class' => 'yii\debug\Module',
+//        'class' => 'yii\debug\Module',
+        'class' => 'amnah\yii2\debug\Module',
         'allowedIPs' => ['127.0.0.1', '::1', 'localhost', '192.168.*'],
     ];
     $config['modules']['debug']['panels']['switchUser'] = [
@@ -41,12 +42,39 @@ if (!YII_ENV_TEST) {
             ],
         ],*/
     ];
-
+    $config['modules']['debug']['panels']['xhprof'] = [
+        'class'=>'\trntv\debug\xhprof\panels\XhprofPanel',
+    ];
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         'allowedIPs' => ['127.0.0.1', '::1', 'localhost', '192.168.*'],
+        'generators' => [
+            //...
+            'fixtureClass'=>[
+                'class'=>\insolita\fixturegii\generators\ClassGenerator::className(),
+                'templates'=>[
+                    //add your custom
+                ]
+            ],
+            'fixtureData'=>[
+                'class'=>\insolita\fixturegii\generators\DataGenerator::className(),
+                'tableResolverClass'=>'You can set own implementation',
+                'templates'=>[
+                    //add your custom
+                ]
+            ],
+            'fixtureTemplate'=>[
+                'class'=>\insolita\fixturegii\generators\TemplateGenerator::className(),
+                'tableResolverClass'=>'You can set own implementation',
+                'columnResolverClass'=>'You can set own implementation',
+                'templates'=>[
+                    //add your custom
+                ]
+            ],
+        ],
     ];
 }
 
 return $config;
+

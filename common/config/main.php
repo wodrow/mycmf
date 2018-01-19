@@ -20,12 +20,6 @@ $config = [
         'authManager' => [
             'class' => 'yii\rbac\DbManager', // 使用数据库管理配置文件
         ],
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
         'settings' => [
             'class' => 'pheme\settings\components\Settings',
         ],

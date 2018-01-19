@@ -27,9 +27,6 @@
         "dmstr/yii2-adminlte-asset": "^2.4",
         "pheme/yii2-settings": "^0.5.0",
         "johnitvn/yii2-ajaxcrud": "^2.1",
-        "mootensai/yii2-enhanced-gii": "^1.0",
-        "schmunk42/yii2-giiant": "@stable",
-        "warrence/yii2-kartikgii": "dev-master",
         "kartik-v/yii2-date-range": "^1.6",
         "leandrogehlen/yii2-treegrid": "*",
         "yiidoc/yii2-redactor": "^2.0",
@@ -58,17 +55,24 @@
         "skeeks/yii2-assets-auto-compress": "*",
         "mehrdad-dadkhah/php-fine-uploader": "^1.3",
         "mehrdad-dadkhah/stream-to-download": "^1.0",
-        "yidashi/yii2-uploader": "*",
-        "microinginer/yii2-debug-user-switch": "dev-master",
-        "bazilio/yii2-newrelic": "^0.0.7"
+        "baibaratsky/yii2-rollbar": "1.5.*",
+        "embed/embed": "dev-master",
+        "cics/yii2-video-embed-widget": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
         "yiisoft/yii2-gii": "~2.0.0",
+        "mootensai/yii2-enhanced-gii": "^1.0",
+        "schmunk42/yii2-giiant": "@stable",
+        "warrence/yii2-kartikgii": "dev-master",
+        "insolita/yii2-fixturegii": "~2.0.0",
         "yiisoft/yii2-faker": "~2.0.0",
         "codeception/base": "^2.2.3",
         "codeception/verify": "~0.3.1",
-        "eaglewu/swoole-ide-helper": "dev-master"
+        "eaglewu/swoole-ide-helper": "dev-master",
+        "microinginer/yii2-debug-user-switch": "dev-master",
+        "amnah/yii2-debug": "dev-master",
+        "trntv/yii2-debug-xhprof": "dev-master"
     },
     "config": {
         "process-timeout": 1800,

@@ -167,4 +167,14 @@ class TestController extends Controller
             'test' => $test,
         ]);
     }
+
+    public function actionTest9()
+    {
+        return $this->renderPartial('test9');
+    }
+
+    public function actionTest10()
+    {
+        return $this->renderPartial('test10');
+    }
 }

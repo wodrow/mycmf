@@ -11,7 +11,18 @@ return [
     'name' => 'MyCMF',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'frontend\controllers',
+    'bootstrap' => ['log', 'rollbar'],
     'components' => [
+        'log' => [
+            'traceLevel' => YII_DEBUG ? 3 : 0,
+            'targets' => [
+                [
+                    'class' => \yii\log\DbTarget::className(),
+//                    'class' => 'baibaratsky\yii\rollbar\log\Target',
+                    'levels' => ['error'],
+                ],
+            ],
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
@@ -26,6 +37,7 @@ return [
             'name' => 'advanced-frontend',
         ],
         'errorHandler' => [
+            'class' => 'baibaratsky\yii\rollbar\web\ErrorHandler',
             'errorAction' => 'site/error',
         ],
         'assetManager' => [
@@ -34,14 +46,21 @@ return [
 //            'forceCopy' => true,
 //            'linkAssets' => true,
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+        'rollbar' => [
+            'class' => 'baibaratsky\yii\rollbar\Rollbar',
+//            'accessToken' => 'POST_SERVER_ITEM_ACCESS_TOKEN',
+            // You can specify exceptions to be ignored by yii2-rollbar:
+            // 'ignoreExceptions' => [
+            //         ['yii\web\HttpException', 'statusCode' => [400, 404]],
+            //         ['yii\web\HttpException', 'statusCode' => [403], 'message' => ['This action is forbidden']],
+            // ],
+        ],
     ],
     'modules' => [
         'redactor' => [
