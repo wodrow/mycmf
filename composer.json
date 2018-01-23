@@ -57,7 +57,8 @@
         "mehrdad-dadkhah/stream-to-download": "^1.0",
         "baibaratsky/yii2-rollbar": "1.5.*",
         "embed/embed": "dev-master",
-        "cics/yii2-video-embed-widget": "dev-master"
+        "cics/yii2-video-embed-widget": "dev-master",
+        "tuyakhov/yii2-youtube": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
