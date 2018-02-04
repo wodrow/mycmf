@@ -49,6 +49,7 @@ $config = [
     'as token-must-be-check' => [
         'class' => \api\behaviors\TokenCheck::className(),
         'except' => [
+            'gii/*',
             'site/signup',
             'site/get-token-and-key',
             'route/api/index',

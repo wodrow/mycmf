@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\modules\log\models\LogSearch */
@@ -14,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?php // echo Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= \kartik\grid\GridView::widget([
+    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -43,7 +44,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
             ],
             'prefix:ntext',
-            'message:ntext',
+            [
+                'class' => \kartik\grid\DataColumn::className(),
+                'attribute' => 'message',
+//                'width'=>'10em',
+//                'headerOptions' => ['width' => '100%'],
+                'contentOptions' => ['style' => 'width:800px; white-space: normal;'],
+//                'options' => ['style' => 'width:10em'],
+            ],
+//            'message:ntext',
 
             ['class' => 'kartik\grid\ActionColumn'],
         ],
