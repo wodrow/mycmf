@@ -177,4 +177,15 @@ class TestController extends Controller
     {
         return $this->renderPartial('test10');
     }
+
+    /**
+     * colour separation 分色
+     */
+    public function actionTest11()
+    {
+        $test = new \frontend\modules\test\models\Test();
+        return $this->render('test11', [
+            'test' => $test,
+        ]);
+    }
 }
