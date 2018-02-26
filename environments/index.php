@@ -42,6 +42,7 @@ return [
             'web/api/assets',
             'web/api/css',
             'api/runtime',
+            'data/jupyter_notebook_work',
         ],
         'setExecutable' => [
             'yii',
