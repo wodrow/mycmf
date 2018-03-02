@@ -14,6 +14,9 @@ nbproject
 .project
 .settings
 
+# code lob ster IDE
+mycmf.clpprj
+
 # windows thumbnail cache
 Thumbs.db
 
@@ -54,3 +57,4 @@ phpunit.phar
 # init
 /index.php
 /dev
+
