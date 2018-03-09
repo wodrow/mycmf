@@ -15,7 +15,8 @@ nbproject
 .settings
 
 # code lob ster IDE
-mycmf.clpprj
+*.clpprj
+*.csprj
 
 # windows thumbnail cache
 Thumbs.db
