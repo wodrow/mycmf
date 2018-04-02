@@ -65,6 +65,7 @@ AppAsset::register($this);
     }
     $menuItems[] = ['label' => '后台', 'url' => \common\config\Env::BACKEND_URL, 'linkOptions' => ['target'=>'_blank']];
     $menuItems[] = ['label' => Yii::t('app', 'Api'), 'url' => \common\config\Env::API_URL."/route/api/index", 'linkOptions' => ['target'=>'_blank']];
+    $menuItems[] = ['label' => Yii::t('app', '工具集'), 'url' => ['/utils'], 'linkOptions' => ['target'=>'_blank']];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,

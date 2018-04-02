@@ -84,6 +84,9 @@ return [
         'crawler' => [
             'class' => \frontend\modules\crawler\CrawlerModule::className(),
         ],
+        'utils' => [
+            'class' => \frontend\modules\utils\UtilsModule::className(),
+        ],
     ],
     'as access' => [
         'class' => \frontend\components\behaviors\Check::className(),
