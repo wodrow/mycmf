@@ -49,7 +49,6 @@
         "kartik-v/yii2-widget-fileinput": "@dev",
         "paulzi/yii2-nested-sets": "^1.0",
         "jaeger/querylist": "^4.0",
-        "yii2mod/yii2-array-query": "*",
         "kriss/yii2-filesystem-qiniu": "^1.0",
         "xutl/yii2-layui-widget": "dev-master",
         "leoshtika/yii2-nav-sidebar": "*",
