@@ -21,13 +21,21 @@ return [
         ],
     ],
     'components' => [
-        'user' => \common\rewrite\web\User::className(),
-        'identityClass' => 'common\models\User',
+        'user' => [
+            'class' => \common\rewrite\web\User::className(),
+            'identityClass' => \common\models\User::className(),
+            'isInConsole' => true,
+            'enableAutoLogin' => true,
+            'enableSession' => false,
+        ]
     ],
     'modules' => [
         'crawler' => [
             'class' => \console\modules\crawler\CrawlerModule::className(),
         ],
+    ],
+    'as login' => [
+        'class' => \console\behaviors\UserLogin::className(),
     ],
     'params' => $params,
 ];

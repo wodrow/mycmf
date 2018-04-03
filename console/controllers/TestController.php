@@ -20,6 +20,6 @@ class TestController extends Controller
     public function actionTest()
     {
         var_dump(Env::DOMAIN);
-//        var_dump(\Yii::$app->user);
+        var_dump(\Yii::$app->user->identity->toArray());
     }
 }
