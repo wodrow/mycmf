@@ -1,4 +1,5 @@
 <?php
+define("BOOT_TIME", time());
 Yii::setAlias('@root', dirname(dirname(__DIR__)));
 Yii::setAlias('@common', dirname(__DIR__));
 Yii::setAlias('@frontend', dirname(dirname(__DIR__)) . '/frontend');

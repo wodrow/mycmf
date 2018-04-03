@@ -20,6 +20,10 @@ return [
             'namespace' => 'common\fixtures',
         ],
     ],
+    'components' => [
+        'user' => \common\rewrite\web\User::className(),
+        'identityClass' => 'common\models\User',
+    ],
     'modules' => [
         'crawler' => [
             'class' => \console\modules\crawler\CrawlerModule::className(),

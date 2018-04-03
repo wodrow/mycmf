@@ -9,15 +9,17 @@
 namespace console\controllers;
 
 
+use common\config\Env;
 use yii\console\Controller;
 
 class TestController extends Controller
 {
     /**
-     * test swoole
+     * this is a test
      */
     public function actionTest()
     {
-        echo 123465;
+        var_dump(Env::DOMAIN);
+//        var_dump(\Yii::$app->user);
     }
 }

@@ -14,6 +14,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-lg-12">
             <p>
+                <?=\yii\helpers\Html::a('webshell', \common\config\Env::BACKEND_URL."/webshell", ['class' => "btn btn-primary", 'target' => "_blank"]) ?>
+            </p>
+        </div>
+        <div class="col-lg-12">
+            <p>
                 <?=\yii\helpers\Html::a('在线工具(https://tool.lu/)', 'https://tool.lu/', ['class' => "btn btn-danger", 'target' => "_blank"]) ?>
                 <?=\yii\helpers\Html::a('站长工具(http://tool.chinaz.com/)', 'http://tool.chinaz.com/', ['class' => "btn btn-danger", 'target' => "_blank"]) ?>
             </p>

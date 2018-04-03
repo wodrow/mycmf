@@ -16,5 +16,5 @@ namespace common\rewrite\web;
  */
 class User extends \yii\web\User
 {
-
+    public $isInConsole = false;
 }
