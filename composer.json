@@ -60,7 +60,9 @@
         "cics/yii2-video-embed-widget": "dev-master",
         "tuyakhov/yii2-youtube": "*",
         "samdark/yii2-webshell": "~2.0",
-        "tigrov/yii2-pgsql": "^1.3"
+        "tigrov/yii2-pgsql": "^1.3",
+        "developit/yii2-errorhandler": "^1.0",
+        "yiisoft/yii2-shell": "^2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
