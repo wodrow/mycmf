@@ -3,24 +3,34 @@
 namespace common\models\db\base;
 
 use Yii;
-use yii\behaviors\TimestampBehavior;
-use yii\behaviors\BlameableBehavior;
 
 /**
- * This is the base model class for table "{{%categroy}}".
+ * This is the model class for table "{{%category}}".
  *
  * @property string $id
- * @property string $pid
- * @property string $title
- * @property integer $status
- * @property integer $created_at
- * @property integer $updated_at
- * @property integer $created_by
- * @property integer $updated_by
+ * @property string $name
+ * @property string $parent_id
+ * @property int $created_at
+ * @property string $created_by
+ * @property int $updated_at
+ * @property string $updated_by
+ * @property int $status
+ *
+ * @property Book[] $books
+ * @property Category $parent
+ * @property Category[] $categories
+ * @property User $createdBy
+ * @property User $updatedBy
  */
 class Category extends \yii\db\ActiveRecord
 {
-    use \mootensai\relation\RelationTrait;
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%category}}';
+    }
 
     /**
      * @inheritdoc
@@ -28,18 +38,15 @@ class Category extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['pid', 'status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'integer'],
-            [['title', 'status', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'required'],
-            [['title'], 'string', 'max' => 50]
+            [['name', 'parent_id', 'created_at', 'created_by', 'updated_at', 'updated_by', 'status'], 'required'],
+            [['parent_id', 'created_by', 'updated_by'], 'number'],
+            [['created_at', 'updated_at', 'status'], 'default', 'value' => null],
+            [['created_at', 'updated_at', 'status'], 'integer'],
+            [['name'], 'string', 'max' => 50],
+            [['parent_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['parent_id' => 'id']],
+            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
+            [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['updated_by' => 'id']],
         ];
-    }
-    
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%categroy}}';
     }
 
     /**
@@ -49,29 +56,53 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'pid' => Yii::t('app', 'Pid'),
-            'title' => Yii::t('app', 'Title'),
+            'name' => Yii::t('app', 'Name'),
+            'parent_id' => Yii::t('app', 'Parent ID'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'created_by' => Yii::t('app', 'Created By'),
+            'updated_at' => Yii::t('app', 'Updated At'),
+            'updated_by' => Yii::t('app', 'Updated By'),
             'status' => Yii::t('app', 'Status'),
         ];
     }
 
-/**
-     * @inheritdoc
-     * @return array mixed
-     */ 
-    public function behaviors()
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBooks()
     {
-        return [
-            'timestamp' => [
-                'class' => TimestampBehavior::className(),
-                'createdAtAttribute' => 'created_at',
-                'updatedAtAttribute' => 'updated_at',
-            ],
-            'blameable' => [
-                'class' => BlameableBehavior::className(),
-                'createdByAttribute' => 'created_by',
-                'updatedByAttribute' => 'updated_by',
-            ],
-        ];
+        return $this->hasMany(Book::className(), ['category_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getParent()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'parent_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategories()
+    {
+        return $this->hasMany(Category::className(), ['parent_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCreatedBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'created_by']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUpdatedBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'updated_by']);
     }
 }
