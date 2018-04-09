@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "{{%document}}".
  *
- * @property int $id
+ * @property string $id
  * @property string $name
  * @property string $title
  * @property int $type
@@ -17,8 +17,8 @@ use Yii;
  * @property int $updated_at
  * @property int $status
  * @property string $content
- * @property string $reprint_from
- * @property int $abs_sort
+ * @property string $reprint_from 转载于
+ * @property int $abs_sort 固定排序
  *
  * @property User $createdBy
  * @property User $updatedBy
@@ -40,9 +40,7 @@ class Document extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'title', 'type', 'created_at', 'updated_at', 'status'], 'required'],
-            [['type', 'created_at', 'updated_at', 'status', 'abs_sort'], 'default', 'value' => null],
-            [['type', 'created_at', 'updated_at', 'status', 'abs_sort'], 'integer'],
-            [['created_by', 'updated_by'], 'number'],
+            [['type', 'created_by', 'created_at', 'updated_by', 'updated_at', 'status', 'abs_sort'], 'integer'],
             [['content'], 'string'],
             [['name', 'title', 'reprint_from'], 'string', 'max' => 200],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
@@ -66,8 +64,8 @@ class Document extends \yii\db\ActiveRecord
             'updated_at' => Yii::t('app', 'Updated At'),
             'status' => Yii::t('app', 'Status'),
             'content' => Yii::t('app', 'Content'),
-            'reprint_from' => Yii::t('app', 'Reprint From'),
-            'abs_sort' => Yii::t('app', 'Abs Sort'),
+            'reprint_from' => Yii::t('app', '转载于'),
+            'abs_sort' => Yii::t('app', '固定排序'),
         ];
     }
 

@@ -2,12 +2,10 @@
 
 namespace common\models\db;
 
-use \common\models\db\base\Category as BaseCategory;
-
 /**
  * This is the model class for table "mycmf_categroy".
  */
-class Category extends BaseCategory
+class Category extends \common\models\db\base\Category
 {
     /**
      * @inheritdoc

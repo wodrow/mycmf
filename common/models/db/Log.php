@@ -2,12 +2,10 @@
 
 namespace common\models\db;
 
-use \common\models\db\base\Log as BaseLog;
-
 /**
  * This is the model class for table "mycmf_log".
  */
-class Log extends BaseLog
+class Log extends \common\models\db\base\Log
 {
     /**
      * @inheritdoc

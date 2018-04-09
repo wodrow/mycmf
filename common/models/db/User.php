@@ -21,57 +21,9 @@ use Yii;
  *
  * @property AuthAssignment[] $authAssignments
  * @property AuthItem[] $itemNames
- * @property Tag[] $tags
- * @property Tag[] $tags0
  */
-class User extends \yii\db\ActiveRecord
+class User extends \common\models\db\base\User
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%user}}';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at', 'token', 'key', 'tp_pwd'], 'required'],
-            [['status', 'created_at', 'updated_at'], 'integer'],
-            [['username', 'password_hash', 'email', 'tp_pwd'], 'string', 'max' => 255],
-            [['auth_key'], 'string', 'max' => 32],
-            [['token', 'key'], 'string', 'max' => 50],
-            [['username'], 'unique'],
-            [['email'], 'unique'],
-            [['token'], 'unique'],
-            [['key'], 'unique'],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => Yii::t('app', 'ID'),
-            'username' => Yii::t('app', 'Username'),
-            'auth_key' => Yii::t('app', 'Auth Key'),
-            'password_hash' => Yii::t('app', 'Password Hash'),
-            'email' => Yii::t('app', 'Email'),
-            'status' => Yii::t('app', 'Status'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
-            'token' => Yii::t('app', 'Token'),
-            'key' => Yii::t('app', 'Key'),
-            'tp_pwd' => Yii::t('app', 'Tp Pwd'),
-        ];
-    }
-
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -86,21 +38,5 @@ class User extends \yii\db\ActiveRecord
     public function getItemNames()
     {
         return $this->hasMany(AuthItem::className(), ['name' => 'item_name'])->viaTable('{{%auth_assignment}}', ['user_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getTags()
-    {
-        return $this->hasMany(Tag::className(), ['created_by' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getTags0()
-    {
-        return $this->hasMany(Tag::className(), ['updated_by' => 'id']);
     }
 }

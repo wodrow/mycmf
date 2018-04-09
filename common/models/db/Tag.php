@@ -2,7 +2,6 @@
 
 namespace common\models\db;
 
-use \common\models\db\base\Tag as BaseTag;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 
@@ -12,7 +11,7 @@ use yii\behaviors\TimestampBehavior;
  * @property \common\models\db\User $createdBy
  * @property \common\models\db\User $updatedBy
  */
-class Tag extends BaseTag
+class Tag extends \common\models\db\base\Tag
 {
     const STATUS_ACTIVE = 10;
 

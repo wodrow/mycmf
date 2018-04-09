@@ -5,10 +5,10 @@ namespace common\models\db\base;
 use Yii;
 
 /**
- * This is the base model class for table "{{%log}}".
+ * This is the model class for table "{{%log}}".
  *
- * @property integer $id
- * @property integer $level
+ * @property string $id
+ * @property int $level
  * @property string $category
  * @property double $log_time
  * @property string $prefix
@@ -16,7 +16,13 @@ use Yii;
  */
 class Log extends \yii\db\ActiveRecord
 {
-    use \mootensai\relation\RelationTrait;
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%log}}';
+    }
 
     /**
      * @inheritdoc
@@ -27,16 +33,8 @@ class Log extends \yii\db\ActiveRecord
             [['level'], 'integer'],
             [['log_time'], 'number'],
             [['prefix', 'message'], 'string'],
-            [['category'], 'string', 'max' => 255]
+            [['category'], 'string', 'max' => 255],
         ];
-    }
-    
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return '{{%log}}';
     }
 
     /**

@@ -122,9 +122,6 @@ return [
         'test' => [
             'class' => 'backend\modules\test\TestModule',
         ],
-        'category' => [
-            'class' => 'backend\modules\category\CategroyModule',
-        ],
     ],
     'as access' => [
         'class' => \mdm\admin\components\AccessControl::className(),
