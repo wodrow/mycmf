@@ -5,6 +5,11 @@ class Yii extends \yii\BaseYii
      * @var BaseApplication|WebApplication|ConsoleApplication the application instance
      */
     public static $app;
+
+    /**
+     * @var \common\components\services\Application the application services
+     */
+    public static $service;
 }
 
 spl_autoload_register(['Yii', 'autoload'], true, true);

@@ -21,4 +21,13 @@ $config = yii\helpers\ArrayHelper::merge(
     require(__DIR__.'/../../api/config/main.php'),
     require(__DIR__.'/../../api/config/main-local.php')
 );
+
+/**
+ * 添加服务 ，Yii::$services  ,  将services的配置添加到这个对象。
+ * 使用方法：Yii::$services->cms->article;
+ * 上面的例子就是获取cms服务的子服务article。
+ */
+new \common\components\services\Application($config['services']);
+unset($config['services']);
+
 (new yii\web\Application($config))->run();

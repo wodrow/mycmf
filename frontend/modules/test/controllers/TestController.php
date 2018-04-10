@@ -188,4 +188,9 @@ class TestController extends Controller
             'test' => $test,
         ]);
     }
+
+    public function actionTest12()
+    {
+        echo \Yii::$service->test->test->index();
+    }
 }

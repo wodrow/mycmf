@@ -42,6 +42,8 @@ $config = [
             'uploadUrl' => '@wurl/uploads',
         ],
         'assetManager' => [
+            // 线上建议将forceCopy设置成false，如果访问量不大无所谓
+            'forceCopy' => true,
             'assetMap' => [
                 'AdminLTE.css' => '@wurl/css/AdminLTE.css',
             ],
@@ -69,6 +71,18 @@ $config = [
             'htmlCompressOptions' => [             //options for compressing output result
                 'extra' => false,        //use more compact algorithm
                 'no-comments' => true   //cut all the html comments
+            ],
+        ],
+    ],
+    /** ------ 服务层 ------ **/
+    'services' => [
+        'test' => [
+            'class' => 'common\servers\Test',
+            // 子服务
+            'childService' => [
+                'test' => [
+                    'class' => 'common\servers\test\Test',
+                ],
             ],
         ],
     ],
