@@ -15,19 +15,19 @@ use yii\base\InvalidConfigException;
 
 /**
  * Class Service
- * @package jianyan\basics\common\services
+ * @package common\components\services
  */
 class Service extends Object
 {
     /**
      * 子服务
      *
-     * @var Service $childService
+     * @var
      */
     public $childService;
 
     /**
-     * @var Service $_childService
+     * @var
      */
     protected $_childService;
 

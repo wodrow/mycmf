@@ -9,27 +9,27 @@
 namespace common\components\services;
 
 
+use common\servers\Test;
 use Yii;
-use yii\base\Component;
 use yii\base\InvalidConfigException;
 
 /**
  * Class Application
- * @package jianyan\basics\common\services
+ * @package common\components\services
  *
- * @property Service $test
+ * @property Test $test
  */
 class Application
 {
     /**
      * 子服务
      *
-     * @var Service $childService
+     * @var
      */
     public $childService;
 
     /**
-     * @var Service $_childService
+     * @var
      */
     protected $_childService;
 
