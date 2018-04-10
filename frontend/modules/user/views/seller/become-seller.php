@@ -1,21 +1,22 @@
 <?php
 /**
- * @var \yii\web\View $this
+ * Created by PhpStorm.
+ * User: wodrow
+ * Date: 18-4-9
+ * Time: 下午12:56
  */
 
 use kartik\helpers\Html;
-use kartik\form\ActiveForm;
 
-$this->title = "账号设置";
+$this->title = "成为卖家";
 $this->params['breadcrumbs'][] = Html::a('用户中心', ['/user']);
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="user-setting-index">
+<div class="frontend-user-seller-become-seller">
     <div class="row">
         <div class="col-lg-12">
-            <?php $form = ActiveForm::begin(); ?>
-            <?php ActiveForm::end(); ?>
+            123
         </div>
     </div>
 </div>

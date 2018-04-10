@@ -18,6 +18,10 @@ use Yii;
  * @property string $token TOKEN
  * @property string $key TOKEN钥匙
  * @property string $tp_pwd
+ * @property int $is_seller 是否为卖家
+ * @property string $level 等级
+ * @property string $score 积分
+ * @property int $real_name_auth_status 实名认证状态
  *
  * @property AuthAssignment[] $authAssignments
  * @property AuthItem[] $itemNames
@@ -34,6 +38,7 @@ use Yii;
  * @property Shop[] $shops1
  * @property Tag[] $tags
  * @property Tag[] $tags0
+ * @property UserRealNameAuth $userRealNameAuth
  */
 class User extends \yii\db\ActiveRecord
 {
@@ -52,7 +57,7 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             [['username', 'auth_key', 'password_hash', 'email', 'status', 'created_at', 'updated_at', 'token', 'key', 'tp_pwd'], 'required'],
-            [['status', 'created_at', 'updated_at'], 'integer'],
+            [['status', 'created_at', 'updated_at', 'is_seller', 'level', 'score', 'real_name_auth_status'], 'integer'],
             [['username'], 'string', 'max' => 20],
             [['auth_key'], 'string', 'max' => 32],
             [['password_hash', 'email', 'tp_pwd'], 'string', 'max' => 255],
@@ -81,6 +86,10 @@ class User extends \yii\db\ActiveRecord
             'token' => Yii::t('app', 'TOKEN'),
             'key' => Yii::t('app', 'TOKEN钥匙'),
             'tp_pwd' => Yii::t('app', 'Tp Pwd'),
+            'is_seller' => Yii::t('app', '是否为卖家'),
+            'level' => Yii::t('app', '等级'),
+            'score' => Yii::t('app', '积分'),
+            'real_name_auth_status' => Yii::t('app', '实名认证状态'),
         ];
     }
 
@@ -202,5 +211,13 @@ class User extends \yii\db\ActiveRecord
     public function getTags0()
     {
         return $this->hasMany(Tag::className(), ['updated_by' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserRealNameAuth()
+    {
+        return $this->hasOne(UserRealNameAuth::className(), ['user_id' => 'id']);
     }
 }

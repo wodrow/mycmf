@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \yii\web\View $this
- * @var \frontend\modules\user\models\ResetPasswordForm $resetPasswordForm
+ * @var \frontend\modules\user\models\FormResetPassword $resetPasswordForm
  */
 $this->title = "重置密码";
 $this->params['breadcrumbs'][] = \kartik\helpers\Html::a('用户中心', ['/user']);

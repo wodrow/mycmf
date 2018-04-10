@@ -4,7 +4,7 @@ namespace frontend\modules\user\models;
 
 use yii\base\Model;
 
-class ResetPasswordForm extends Model
+class FormResetPassword extends Model
 {
     public $oldpassword;
     public $newpassword;

@@ -46,7 +46,7 @@ AppAsset::register($this);
         $menuItems[] = [
             'label' => Yii::$app->user->identity->username,
             'items' => [
-                ['label' => '我的主页', 'url' => ['/user']],
+                ['label' => '用户中心', 'url' => ['/user']],
                 ['label' => '帐号设置', 'url' => ['/user/setting']],
                 ['label' => '退出', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']],
             ],

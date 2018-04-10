@@ -24,6 +24,14 @@ use Yii;
  */
 class User extends \common\models\db\base\User
 {
+    const IS_SELLER_FALSE = 0;
+    const IS_SELLER_TRUE = 1;
+    const REAL_NAME_AUTH_STATUS_NOT_HAVE = 0;
+    const REAL_NAME_AUTH_STATUS_DRAFT = 1;
+    const REAL_NAME_AUTH_STATUS_SEND = 2;
+    const REAL_NAME_AUTH_STATUS_FAILED = 3;
+    const REAL_NAME_AUTH_STATUS_SUCCESS = 4;
+
     /**
      * @return \yii\db\ActiveQuery
      */
