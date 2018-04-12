@@ -5,7 +5,7 @@ use common\components\tools\Security;
 use common\models\User;
 use yii\base\Model;
 
-class ResetPasswordForm extends Model
+class FormResetPassword extends Model
 {
     public $email;
     public $email_code;

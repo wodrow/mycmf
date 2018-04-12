@@ -1,14 +1,17 @@
 <?php
 namespace frontend\controllers;
 
-use frontend\models\GetEmailCodeForm;
-use frontend\models\ResetPasswordForm;
+use frontend\models\FormGetEmailCode;
+use frontend\models\FormResetPassword;
+use frontend\models\FormUpload;
 use Yii;
+use yii\httpclient\Client;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use frontend\models\LoginForm;
-use frontend\models\SignupForm;
+use frontend\models\FormLogin;
+use frontend\models\FormSignup;
+use yii\web\UploadedFile;
 
 /**
  * Site controller
@@ -87,7 +90,7 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
-        $model = new LoginForm();
+        $model = new FormLogin();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
@@ -126,8 +129,8 @@ class SiteController extends Controller
      */
     public function actionSignup()
     {
-        $get_email_code_form = new GetEmailCodeForm();
-        $model = new SignupForm();
+        $get_email_code_form = new FormGetEmailCode();
+        $model = new FormSignup();
         $wait = 0;
         if ($get_email_code_form->load(Yii::$app->request->post())){
             if ($get_email_code_form->validate()){
@@ -159,8 +162,8 @@ class SiteController extends Controller
      */
     public function actionResetPassword()
     {
-        $get_email_code_form = new GetEmailCodeForm();
-        $model = new ResetPasswordForm();
+        $get_email_code_form = new FormGetEmailCode();
+        $model = new FormResetPassword();
         $wait = 0;
         if ($get_email_code_form->load(Yii::$app->request->post())){
             if ($get_email_code_form->sendCode()){
@@ -183,5 +186,32 @@ class SiteController extends Controller
             'model' => $model,
             'wait' => $wait,
         ]);
+    }
+
+    public function actionUpload()
+    {
+        $model = new FormUpload();
+        if (Yii::$app->request->isPost){
+            $model->file = UploadedFile::getInstance($model, "file");
+            $fileName = date("HiiHsHis").$model->file->baseName . "." . $model->file->extension;
+            echo $model->file->saveAs(\Yii::getAlias('@runtime/uploads'). DIRECTORY_SEPARATOR. $fileName);
+            exit;
+        }
+        return $this->render('upload', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionTestUpload()
+    {
+        $url = 'https://sm.ms/api/upload';
+//        $url = 'http://test.mycmf.deepin.me.tt/site/upload';
+        $client = new Client();
+        $r = $client->createRequest()
+            ->setMethod('POST')
+            ->setUrl($url)
+            ->addFile('smfile', '/var/www/mycmf/frontend/runtime/uploads/092020090709200778528e38bc323ec7633fc12b0e6122e9.jpg')
+            ->send();
+        echo $r->content;
     }
 }

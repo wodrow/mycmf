@@ -2,8 +2,8 @@
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $get_email_code_form \frontend\models\GetEmailCodeForm */
-/* @var $model \frontend\models\SignupForm */
+/* @var $get_email_code_form \frontend\models\FormGetEmailCode */
+/* @var $model \frontend\models\FormSignup */
 /**
  * @var $wait
  */

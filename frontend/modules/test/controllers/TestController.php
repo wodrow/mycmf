@@ -11,7 +11,7 @@ namespace frontend\modules\test\controllers;
 
 use common\components\tools\Tools;
 use common\models\db\Test;
-use frontend\models\GetEmailCodeForm;
+use frontend\models\FormGetEmailCode;
 use Phpml\Association\Apriori;
 use common\components\tools\FileHelper;
 use yii\web\Controller;
@@ -102,7 +102,7 @@ class TestController extends Controller
 
     public function actionTest4()
     {
-        $model = new GetEmailCodeForm();
+        $model = new FormGetEmailCode();
         if ($model->load(\Yii::$app->request->post())){
             var_dump($model->toArray());
             var_dump($model->toArray());

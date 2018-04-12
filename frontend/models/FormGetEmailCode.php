@@ -11,7 +11,7 @@ namespace frontend\models;
 
 use yii\base\Model;
 
-class GetEmailCodeForm extends Model
+class FormGetEmailCode extends Model
 {
     public $email;
 
