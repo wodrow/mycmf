@@ -5,13 +5,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
-\backend_1\Asset::register($this);
 ?>
-
-<?php // echo Html::cssFile('backend_1/css/font-awesome.min.css'); ?>
-<?php // echo Html::cssFile('backend_1/css/animate.min.css'); ?>
-<?php // echo Html::cssFile('backend_1/css/style.min.css'); ?>
-<?php // echo Html::cssFile('backend_1/css/login.min.css'); ?>
 
 <script>
     if(window.top!==window.self){window.top.location=window.location};

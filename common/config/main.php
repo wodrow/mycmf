@@ -50,6 +50,7 @@ $config = [
         ],
         'assetsAutoCompress' => [
             'class' => '\skeeks\yii2\assetsAuto\AssetsAutoCompressComponent',
+            'webroot' => '@wroot',
             'enabled' => true,
             'readFileTimeout' => 3,           //Time in seconds for reading each asset file
             'jsCompress' => true,        //Enable minification js in html code

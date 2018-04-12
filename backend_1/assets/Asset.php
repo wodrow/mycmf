@@ -14,12 +14,16 @@ use yii\web\AssetBundle;
 class Asset extends AssetBundle
 {
     public $baseUrl = '@wurl/backend_1';
-//    public $basePath = '@wroot/backend_1';
 
     public $css = [
         'css/font-awesome.min.css',
         'css/animate.min.css',
         'css/style.min.css',
         'css/login.min.css',
+    ];
+
+    public $depends = [
+        'yii\web\YiiAsset',
+        'yii\bootstrap\BootstrapAsset',
     ];
 }
