@@ -202,15 +202,30 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionTestUpload()
+    public function actionUploadTest()
     {
         $url = 'https://sm.ms/api/upload';
+        $file_name = '/var/www/mycmf/frontend/runtime/uploads/0925250953092553092020090709200778528e38bc323ec7633fc12b0e6122e9.jpg';
+        $body = fopen($file_name, 'r');
+//        $body = file_get_contents($file_name);
+        $client = new \GuzzleHttp\Client();
+        $r = $client->request('POST', $url, [
+            'multipart' => [
+                [
+                    'name'     => 'smfile',
+                    'contents' => $body,
+                ],
+            ],
+        ]);
+        echo $r->getBody();
+        exit;
+
 //        $url = 'http://test.mycmf.deepin.me.tt/site/upload';
         $client = new Client();
         $r = $client->createRequest()
             ->setMethod('POST')
             ->setUrl($url)
-            ->addFile('smfile', '/var/www/mycmf/frontend/runtime/uploads/092020090709200778528e38bc323ec7633fc12b0e6122e9.jpg')
+            ->addFile('smfile', $file_name)
             ->send();
         echo $r->content;
     }

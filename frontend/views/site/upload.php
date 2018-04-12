@@ -22,5 +22,12 @@ use kartik\helpers\Html;
             <?=Html::submitButton('submit', ['class' => "btn btn-primary"]) ?>
             <?php ActiveForm::end(); ?>
         </div>
+
+        <div class="col-lg-12">
+            <form action="https://sm.ms/api/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="smfile">
+                <?=Html::submitButton('submit', ['class' => "btn btn-primary"]) ?>
+            </form>
+        </div>
     </div>
 </div>
