@@ -30,5 +30,6 @@ class AppAsset extends AssetBundle
         'colee\vue\VueAsset',
 //        'common\components\assets\Gojs',
         'common\components\assets\ThreeJs',
+        'kartik\icons\FontAwesomeAsset',
     ];
 }

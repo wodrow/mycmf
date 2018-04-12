@@ -15,6 +15,7 @@ use frontend\models\GetEmailCodeForm;
 use Phpml\Association\Apriori;
 use common\components\tools\FileHelper;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 
 class TestController extends Controller
@@ -192,5 +193,10 @@ class TestController extends Controller
     public function actionTest12()
     {
         echo \Yii::$service->test->test->index();
+    }
+
+    public function actionTest13()
+    {
+        throw new NotFoundHttpException('您访问的站点已经关闭');
     }
 }
