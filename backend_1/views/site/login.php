@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
+\backend_1\assets\Asset::register($this);
 ?>
 
 <script>
@@ -72,14 +73,4 @@ use yii\captcha\Captcha;
         </div>
     </div>
 </div>
-
-<script>
-    $(document).ready(function(){
-        $(".i-checks").iCheck({
-            checkboxClass   :"icheckbox_square-green",
-            radioClass      :"iradio_square-green",
-            increaseArea    : '20%' // optional
-        })
-    });
-</script>
 
