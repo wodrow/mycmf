@@ -9,7 +9,10 @@
 namespace frontend\modules\test\controllers;
 
 
+use Carbon\Carbon;
+use common\components\budget\Smms;
 use common\components\tools\Tools;
+use common\models\db\Budget;
 use common\models\db\Test;
 use frontend\models\FormGetEmailCode;
 use Phpml\Association\Apriori;
@@ -198,5 +201,13 @@ class TestController extends Controller
     public function actionTest13()
     {
         throw new NotFoundHttpException('您访问的站点已经关闭');
+    }
+
+    public function actionTest14()
+    {
+        $budget = new Budget();
+        $budget->name = 'sm.ms';
+        $r = $budget->operator->uploadLocalFile('/var/www/mycmf/web/backend_1/img/locked.png');
+        var_dump($r);
     }
 }

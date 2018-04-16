@@ -67,7 +67,8 @@
         "samdark/yii2-webshell": "~2.0",
         "tigrov/yii2-pgsql": "^1.3",
         "developit/yii2-errorhandler": "^1.0",
-        "guzzlehttp/guzzle": "^6.3"
+        "guzzlehttp/guzzle": "^6.3",
+        "nesbot/carbon": "^1.25"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
