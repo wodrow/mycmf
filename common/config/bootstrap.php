@@ -5,7 +5,7 @@ Yii::setAlias('@root', $_rootPath); // 根目录
 Yii::setAlias('@common', dirname(__DIR__));
 Yii::setAlias('@frontend', $_rootPath . '/frontend');
 Yii::setAlias('@backend', $_rootPath . '/backend');
-Yii::setAlias('@backend_1', $_rootPath . '/backend_1');
+//Yii::setAlias('@backend_1', $_rootPath . '/backend_1');
 Yii::setAlias('@console', $_rootPath . '/console');
 Yii::setAlias('@api', $_rootPath . '/api');
 Yii::setAlias('@data', $_rootPath . '/data');
@@ -13,7 +13,7 @@ Yii::setAlias('@data', $_rootPath . '/data');
 //Yii::setAlias('database', $_rootPath . '/database');
 //Yii::setAlias('plugins', $_rootPath . '/plugins');
 //Yii::setAlias('@rootPath', $_rootPath); // 根目录
-Yii::setAlias('@resource', $_rootPath . '/web/resource'); // 资源目录
+//Yii::setAlias('@resource', $_rootPath . '/web/resource'); // 资源目录
 //Yii::setAlias('@resourceUrl', '/resource'); // 资源目录
 //Yii::setAlias('@addons', $_rootPath . '/web/addons'); // 插件绝对路径目录
 //Yii::setAlias('@addonurl', '/addons'); // 插件url
