@@ -3,7 +3,7 @@ use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Html;
 ?>
-<div class="container" id="crop-avatar">
+<div id="crop-avatar">
 
     <!-- Current avatar -->
     <div class="avatar-view" title="Change the avatar">
