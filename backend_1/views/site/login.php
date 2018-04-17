@@ -6,6 +6,7 @@ use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
 \backend_1\assets\Asset::register($this);
+echo Html::cssFile('/backend_1/css/login.min.css');
 ?>
 
 <script>

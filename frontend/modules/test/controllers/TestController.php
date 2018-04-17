@@ -210,4 +210,14 @@ class TestController extends Controller
         $r = $budget->operator->uploadLocalFile('/var/www/mycmf/web/backend_1/img/locked.png');
         var_dump($r);
     }
+
+    public function actionTest15()
+    {
+        $dir = '/var/www/mycmf/data/others/txt';
+    }
+
+    public function actionTest16()
+    {
+
+    }
 }

@@ -10,6 +10,7 @@ $config = [
     'id' => 'app-backend_1',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend_1\controllers',
+    'defaultRoute' => 'main',// 默认控制器
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend_1',

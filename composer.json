@@ -68,7 +68,8 @@
         "tigrov/yii2-pgsql": "^1.3",
         "developit/yii2-errorhandler": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
-        "nesbot/carbon": "^1.25"
+        "nesbot/carbon": "^1.25",
+        "creocoder/yii2-flysystem": "^0.9.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

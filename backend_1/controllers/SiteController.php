@@ -54,22 +54,13 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays homepage.
-     *
-     * @return string
-     */
-    public function actionIndex()
-    {
-        return $this->render('index');
-    }
-
-    /**
      * Login action.
      *
      * @return string
      */
     public function actionLogin()
     {
+        $this->layout = 'login';
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
