@@ -3,7 +3,10 @@ $config = [
     'version' => \common\config\Env::VERSION,
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'language' => 'zh-CN',
-    'bootstrap' => ['log', 'assetsAutoCompress'],
+    'bootstrap' => [
+        'log',
+//        'assetsAutoCompress',
+    ],
     'components' => [
         'redis' => [
             'class' => 'yii\redis\Connection',
@@ -48,7 +51,7 @@ $config = [
                 'AdminLTE.css' => '@wurl/css/AdminLTE.css',
             ],
         ],
-        'assetsAutoCompress' => [
+        /*'assetsAutoCompress' => [
             'class' => '\skeeks\yii2\assetsAuto\AssetsAutoCompressComponent',
             'webroot' => '@wroot',
             'enabled' => false,
@@ -73,7 +76,7 @@ $config = [
                 'extra' => false,        //use more compact algorithm
                 'no-comments' => true   //cut all the html comments
             ],
-        ],
+        ],*/
     ],
     /** ------ 服务层 ------ **/
     'services' => [

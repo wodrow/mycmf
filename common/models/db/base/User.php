@@ -22,6 +22,7 @@ use Yii;
  * @property string $level 等级
  * @property string $score 积分
  * @property int $real_name_auth_status 实名认证状态
+ * @property string $avatar 头像
  *
  * @property AuthAssignment[] $authAssignments
  * @property AuthItem[] $itemNames
@@ -38,6 +39,7 @@ use Yii;
  * @property Shop[] $shops1
  * @property Tag[] $tags
  * @property Tag[] $tags0
+ * @property Files $avatar0
  * @property UserRealNameAuth $userRealNameAuth
  */
 class User extends \yii\db\ActiveRecord
@@ -57,7 +59,7 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             [['username', 'auth_key', 'password_hash', 'email', 'status', 'created_at', 'updated_at', 'token', 'key', 'tp_pwd'], 'required'],
-            [['status', 'created_at', 'updated_at', 'is_seller', 'level', 'score', 'real_name_auth_status'], 'integer'],
+            [['status', 'created_at', 'updated_at', 'is_seller', 'level', 'score', 'real_name_auth_status', 'avatar'], 'integer'],
             [['username'], 'string', 'max' => 20],
             [['auth_key'], 'string', 'max' => 32],
             [['password_hash', 'email', 'tp_pwd'], 'string', 'max' => 255],
@@ -66,6 +68,7 @@ class User extends \yii\db\ActiveRecord
             [['email'], 'unique'],
             [['token'], 'unique'],
             [['key'], 'unique'],
+            [['avatar'], 'exist', 'skipOnError' => true, 'targetClass' => Files::className(), 'targetAttribute' => ['avatar' => 'id']],
         ];
     }
 
@@ -90,6 +93,7 @@ class User extends \yii\db\ActiveRecord
             'level' => Yii::t('app', '等级'),
             'score' => Yii::t('app', '积分'),
             'real_name_auth_status' => Yii::t('app', '实名认证状态'),
+            'avatar' => Yii::t('app', '头像'),
         ];
     }
 
@@ -211,6 +215,14 @@ class User extends \yii\db\ActiveRecord
     public function getTags0()
     {
         return $this->hasMany(Tag::className(), ['updated_by' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAvatar0()
+    {
+        return $this->hasOne(Files::className(), ['id' => 'avatar']);
     }
 
     /**
