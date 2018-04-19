@@ -9,9 +9,9 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
-    public $basePath = '@webroot';
+    public $basePath = '@wroot';
 
-    public $baseUrl = '@web';
+    public $baseUrl = '@wurl';
 
     public $css = [
         'css/site.css',
@@ -27,9 +27,9 @@ class AppAsset extends AssetBundle
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
-        'colee\vue\VueAsset',
+//        'colee\vue\VueAsset',
 //        'common\components\assets\Gojs',
-        'common\components\assets\ThreeJs',
+//        'common\components\assets\ThreeJs',
         'kartik\icons\FontAwesomeAsset',
     ];
 }

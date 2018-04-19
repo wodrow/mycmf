@@ -8,7 +8,7 @@
 /**
  * @var \backend\modules\test\models\Test $model
  */
-use common\widgets\huanguang\avatar\AvatarWidget;
+use common\widgets\wodrow\avatar\AvatarWidget;
 ?>
 
 <div class="backend-test-default-test">

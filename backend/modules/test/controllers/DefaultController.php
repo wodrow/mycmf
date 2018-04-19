@@ -4,7 +4,7 @@ namespace backend\modules\test\controllers;
 
 use backend\modules\test\models\Test;
 use common\models\test\Tree;
-use common\widgets\huanguang\avatar\CropAction;
+use common\widgets\wodrow\avatar\CropAction;
 use yii\data\ActiveDataProvider;
 use yii\db\Query;
 use yii\web\Controller;

@@ -31,7 +31,7 @@ class AvatarAsset extends AssetBundle
         'yii\web\YiiAsset',
     ];
     public $jsOptions = [  
-        'position' => \yii\web\View::POS_HEAD,   // 这是设置所有js放置的位置  
+//        'position' => \yii\web\View::POS_HEAD,   // 这是设置所有js放置的位置
     ]; 
     
     /**
