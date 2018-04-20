@@ -12,6 +12,7 @@ namespace common\components\budget;
 interface Api
 {
     /**
+     * @param string $file file detail path
      * @return array
      */
     public function uploadLocalFile($file);

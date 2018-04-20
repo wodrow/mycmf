@@ -9,7 +9,6 @@
 namespace frontend\modules\user\controllers;
 
 
-use common\widgets\wodrow\avatar\CropAction;
 use frontend\modules\user\models\FormResetPassword;
 use yii\web\Controller;
 
