@@ -207,7 +207,8 @@ class TestController extends Controller
     {
         $budget = new Budget();
         $budget->name = 'sm.ms';
-        $r = $budget->operator->uploadLocalFile('/var/www/mycmf/web/backend_1/img/locked.png');
+        $file = '';
+        $r = $budget->operator->uploadLocalFile($file);
         var_dump($r);
     }
 
@@ -218,6 +219,8 @@ class TestController extends Controller
 
     public function actionTest16()
     {
-
+        $file = new \common\models\db\Files();
+        $image = Yii::getAlias('@wroot/images').DIRECTORY_SEPARATOR.'404.png';
+        return $this->render('test16');JS
     }
 }
