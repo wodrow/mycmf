@@ -220,7 +220,7 @@ class TestController extends Controller
     public function actionTest16()
     {
         $file = new \common\models\db\Files();
-        $image = Yii::getAlias('@wroot/images').DIRECTORY_SEPARATOR.'404.png';
-        return $this->render('test16');JS
+        $image = \Yii::getAlias('@wroot/images').DIRECTORY_SEPARATOR.'404.png';
+        return $this->render('test16');
     }
 }
