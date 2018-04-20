@@ -15,11 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-lg-12">
             <?php $form = ActiveForm::begin(); ?>
-            <?=\common\widgets\wodrow\avatar\AvatarWidget::widget([
-                'imageUrl' => "/uploads/404.png ",
-//                'model' => $model,
-//                'attribute' => 'avatar',
-            ]) ?>
             <?=Html::submitButton('修改', ['class' => "btn btn-primary"]); ?>
             <?=Html::resetButton('撤销', ['class' => "btn btn-warning"]); ?>
             <?php ActiveForm::end(); ?>
