@@ -13,45 +13,97 @@ use kartik\helpers\Html;
 <div class="wodrow-avatar-index">
     <div class="row">
         <div class="col-lg-12">
-            <img id="cropper-image" src="\images\404.png" alt="">
-        </div>
-        <div class="col-lg-12">
-            <?=Html::button('crop', ['id' => "image-crop-button", 'class' => "btn btn-primary"]) ?>
+            <div id="crop-avatar">
+                <!-- Current avatar -->
+                <div class="avatar-view" title="Change the avatar">
+                    <img src="\images\404.png" alt="Avatar">
+                </div>
+                <!-- Cropping modal -->
+                <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label"
+                     role="dialog" tabindex="-1">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <form class="avatar-form" action="<?=\yii\helpers\Url::to('/test/test/crop') ?>" enctype="multipart/form-data" method="post">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title" id="avatar-modal-label">修改图片</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="avatar-body">
+                                        <!-- Upload image and data -->
+                                        <div class="avatar-upload">
+                                            <input class="avatar-src" name="avatar_src">
+                                            <input class="avatar-data" name="avatar_data">
+                                            <label for="avatarInput">本地上传</label>
+                                            <input type="file" class="avatar-input" id="avatarInput"
+                                                   name="avatar_file">
+                                        </div>
+                                        <!-- Crop and preview -->
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <div class="avatar-wrapper"></div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="avatar-preview preview-lg"></div>
+                                                <div class="preview-md" id="preview-md">
+
+                                                    <canvas id="preview-canvas" width="200" height="100"></canvas>
+                                                </div>
+                                                <div class="avatar-preview preview-sm"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row avatar-btns">
+                                            <div class="col-md-9">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-primary"
+                                                            data-method="rotate" data-option="-90"
+                                                            title="Rotate -90 degrees">向左转
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary"
+                                                            data-method="rotate" data-option="-15">-15度
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary"
+                                                            data-method="rotate" data-option="-30">-30度
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary"
+                                                            data-method="rotate" data-option="-45">-45度
+                                                    </button>
+                                                </div>
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-primary"
+                                                            data-method="rotate" data-option="90"
+                                                            title="Rotate 90 degrees">向右转
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary"
+                                                            data-method="rotate" data-option="15">15度
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary"
+                                                            data-method="rotate" data-option="30">30度
+                                                    </button>
+                                                    <button type="button" class="btn btn-primary"
+                                                            data-method="rotate" data-option="45">45度
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <button type="submit" class="btn btn-primary btn-block avatar-save">
+                                                    完 成
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="modal-footer">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div> -->
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- /.modal -->
+
+                <!-- Loading state -->
+                <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+            </div>
         </div>
     </div>
 </div>
-
-<?php common\components\widgets\JsBlock::begin(); ?>
-<script>
-    var $image = $('#cropper-image');
-    $image.cropper({
-        aspectRatio: 1 / 1,
-        crop: function(event) {
-            console.log(event.detail.x);
-            console.log(event.detail.y);
-            console.log(event.detail.width);
-            console.log(event.detail.height);
-            console.log(event.detail.rotate);
-            console.log(event.detail.scaleX);
-            console.log(event.detail.scaleY);
-        }
-    });
-    var cropper = $image.data('cropper');
-    $('#image-crop-button').click(function () {
-        $().cropper('move', 111, 0)
-        var x = $().cropper('getData');
-        $().cropper('getCropperCanvas', {
-            'width': '20', // the destination width of the output canvas.
-            'height': '20', // the destination height of the output canvas.
-            'minWidth': 0, // the minimum destination width of the output canvas, the default value is 0.
-            'minHeight': 0, // the minimum destination height of the output canvas, the default value is 0.
-            'maxWidth': 'Infinity', // the maximum destination width of the output canvas, the default value is Infinity.
-            'maxHeight': 'Infinity', // the maximum destination height of the output canvas, the default value is Infinity.
-            'fillColor': 'transparent', // a color to fill any alpha values in the output canvas, the default value is transparent.
-            'imageSmoothingEnabled': true, // set to change if images are smoothed (true, default) or not (false).
-            'imageSmoothingQuality': 'low' // one of "low" (default), "medium", or "high".
-        });
-        console.log(x);
-    })
-</script>
-<?php common\components\widgets\JsBlock::end(); ?>

@@ -15,8 +15,12 @@ namespace frontend\widgets\wodrow\avatar;
  */
 class AvatarWidget extends \kartik\widgets\Widget
 {
+    public $avatar_url;
+
     public function run() {
         assets\Asset::register($this->view);
-        return $this->render('index');
+        return $this->render('index', [
+            'avatar_url' => $this->avatar_url,
+        ]);
     }
 }

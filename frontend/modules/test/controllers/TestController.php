@@ -15,10 +15,12 @@ use common\components\tools\Tools;
 use common\models\db\Budget;
 use common\models\db\Test;
 use frontend\models\FormGetEmailCode;
+use frontend\widgets\wodrow\avatar\CropAvatar;
 use Phpml\Association\Apriori;
 use common\components\tools\FileHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 use yii\web\UploadedFile;
 
 class TestController extends Controller
@@ -222,5 +224,21 @@ class TestController extends Controller
         $file = new \common\models\db\Files();
         $image = \Yii::getAlias('@wroot/images').DIRECTORY_SEPARATOR.'404.png';
         return $this->render('test16');
+    }
+
+    public function actionCrop()
+    {
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $crop = new CropAvatar(
+            isset($_POST['avatar_src']) ? $_POST['avatar_src'] : null,
+            isset($_POST['avatar_data']) ? $_POST['avatar_data'] : null,
+            isset($_FILES['avatar_file']) ? $_FILES['avatar_file'] : null
+        );
+        $response = array(
+            'state'  => 200,
+            'message' => $crop -> getMsg(),
+            'result' => $crop -> getResult()
+        );
+        return $response;
     }
 }
