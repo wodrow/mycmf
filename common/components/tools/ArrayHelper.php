@@ -549,4 +549,14 @@ class ArrayHelper
         $x = rand(0, $limit);
         return $arr[$x];
     }
+
+    /**
+     * 格式化打印数组
+     */
+    public static function h5print($arr)
+    {
+        echo "<pre>";
+        var_export($arr);
+        echo "</pre>";
+    }
 }

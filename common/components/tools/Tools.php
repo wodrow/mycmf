@@ -9,6 +9,8 @@
 namespace common\components\tools;
 
 
+use yii\log\Logger;
+
 class Tools
 {
     /**
@@ -19,7 +21,7 @@ class Tools
     {
         $log = New \yii\log\FileTarget();
         $log->logFile = \Yii::$app->getRuntimePath().DIRECTORY_SEPARATOR."logs".DIRECTORY_SEPARATOR."app.log";
-        $log->messages[] = [$msg];
+        $log->messages[] = [$msg, Logger::LEVEL_INFO, 'tool-log', time()];
         $log->export();
     }
 
