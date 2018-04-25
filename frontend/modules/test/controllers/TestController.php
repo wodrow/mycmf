@@ -250,48 +250,8 @@ class TestController extends Controller
 
     public function actionTest17()
     {
-        $adapter = new Local(\Yii::$app->fs_local->path);
-        $fs_local = new Filesystem($adapter);
-        $adapter = new SftpAdapter([
-            'host' => \Yii::$app->sftp_local->host,
-            'port' => \Yii::$app->sftp_local->port,
-            'username' => \Yii::$app->sftp_local->username,
-            'password' => \Yii::$app->sftp_local->password,
-            'root' => \Yii::$app->sftp_local->root,
-        ]);
-        $sftp_local = new Filesystem($adapter);
-        $manager = new MountManager();
-        $manager->mountFilesystem('fs_local', $fs_local);
-        $manager->mountFilesystem('sftp_local', $sftp_local);
-
-//        var_dump($manager->has("sftp_local://var/www/mycmf/frontend/runtime/test/dbs"));
-//        var_dump($manager->has("sftp_local://var/www/mycmf/frontend/runtime/test/db/"));
-//        exit;
-
-        $source = $manager->listContents('fs_local://var/www/test', true);
-        foreach ($source as $k => $v) {
-            $_type = $v['type'];
-            $_path = str_replace('var/www/test', '', $v['path']);
-            $_sftp_path = "sftp_local://var/www/mycmf/frontend/runtime/test".$_path;
-            $_fs_path = "fs_local://".$v['path'];
-            $update = false;
-            if ($_type!='dir'){
-                if (!$manager->has($_sftp_path)) {
-                    $update = true;
-                } elseif ($manager->getTimestamp($_fs_path) > $manager->getTimestamp($_sftp_path)) {
-                    $update = true;
-                }
-                if ($update) {
-//                    Tools::log($_sftp_path);
-//                    Tools::log($_fs_path);
-                    $manager->put($_sftp_path, $manager->read($_fs_path));
-                }
-            }else{
-                if (!$manager->has($_sftp_path)){
-                    $manager->createDir($_sftp_path);
-                }
-            }
-        }
+        $manager = FileHelper::getMountManager();
+        FileHelper::downloadSourceDirToTarget('fs_local', 'var/www/test', 'sftp_local', 'var/www/mycmf/frontend/runtime/test');
         $contents = $manager->listContents('sftp_local://var/www/mycmf/frontend/runtime/test', true);
         return $this->render('test17', [
             'contents' => $contents,
