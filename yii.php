@@ -25,6 +25,8 @@ Yii::$container = new yii\di\Container;
  * @property \yii\db\Connection $db_test
  * @property \yii\db\Connection $db_genealogy
  * @property \herroffizier\yii2um\UploadManager $uploads
+ * @property \creocoder\flysystem\LocalFilesystem $fs_local
+ * @property \creocoder\flysystem\SftpFilesystem $sftp_local
  */
 abstract class BaseApplication extends yii\base\Application
 {

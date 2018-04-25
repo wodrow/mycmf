@@ -17,6 +17,17 @@ $config = [
             // for the mailer to send real emails.
             'useFileTransport' => true,
         ],
+        'fs_local' => [
+            'class' => \creocoder\flysystem\LocalFilesystem::className(),
+            'path' => '/var/www/test',
+        ],
+        'sftp_local' => [
+            'class' => \creocoder\flysystem\SftpFilesystem::className(),
+            'host' => 'localhost',
+            'username' => '',
+            'password' => '',
+            'port' => 22,
+        ],
     ],
 ];
 

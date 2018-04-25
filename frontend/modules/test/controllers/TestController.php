@@ -16,6 +16,10 @@ use common\models\db\Budget;
 use common\models\db\Test;
 use frontend\models\FormGetEmailCode;
 use frontend\widgets\wodrow\avatar\CropAvatar;
+use League\Flysystem\Adapter\Local;
+use League\Flysystem\Filesystem;
+use League\Flysystem\MountManager;
+use League\Flysystem\Sftp\SftpAdapter;
 use Phpml\Association\Apriori;
 use common\components\tools\FileHelper;
 use yii\web\Controller;
@@ -222,7 +226,7 @@ class TestController extends Controller
     public function actionTest16()
     {
         $test = new \common\models\db\Test();
-        $test->image = \Yii::getAlias('@wurl/images/404.png');
+        $test->image = \Yii::getAlias('@wurl/storge/images/404.png');
         return $this->render('test16', [
             'model' => $test,
         ]);
@@ -242,5 +246,24 @@ class TestController extends Controller
             'result' => $crop -> getResult()
         );
         return $response;
+    }
+
+    public function actionTest17()
+    {
+        $adapter = new Local(\Yii::$app->fs_local->path);
+        $fs_local = new Filesystem($adapter);
+        $adapter = new SftpAdapter([
+            'host' => \Yii::$app->sftp_local->host,
+            'port' => \Yii::$app->sftp_local->port,
+            'username' => \Yii::$app->sftp_local->username,
+            'password' => \Yii::$app->sftp_local->password,
+        ]);
+        $sftp_local = new Filesystem($adapter);
+        $manager = new MountManager();
+        $manager->mountFilesystem('fs_local', $fs_local);
+        $manager->mountFilesystem('sftp_local', $sftp_local);
+
+        $x = $manager->listContents('fs_local://', true);
+        var_dump($x);
     }
 }
