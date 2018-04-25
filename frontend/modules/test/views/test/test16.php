@@ -13,7 +13,9 @@ use frontend\widgets\wodrow\avatar\AvatarWidget;
 <div class="frontend-test-test-test16">
     <div class="row">
         <div class="col-lg-12">
-            <?= AvatarWidget::widget(['avatar_url' => '/images/404.png']) ?>
+            <?= AvatarWidget::widget([
+                'avatar_url' => $model->image,
+            ]) ?>
         </div>
     </div>
 </div>

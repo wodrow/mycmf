@@ -52,7 +52,7 @@ class CropAvatar
 
             if ($type) {
                 $extension = image_type_to_extension($type);
-                $src = 'images/' . date('YmdHis') . '.original' . $extension;
+                $src = \Yii::getAlias('@runtime/avatars/') . date('YmdHis') . '.original' . $extension;
 
                 if ($type == IMAGETYPE_GIF || $type == IMAGETYPE_JPEG || $type == IMAGETYPE_PNG) {
 

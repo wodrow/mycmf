@@ -221,9 +221,11 @@ class TestController extends Controller
 
     public function actionTest16()
     {
-        $file = new \common\models\db\Files();
-        $image = \Yii::getAlias('@wroot/images').DIRECTORY_SEPARATOR.'404.png';
-        return $this->render('test16');
+        $test = new \common\models\db\Test();
+        $test->image = \Yii::getAlias('@wurl/images/404.png');
+        return $this->render('test16', [
+            'model' => $test,
+        ]);
     }
 
     public function actionCrop()

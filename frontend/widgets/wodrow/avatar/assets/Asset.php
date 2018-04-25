@@ -17,7 +17,7 @@ class Asset extends \kartik\base\AssetBundle
 {
     public $css = [
         'https://cdn.bootcss.com/cropper/4.0.0/cropper.min.css',
-        'css/crop-avatar-main.css',
+        'css/crop-avatar-main.css'
     ];
     
     public $js = [

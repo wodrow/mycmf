@@ -2,6 +2,9 @@
 /**
  * @var \yii\web\View $this
  */
+
+\common\components\assets\ThreeJs::register($this);
+
 $this->title = "My first Three.js app";
 ?>
 

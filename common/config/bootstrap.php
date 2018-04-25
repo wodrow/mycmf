@@ -49,3 +49,6 @@ Yii::$container->set('yii\captcha\CaptchaAction', [
     'maxLength' => 4, 
     'fontFile' => '@data/fonts/ztgjkt.ttf',
 ]);
+Yii::$container->set(\yii\bootstrap\Modal::className(), [
+    'size' => \yii\bootstrap\Modal::SIZE_LARGE,
+]);
