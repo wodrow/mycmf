@@ -251,7 +251,7 @@ class TestController extends Controller
     public function actionTest17()
     {
         $manager = FileHelper::getMountManager();
-        FileHelper::downloadSourceDirToTarget('fs_local', 'var/www/test', 'sftp_local', 'var/www/mycmf/frontend/runtime/test');
+        FileHelper::downloadSourceDirToTarget('fs_local', 'var/www/test/', 'sftp_local', 'var/www/mycmf/frontend/runtime/test/');
         $contents = $manager->listContents('sftp_local://var/www/mycmf/frontend/runtime/test', true);
         return $this->render('test17', [
             'contents' => $contents,
