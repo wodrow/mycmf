@@ -257,4 +257,14 @@ class TestController extends Controller
             'contents' => $contents,
         ]);
     }
+
+    public function actionTest18()
+    {
+        $test = new \common\models\db\Test();
+        $test->image = \Yii::getAlias('@wurl/storge/images/404.png');
+        return $this->render('test18', [
+            'model' => $test,
+            'avatar_url' => $test->image,
+        ]);
+    }
 }
