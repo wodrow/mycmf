@@ -1,0 +1,3 @@
+# proxy
+export https_proxy=
+export http_proxy=$https_proxy
