@@ -267,4 +267,17 @@ class TestController extends Controller
             'avatar_url' => $test->image,
         ]);
     }
+
+    public function actionTest19()
+    {
+        return $this->render('test19');
+    }
+
+    public function actionTest20()
+    {
+        $test = new Test();
+        return $this->render('test20', [
+            'model' => $test,
+        ]);
+    }
 }
