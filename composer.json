@@ -71,8 +71,7 @@
         "nesbot/carbon": "^1.25",
         "creocoder/yii2-flysystem": "^0.9.0",
         "league/flysystem-sftp": "^1.0",
-        "zh/yii2-qiniu-images": "dev-master",
-        "tsingsun/yii2-swoole": "^1.1"
+        "zh/yii2-qiniu-images": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
