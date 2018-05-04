@@ -280,4 +280,7 @@ class TestController extends Controller
             'model' => $test,
         ]);
     }
+
+    public function actionTest21()
+    {}
 }
