@@ -1,27 +1,22 @@
 <?php
-namespace common\widgets\wodrow\avatar;
 /**
- * 设置挂件
- * @author 上班偷偷打酱油 （xianan_huang@163.com）
- * @copyright Yii中文网 （www.yii-china.com）
+ * Created by PhpStorm.
+ * User: wodrow
+ * Date: 18-5-8
+ * Time: 下午3:20
  */
-use Yii;
-use common\widgets\wodrow\avatar\assets\AvatarAsset;
-use yii\base\Object;
-use yii\bootstrap\Widget;
 
-class AvatarWidget extends Widget
-{    
-    public $imageUrl = '';
-    
+namespace common\widgets\wodrow\avatar;
+
+
+use common\widgets\wodrow\avatar\assets\Jcrop;
+use kartik\widgets\InputWidget;
+
+class AvatarWidget extends InputWidget
+{
     public function run()
     {
-        $this->registerClientScript();       
-        return $this->render('index',['imageUrl'=>$this->imageUrl]);
-    }
-    
-    public function registerClientScript()
-    {
-        AvatarAsset::register($this->view);
+        Jcrop::register($this->view);
+        return $this->render('index');
     }
 }

@@ -282,5 +282,18 @@ class TestController extends Controller
     }
 
     public function actionTest21()
-    {}
+    {
+        $test = new Test();
+        return $this->render('test21', [
+            'model' => $test,
+        ]);
+    }
+
+    public function actionTest22()
+    {
+        $test = new Test();
+        return $this->render('test22', [
+            'model' => $test,
+        ]);
+    }
 }

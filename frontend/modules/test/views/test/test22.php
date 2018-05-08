@@ -10,7 +10,7 @@
 <div class="frontend-test-test-test21">
     <div class="row">
         <div class="col-lg-12">
-            <?php echo \common\widgets\vue_croppa_avatar\AvatarWidget::widget([
+            <?php echo \common\widgets\wodrow\avatar\AvatarWidget::widget([
                 'model' => $model,
                 'attribute' => 'image',
             ]) ?>
