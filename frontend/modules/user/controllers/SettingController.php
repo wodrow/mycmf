@@ -38,5 +38,7 @@ class SettingController extends Controller
     }
 
     public function actionChangeAvatar()
-    {}
+    {
+        return $this->render('change-avatar');
+    }
 }
