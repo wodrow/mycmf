@@ -29,6 +29,17 @@ use yii\web\UploadedFile;
 
 class TestController extends Controller
 {
+    public function actions()
+    {
+        return [
+            'uploadPhoto' => [
+                'class' => 'budyaga\cropper\actions\UploadAction',
+                'url' => \Yii::getAlias('@wurl/storge/uploads/test/image'),
+                'path' => \Yii::getAlias('@wroot/storge/uploads/test/image'),
+            ]
+        ];
+    }
+
     public function actionTest()
     {
         $samples = [['1', '2', '5'], ['1', '2', '8'], ['1', '2', '5'], ['1', '2', '8']];
@@ -293,6 +304,19 @@ class TestController extends Controller
     {
         $test = new Test();
         return $this->render('test22', [
+            'model' => $test,
+        ]);
+    }
+
+    public function actionTest23()
+    {
+        $test = new Test();
+        if (\Yii::$app->request->isPost){
+            $test->load(\Yii::$app->request->post());
+            var_dump($test->toArray());
+            exit;
+        }
+        return $this->render('test23', [
             'model' => $test,
         ]);
     }
