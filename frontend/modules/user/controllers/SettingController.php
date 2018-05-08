@@ -9,11 +9,23 @@
 namespace frontend\modules\user\controllers;
 
 
+use frontend\modules\user\models\FormChangeAvatar;
 use frontend\modules\user\models\FormResetPassword;
 use yii\web\Controller;
 
 class SettingController extends Controller
 {
+    public function actions()
+    {
+        return [
+            'uploadAvatar' => [
+                'class' => 'budyaga\cropper\actions\UploadAction',
+                'url' => \Yii::getAlias('@wurl/storge/tmp'),
+                'path' => \Yii::getAlias('@wroot/storge/tmp'),
+            ]
+        ];
+    }
+
     public function actionIndex()
     {
         $model = \Yii::$app->user->identity;
@@ -39,6 +51,9 @@ class SettingController extends Controller
 
     public function actionChangeAvatar()
     {
-        return $this->render('change-avatar');
+        $model = new FormChangeAvatar();
+        return $this->render('change-avatar', [
+            'model' => $model,
+        ]);
     }
 }
