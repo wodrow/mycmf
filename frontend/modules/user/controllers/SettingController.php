@@ -36,4 +36,7 @@ class SettingController extends Controller
             'resetPasswordForm' => $resetPasswordForm,
         ]);
     }
+
+    public function actionChangeAvatar()
+    {}
 }

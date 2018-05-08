@@ -30,6 +30,11 @@ $this->beginContent('@frontend/views/layouts/base.php');
                         'icon' => 'info-sign' // This is a bootstrap icon name
                     ],
                     [
+                        'url' => ['/user/setting/change-avatar'],
+                        'label' => '修改头像',
+                        'icon' => 'info-sign' // This is a bootstrap icon name
+                    ],
+                    [
                         'url' => ['/user/setting/reset-password'],
                         'label' => '重置密码',
                         'icon' => 'info-sign' // This is a bootstrap icon name
