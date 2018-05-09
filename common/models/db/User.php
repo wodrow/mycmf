@@ -23,6 +23,7 @@ use yii\db\Exception;
  *
  * @property AuthAssignment[] $authAssignments
  * @property AuthItem[] $itemNames
+ * @property Files $avatarFile
  */
 class User extends \common\models\db\base\User
 {
@@ -70,6 +71,14 @@ class User extends \common\models\db\base\User
     }
 
     /**
+     * @return string
+     */
+    public function getAvatarUrl()
+    {
+        return $this->avatarFile->url;
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getAuthAssignments()
@@ -83,5 +92,13 @@ class User extends \common\models\db\base\User
     public function getItemNames()
     {
         return $this->hasMany(AuthItem::className(), ['name' => 'item_name'])->viaTable('{{%auth_assignment}}', ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAvatarFile()
+    {
+        return $this->hasOne(Files::className(), ['id' => 'avatar']);
     }
 }

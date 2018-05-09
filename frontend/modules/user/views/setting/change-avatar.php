@@ -26,5 +26,8 @@ use budyaga\cropper\Widget;
             </div>
             <?php ActiveForm::end(); ?>
         </div>
+        <div class="col-lg-12">
+            <?php // echo Html::img(Yii::$app->user->identity->getAvatarUrl()) ?>
+        </div>
     </div>
 </div>
