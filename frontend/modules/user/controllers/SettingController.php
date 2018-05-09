@@ -52,6 +52,9 @@ class SettingController extends Controller
     public function actionChangeAvatar()
     {
         $model = new FormChangeAvatar();
+        if ($model->load(\Yii::$app->request->post())){
+            \Yii::$app->user->identity->saveAvatar($model->avatar);
+        }
         return $this->render('change-avatar', [
             'model' => $model,
         ]);

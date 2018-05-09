@@ -223,7 +223,7 @@ class TestController extends Controller
     public function actionTest14()
     {
         $budget = new Budget();
-        $budget->name = 'sm.ms';
+        $budget->name = 'smms';
         $file = '';
         $r = $budget->operator->uploadLocalFile($file);
         var_dump($r);

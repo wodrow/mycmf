@@ -8,10 +8,12 @@
 
 namespace common\components\budget;
 
-
 use yii\base\Component;
 
+/**
+ * Class Bed
+ * @package common\components\budget
+ */
 abstract class Bed extends Component implements Api
 {
-//    protected $r;
 }

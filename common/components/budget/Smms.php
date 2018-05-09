@@ -14,11 +14,13 @@ use yii\base\ErrorException;
 
 class Smms extends Bed
 {
-    const NAME = 'sm.ms';
+    const NAME = 'smms';
+    const TITLE = 'sm.ms';
+    const UPLOAD_URL = 'https://sm.ms/api/upload';
 
     public function uploadLocalFile($file)
     {
-        $url = 'https://sm.ms/api/upload';
+        $url = self::UPLOAD_URL;
         $body = fopen($file, 'r');
         $client = new \GuzzleHttp\Client();
         $r = $client->request('POST', $url, [
@@ -32,7 +34,7 @@ class Smms extends Bed
         $r = $r->getBody();
         $r = json_decode($r, true, 512);
         if ($r['code']!='success'){
-            throw new ErrorException(self::NAME."上传失败");
+            throw new ErrorException(self::TITLE."上传失败");
         }
         return $r['data'];
     }
