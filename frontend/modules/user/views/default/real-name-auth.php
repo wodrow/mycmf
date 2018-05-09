@@ -10,6 +10,7 @@
 
 use kartik\helpers\Html;
 use kartik\form\ActiveForm;
+use common\components\tools\Url;
 
 $this->title = "实名认证";
 $this->params['breadcrumbs'][] = Html::a('用户中心', ['/user']);
@@ -22,7 +23,17 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php $form = ActiveForm::begin(); ?>
             <?=$form->field($model, 'name')->textInput() ?>
             <?=$form->field($model, 'id_card_number')->textInput() ?>
-            <?=$form->field($model, 'id_card_front_image')->textInput() ?>
+            <?=$form->field($model, 'id_card_front_image')->widget(\common\widgets\bailangzhan\webuploader\FileInput::className(), [
+                'clientOptions' => [
+//                    'pick' => [
+//                        'multiple' => false,
+//                    ],
+                    'server' => Url::to('upload/u2'),
+                    // 'accept' => [
+                    // 	'extensions' => 'png',
+                    // ],
+                ],
+            ])?>
             <?=$form->field($model, 'id_card_back_image')->textInput() ?>
             <?=$form->field($model, 'id_card_front_and_face_image')->textInput() ?>
             <?=Html::submitButton('提交', ['class' => "btn btn-primary"]) ?>

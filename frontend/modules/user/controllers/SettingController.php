@@ -34,6 +34,10 @@ class SettingController extends Controller
         ]);
     }
 
+    /**
+     * 重置密码
+     * @return string
+     */
     public function actionResetPassword()
     {
         $resetPasswordForm = new FormResetPassword();
@@ -49,6 +53,10 @@ class SettingController extends Controller
         ]);
     }
 
+    /**
+     * 重置头像
+     * @return string
+     */
     public function actionChangeAvatar()
     {
         $model = new FormChangeAvatar();

@@ -21,6 +21,9 @@ class DefaultController extends Controller
         return $this->render('index');
     }
 
+    /**
+     * 实名认证
+     */
     public function actionRealNameAuth()
     {
         $real_name_auth = \Yii::$app->user->identity->userRealNameAuth;
