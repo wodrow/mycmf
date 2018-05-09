@@ -3,6 +3,7 @@
 namespace common\widgets\bailangzhan\webuploader;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 use yii\widgets\InputWidget;
 use yii\helpers\Html;
 use yii\base\InvalidConfigException;
@@ -14,12 +15,13 @@ class FileInput extends InputWidget
     public $clientOptions = [];
     public $chooseButtonClass = ['class' => 'btn-default'];
     public $domain;
+    public $webuploader = [];
     private $_view;
     private $_hashVar;
     private $_encOptions;
     private $_config;
 
-    public function init ()
+    public function init()
     {
         parent::init();
         $this->_view = $this->getView();
@@ -28,7 +30,7 @@ class FileInput extends InputWidget
         $this->registerClientScript();
     }
 
-    public function run ()
+    public function run()
     {
         if ($this->hasModel()) {
             $model = $this->model;
@@ -38,13 +40,12 @@ class FileInput extends InputWidget
             if (empty($this->_config['pick']['multiple'])) {
                 $html = $this->renderInput($model, $attribute);
                 $html .= $this->renderImage($model, $attribute);
-            } 
-            // 多图
+            } // 多图
             else {
                 $html = $this->renderMultiInput($model, $attribute);
                 $html .= $this->renderMultiImage($model, $attribute);
             }
-            
+
             echo $html;
         }
     }
@@ -52,7 +53,7 @@ class FileInput extends InputWidget
     /**
      * init options
      */
-    public function initOptions ()
+    public function initOptions()
     {
         // to do.
         $id = md5($this->options['id']);
@@ -62,8 +63,27 @@ class FileInput extends InputWidget
     /**
      * register base js config
      */
-    public function initConfig ()
+    public function initConfig()
     {
+        $this->webuploader = ArrayHelper::merge([
+            // 后端处理图片的地址，value 是相对的地址
+            'uploadUrl' => 'upload/action',
+            // 多文件分隔符
+            'delimiter' => ',',
+            // 基本配置
+            'baseConfig' => [
+                'defaultImage' => 'http://img1.imgtn.bdimg.com/it/u=2056478505,162569476&fm=26&gp=0.jpg',
+                'disableGlobalDnd' => true,
+                'accept' => [
+                    'title' => 'Images',
+                    'extensions' => 'gif,jpg,jpeg,bmp,png',
+                    'mimeTypes' => 'image/*',
+                ],
+                'pick' => [
+                    'multiple' => false,
+                ],
+            ],
+        ], $this->webuploader);
         if (empty($this->domain)) {
 //            throw new InvalidConfigException("`domain` must set.", 1);
             $this->domain = '';
@@ -80,7 +100,7 @@ JS;
     /**
      * Registers the needed client script and options.
      */
-    public function registerClientScript ()
+    public function registerClientScript()
     {
         FileInputAsset::register($this->_view);
     }
@@ -94,7 +114,7 @@ JS;
         $this->_hashVar = $name . '_' . hash('crc32', $this->_encOptions);
     }
 
-    public function mergeConfig ()
+    public function mergeConfig()
     {
         // $config = $this->mergeArray($this->getDefaultClientOptions(), $this->clientOptions);
         $config = array_merge($this->getDefaultClientOptions(), $this->clientOptions);
@@ -106,7 +126,7 @@ JS;
         $config['modal_id'] = $this->_hashVar;
 
         if (empty($config['server'])) {
-            $uploadUrl = Yii::$app->params['webuploader']['uploadUrl'];
+            $uploadUrl = $this->webuploader['uploadUrl'];
             $config['server'] = Url::to([$uploadUrl]);
         }
 
@@ -116,7 +136,7 @@ JS;
     /**
      * array merge
      */
-    public function mergeArray ($oriArr, $desArr)
+    public function mergeArray($oriArr, $desArr)
     {
         foreach ($oriArr as $k => $v) {
             if (array_key_exists($k, $desArr)) {
@@ -137,15 +157,15 @@ JS;
     /**
      * register default config for js
      */
-    public function getDefaultClientOptions ()
+    public function getDefaultClientOptions()
     {
-        return Yii::$app->params['webuploader']['baseConfig'];
+        return $this->webuploader['baseConfig'];
     }
 
     /**
      * render html body-input
      */
-    public function renderInput ($model, $attribute)
+    public function renderInput($model, $attribute)
     {
         Html::addCssClass($this->chooseButtonClass, "btn {$this->_hashVar}");
         $eles = [];
@@ -158,7 +178,7 @@ JS;
     /**
      * render html body-input-multi
      */
-    public function renderMultiInput ($model, $attribute)
+    public function renderMultiInput($model, $attribute)
     {
         $inputName = Html::getInputName($model, $attribute);
         Html::addCssClass($this->chooseButtonClass, "btn {$this->_hashVar}");
@@ -173,9 +193,9 @@ JS;
     /**
      * render html body-image
      */
-    public function renderImage ($model, $attribute)
+    public function renderImage($model, $attribute)
     {
-        $src = Yii::$app->params['webuploader']['baseConfig']['defaultImage'];
+        $src = $this->webuploader['baseConfig']['defaultImage'];
         $eles = [];
         if (($value = $model->$attribute)) {
             $src = $this->_validateUrl($value) ? $value : $this->domain . $value;
@@ -189,7 +209,7 @@ JS;
     /**
      * render html body-image-muitl
      */
-    public function renderMultiImage ($model, $attribute)
+    public function renderMultiImage($model, $attribute)
     {
         /**
          * @var $srcTmp like this: src1,src2...srcxxx
@@ -197,18 +217,18 @@ JS;
         $srcTmp = $model->$attribute;
         $items = [];
         if ($srcTmp) {
-            is_string($srcTmp) && $srcTmp = explode(Yii::$app->params['webuploader']['delimiter'], $srcTmp);
+            is_string($srcTmp) && $srcTmp = explode($this->webuploader['delimiter'], $srcTmp);
             $inputName = Html::getInputName($model, $attribute);
             foreach ($srcTmp as $k => $v) {
                 $dv = $this->_validateUrl($v) ? $v : $this->domain . $v;
-                $src = $v ? $dv : Yii::$app->params['webuploader']['baseConfig']['defaultImage'];
+                $src = $v ? $dv : $this->webuploader['baseConfig']['defaultImage'];
                 $eles = [];
                 $eles[] = Html::img($src, ['class' => 'img-responsive img-thumbnail cus-img']);
                 $eles[] = Html::hiddenInput($inputName . "[]", $v);
                 $eles[] = Html::tag('em', 'x', ['class' => 'close delMultiImage', 'title' => '删除这张图片']);
                 $items[] = Html::tag('div', implode("\n", $eles), ['class' => 'multi-item']);
             }
-        } 
+        }
 
         return Html::tag('div', implode("\n", $items), ['class' => 'input-group multi-img-details']);
     }
@@ -216,7 +236,7 @@ JS;
     /**
      * validate `$value` is url
      */
-    private function _validateUrl ($value)
+    private function _validateUrl($value)
     {
         $pattern = '/^{schemes}:\/\/(([A-Z0-9][A-Z0-9_-]*)(\.[A-Z0-9][A-Z0-9_-]*)+)(?::\d{1,5})?(?:$|[?\/#])/i';
         $validSchemes = ['http', 'https'];
