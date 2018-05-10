@@ -67,12 +67,12 @@ class FileInput extends InputWidget
     {
         $this->webuploader = ArrayHelper::merge([
             // 后端处理图片的地址，value 是相对的地址
-            'uploadUrl' => 'upload/action',
+            'uploadUrl' => '/user/default/webuploader-upload',
             // 多文件分隔符
             'delimiter' => ',',
             // 基本配置
             'baseConfig' => [
-                'defaultImage' => 'http://img1.imgtn.bdimg.com/it/u=2056478505,162569476&fm=26&gp=0.jpg',
+                'defaultImage' => 'http://p04m5lp2f.bkt.clouddn.com/404.png',
                 'disableGlobalDnd' => true,
                 'accept' => [
                     'title' => 'Images',

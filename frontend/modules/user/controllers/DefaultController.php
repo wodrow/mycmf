@@ -6,6 +6,7 @@ use common\models\db\User;
 use common\models\db\UserRealNameAuth;
 use yii\base\ErrorException;
 use yii\web\Controller;
+use yii\web\Response;
 
 /**
  * Default controller for the `user` module
@@ -19,6 +20,12 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionWebuploaderUpload()
+    {
+        \Yii::$app->response->format=Response::FORMAT_JSON;
+        return $_REQUEST;
     }
 
     /**
@@ -36,6 +43,9 @@ class DefaultController extends Controller
         }else{
             $model = new UserRealNameAuth();
             $model->user_id = \Yii::$app->user->id;
+        }
+        if ($model->load(\Yii::$app->request->post())){
+            var_dump($model->toArray());exit;
         }
         return $this->render('real-name-auth', [
             'model' => $model,
