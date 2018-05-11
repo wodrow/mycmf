@@ -171,7 +171,8 @@ JS;
     {
         Html::addCssClass($this->chooseButtonClass, "btn {$this->_hashVar}");
         $eles = [];
-        $eles[] = Html::activeTextInput($model, $attribute, ['class' => 'form-control']);
+//        $eles[] = Html::activeTextInput($model, $attribute, ['class' => 'form-control']);
+        $eles[] = Html::activeHiddenInput($model, $attribute, ['class' => 'form-control']);
         $eles[] = Html::tag('span', Html::button('选择图片', $this->chooseButtonClass), ['class' => 'input-group-btn']);
 
         return Html::tag('div', implode("\n", $eles), ['class' => 'input-group']);

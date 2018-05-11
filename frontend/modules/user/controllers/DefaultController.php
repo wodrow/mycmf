@@ -54,13 +54,11 @@ class DefaultController extends Controller
      */
     public function actionRealNameAuth()
     {
-        $real_name_auth = \Yii::$app->user->identity->userRealNameAuth;
-        if ($real_name_auth){
-            if ($real_name_auth->status != User::REAL_NAME_AUTH_STATUS_SUCCESS){
-                $real_name_auth->status = User::REAL_NAME_AUTH_STATUS_SEND;
-                $real_name_auth->save();
+        $model = \Yii::$app->user->identity->userRealNameAuth;
+        if ($model){
+            if ($model->status != User::REAL_NAME_AUTH_STATUS_SUCCESS){
+                $model->status = User::REAL_NAME_AUTH_STATUS_SEND;
             }
-            $model = $real_name_auth;
         }else{
             $model = new UserRealNameAuth();
             $model->user_id = \Yii::$app->user->id;
@@ -68,10 +66,11 @@ class DefaultController extends Controller
         }
         if ($model->load(\Yii::$app->request->post())&&$model->validate()){
             if ($model->save()){
-                \Yii::$app->session->setFlash('success', "提交成功,请等待结果");
+                \Yii::$app->session->setFlash('success', "提交成功,请耐心等待结果");
             }else{
-                \Yii::$app->session->addFlash('error', "提交失败".var_export($model->errors, true));
+                \Yii::$app->session->setFlash('error', var_export($model->errors, true));
             }
+            var_dump($model->toArray());
         }
         return $this->render('real-name-auth', [
             'model' => $model,
