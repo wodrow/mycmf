@@ -26,19 +26,28 @@ $this->params['breadcrumbs'][] = $this->title;
             <?=$form->field($model, 'id_card_front_image')->widget(\common\widgets\bailangzhan\webuploader\FileInput::className(), [
                 'clientOptions' => [
                     'server' => Url::to('real-name-check-webuploader-upload'),
-                ]
+                ],
+                'domain' => 'link',
+                'linkModel' => 'cardFrontImage',
+                'linkAttribute' => 'url',
             ])?>
             <?=$form->field($model, 'id_card_back_image')->widget(\common\widgets\bailangzhan\webuploader\FileInput::className(), [
                 'clientOptions' => [
                     'server' => Url::to('real-name-check-webuploader-upload'),
-                ]
+                ],
+                'domain' => 'link',
+                'linkModel' => 'cardBackImage',
+                'linkAttribute' => 'url',
             ])?>
             <?=$form->field($model, 'id_card_front_and_face_image')->widget(\common\widgets\bailangzhan\webuploader\FileInput::className(), [
                 'clientOptions' => [
                     'server' => Url::to('real-name-check-webuploader-upload'),
-                ]
+                ],
+                'domain' => 'link',
+                'linkModel' => 'cardFrontAndFaceImage',
+                'linkAttribute' => 'url',
             ])?>
-            <?=Html::submitButton('提交', ['class' => "btn btn-primary"]) ?>
+            <?=Html::submitButton('修改', ['class' => "btn btn-primary"]) ?>
             <?=Html::resetButton('重置', ['class' => "btn btn-warning"]) ?>
             <?php ActiveForm::end(); ?>
         </div>

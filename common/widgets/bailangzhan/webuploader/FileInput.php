@@ -14,7 +14,9 @@ class FileInput extends InputWidget
 {
     public $clientOptions = [];
     public $chooseButtonClass = ['class' => 'btn-default'];
-    public $domain;
+    public $domain; // vule link use linkModel
+    public $linkModel;
+    public $linkAttribute;
     public $webuploader = [];
     private $_view;
     private $_hashVar;
@@ -196,14 +198,25 @@ JS;
     public function renderImage($model, $attribute)
     {
         $src = $this->webuploader['baseConfig']['defaultImage'];
-        $eles = [];
         if (($value = $model->$attribute)) {
-            $src = $this->_validateUrl($value) ? $value : $this->domain . $value;
+            if ($this->_validateUrl($value)){
+                $src = $value;
+            }else{
+                if ($this->domain == 'link'){
+                    $lm = $this->linkModel;
+                    $la = $this->linkAttribute;
+                    $src = $model->$lm->$la;
+                }else{
+                    $src = $this->domain . $value;
+                }
+            }
         }
+
+        return $this->render('image', ['src' => $src]);
+        /*$eles = [];
         $eles[] = Html::img($src, ['class' => 'img-responsive img-thumbnail cus-img']);
         $eles[] = Html::tag('em', 'x', ['class' => 'close delImage', 'title' => '删除这张图片']);
-
-        return Html::tag('div', implode("\n", $eles), ['class' => 'input-group', 'style' => 'margin-top:.5em;']);
+        return Html::tag('div', implode("\n", $eles), ['class' => 'input-group', 'style' => 'margin-top:.5em;']);*/
     }
 
     /**
@@ -220,8 +233,22 @@ JS;
             is_string($srcTmp) && $srcTmp = explode($this->webuploader['delimiter'], $srcTmp);
             $inputName = Html::getInputName($model, $attribute);
             foreach ($srcTmp as $k => $v) {
-                $dv = $this->_validateUrl($v) ? $v : $this->domain . $v;
-                $src = $v ? $dv : $this->webuploader['baseConfig']['defaultImage'];
+                /*$dv = $this->_validateUrl($v) ? $v : $this->domain . $v;
+                $src = $v ? $dv : $this->webuploader['baseConfig']['defaultImage'];*/
+                $src = $this->webuploader['baseConfig']['defaultImage'];
+                if ($v){
+                    if ($this->_validateUrl($v)){
+                        $src = $v;
+                    }else{
+                        if ($this->domain == 'link'){
+                            $lm = $this->linkModel;
+                            $la = $this->linkAttribute;
+                            $src = $model->$lm->$la;
+                        }else{
+                            $src = $this->domain . $v;
+                        }
+                    }
+                }
                 $eles = [];
                 $eles[] = Html::img($src, ['class' => 'img-responsive img-thumbnail cus-img']);
                 $eles[] = Html::hiddenInput($inputName . "[]", $v);

@@ -18,6 +18,9 @@ use Yii;
  * @property int $status
  *
  * @property User $user
+ * @property Files $cardFrontImage
+ * @property Files $cardBackImage
+ * @property Files $cardFrontAndFaceImage
  */
 class UserRealNameAuth extends \yii\db\ActiveRecord
 {
@@ -35,14 +38,16 @@ class UserRealNameAuth extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'name', 'id_card_number', 'id_card_front_and_face_image', 'status'], 'required'],
-            [['user_id', 'status'], 'integer'],
+            [['user_id', 'name', 'id_card_number', 'status'], 'required'],
+            [['user_id', 'id_card_front_image', 'id_card_back_image', 'id_card_front_and_face_image', 'status'], 'integer'],
             [['auth_back_msg'], 'string'],
             [['name'], 'string', 'max' => 20],
             [['id_card_number'], 'string', 'max' => 18],
-            [['id_card_front_image', 'id_card_back_image', 'id_card_front_and_face_image'], 'string', 'max' => 200],
             [['user_id'], 'unique'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
+            [['id_card_front_image'], 'exist', 'skipOnError' => true, 'targetClass' => Files::className(), 'targetAttribute' => ['id_card_front_image' => 'id']],
+            [['id_card_back_image'], 'exist', 'skipOnError' => true, 'targetClass' => Files::className(), 'targetAttribute' => ['id_card_back_image' => 'id']],
+            [['id_card_front_and_face_image'], 'exist', 'skipOnError' => true, 'targetClass' => Files::className(), 'targetAttribute' => ['id_card_front_and_face_image' => 'id']],
         ];
     }
 
@@ -70,5 +75,29 @@ class UserRealNameAuth extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCardFrontImage()
+    {
+        return $this->hasOne(Files::className(), ['id' => 'id_card_front_image']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCardBackImage()
+    {
+        return $this->hasOne(Files::className(), ['id' => 'id_card_back_image']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCardFrontAndFaceImage()
+    {
+        return $this->hasOne(Files::className(), ['id' => 'id_card_front_and_face_image']);
     }
 }

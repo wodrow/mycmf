@@ -14,6 +14,9 @@ use Yii;
  * @package common\models\db
  *
  * @property User $user
+ * @property Files $cardFrontImage
+ * @property Files $cardBackImage
+ * @property Files $cardFrontAndFaceImage
  */
 class UserRealNameAuth extends \common\models\db\base\UserRealNameAuth
 {
@@ -48,5 +51,29 @@ class UserRealNameAuth extends \common\models\db\base\UserRealNameAuth
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCardFrontImage()
+    {
+        return $this->hasOne(Files::className(), ['id' => 'id_card_front_image']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCardBackImage()
+    {
+        return $this->hasOne(Files::className(), ['id' => 'id_card_back_image']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCardFrontAndFaceImage()
+    {
+        return $this->hasOne(Files::className(), ['id' => 'id_card_front_and_face_image']);
     }
 }

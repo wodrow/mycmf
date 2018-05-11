@@ -32,6 +32,9 @@ use Yii;
  * @property User $createdBy
  * @property User $updatedBy
  * @property User[] $users
+ * @property UserRealNameAuth[] $userRealNameAuths
+ * @property UserRealNameAuth[] $userRealNameAuths0
+ * @property UserRealNameAuth[] $userRealNameAuths1
  */
 class Files extends \yii\db\ActiveRecord
 {
@@ -119,5 +122,29 @@ class Files extends \yii\db\ActiveRecord
     public function getUsers()
     {
         return $this->hasMany(User::className(), ['avatar' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserRealNameAuths()
+    {
+        return $this->hasMany(UserRealNameAuth::className(), ['id_card_front_image' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserRealNameAuths0()
+    {
+        return $this->hasMany(UserRealNameAuth::className(), ['id_card_back_image' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserRealNameAuths1()
+    {
+        return $this->hasMany(UserRealNameAuth::className(), ['id_card_front_and_face_image' => 'id']);
     }
 }
