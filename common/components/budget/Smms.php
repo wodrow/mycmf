@@ -55,6 +55,15 @@ class Smms extends Bed
         return $api_resp;
     }
 
+    public function deleteByUrl($delete_url)
+    {
+        $client = new \GuzzleHttp\Client();
+        $r = $client->request('GET', $delete_url);
+        if ($r->getStatusCode()!=200){
+            throw new ErrorException(self::TITLE."删除失败");
+        }
+    }
+
     public function uploadFormUrl($url)
     {}
 }

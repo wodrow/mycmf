@@ -9,17 +9,27 @@
 namespace common\components\budget;
 
 
+use yii\base\ErrorException;
+
 interface Api
 {
     /**
      * @param string $file file detail path
+     * @throws ErrorException
      * @return ApiResp
      */
     public function uploadLocalFile($file);
 
     /**
      * @param string $url
+     * @throws ErrorException
      * @return ApiResp
      */
     public function uploadFormUrl($url);
+
+    /**
+     * @param $delete_url
+     * @throws ErrorException
+     */
+    public function deleteByUrl($delete_url);
 }

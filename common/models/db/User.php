@@ -4,7 +4,9 @@ namespace common\models\db;
 
 use common\components\budget\Smms;
 use Yii;
+use yii\base\ErrorException;
 use yii\db\Exception;
+use yii\httpclient\Client;
 
 /**
  * This is the model class for table "{{%user}}".
@@ -49,6 +51,14 @@ class User extends \common\models\db\base\User
             $data = $budget->operator->uploadLocalFile($_file);
             $file->initDataByBudgetResp($data);
             $file->save(false);
+            if (Yii::$app->user->identity->avatar){
+                $delete_url = Yii::$app->user->identity->avatarFile->delete_url;
+                if (Yii::$app->user->identity->avatarFile->delete()){
+                    $budget->operator->deleteByUrl($delete_url);
+                }else{
+                    throw new ErrorException("老头像删除失败");
+                }
+            }
             Yii::$app->user->identity->avatar = $file->id;
             Yii::$app->user->identity->save(false);
             $trans->commit();
