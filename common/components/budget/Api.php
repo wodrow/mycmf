@@ -13,7 +13,13 @@ interface Api
 {
     /**
      * @param string $file file detail path
-     * @return array
+     * @return ApiResp
      */
     public function uploadLocalFile($file);
+
+    /**
+     * @param string $url
+     * @return ApiResp
+     */
+    public function uploadFormUrl($url);
 }

@@ -55,6 +55,7 @@ $config = [
             'route/api/index',
             'other/*',
             'crawler/*',
+            'test/*',
         ],
         'rules' => [
             [
@@ -66,9 +67,9 @@ $config = [
 ];
 
 if (YII_ENV_DEV) {
-    /*$config['modules']['test'] = [
-        'class' => 'api\modules\test\Test',
-    ];*/
+    $config['modules']['test'] = [
+        'class' => 'api\modules\test\TestModule',
+    ];
 }
 
 $config = yii\helpers\ArrayHelper::merge(

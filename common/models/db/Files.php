@@ -9,6 +9,7 @@
 namespace common\models\db;
 
 
+use common\components\budget\ApiResp;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 
@@ -32,5 +33,26 @@ class Files extends \common\models\db\base\Files
                 'class' => TimestampBehavior::className(),
             ],
         ];
+    }
+
+    /**
+     * @param ApiResp $data
+     */
+    public function initDataByBudgetResp($data)
+    {
+        foreach ($data as $k => $v) {
+            $this->$k = $v;
+        }
+        /*$this->width = $data->width;
+        $this->height = $data->height;
+        $this->filename = $data->filename;
+        $this->storename = $data->storename;
+        $this->size = $data->size;
+        $this->path = $data->path;
+        $this->hash = $data->hash;
+        $this->created_at = $data->uploaded_at;
+        $this->uploaded_ip = $data->uploaded_ip;
+        $this->url = $data->url;
+        $this->delete_url = $data->delete_url;*/
     }
 }

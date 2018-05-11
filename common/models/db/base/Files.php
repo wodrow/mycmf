@@ -13,7 +13,10 @@ use Yii;
  * @property string $delete_url
  * @property string $filename
  * @property int $created_at
+ * @property int $updated_at
  * @property string $created_by
+ * @property string $updated_by
+ * @property int $uploaded_at
  * @property string $uploaded_ip
  * @property int $size
  * @property int $width
@@ -21,13 +24,13 @@ use Yii;
  * @property string $path
  * @property string $budget_id
  * @property int $status
- * @property string $detail_data
  * @property string $func_for
  * @property string $storename
  * @property string $hash
  *
  * @property Budget $budget
  * @property User $createdBy
+ * @property User $updatedBy
  * @property User[] $users
  */
 class Files extends \yii\db\ActiveRecord
@@ -46,14 +49,14 @@ class Files extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['type', 'url', 'delete_url', 'filename', 'created_at', 'created_by'], 'required'],
-            [['type', 'created_at', 'created_by', 'size', 'width', 'height', 'budget_id', 'status'], 'integer'],
-            [['detail_data'], 'string'],
+            [['type', 'url', 'delete_url', 'filename', 'created_at', 'updated_at'], 'required'],
+            [['type', 'created_at', 'updated_at', 'created_by', 'updated_by', 'uploaded_at', 'size', 'width', 'height', 'budget_id', 'status'], 'integer'],
             [['url', 'delete_url', 'filename', 'path', 'storename', 'hash'], 'string', 'max' => 200],
             [['uploaded_ip'], 'string', 'max' => 30],
             [['func_for'], 'string', 'max' => 20],
             [['budget_id'], 'exist', 'skipOnError' => true, 'targetClass' => Budget::className(), 'targetAttribute' => ['budget_id' => 'id']],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
+            [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['updated_by' => 'id']],
         ];
     }
 
@@ -69,7 +72,10 @@ class Files extends \yii\db\ActiveRecord
             'delete_url' => Yii::t('app', 'Delete Url'),
             'filename' => Yii::t('app', 'Filename'),
             'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
             'created_by' => Yii::t('app', 'Created By'),
+            'updated_by' => Yii::t('app', 'Updated By'),
+            'uploaded_at' => Yii::t('app', 'Uploaded At'),
             'uploaded_ip' => Yii::t('app', 'Uploaded Ip'),
             'size' => Yii::t('app', 'Size'),
             'width' => Yii::t('app', 'Width'),
@@ -77,7 +83,6 @@ class Files extends \yii\db\ActiveRecord
             'path' => Yii::t('app', 'Path'),
             'budget_id' => Yii::t('app', 'Budget ID'),
             'status' => Yii::t('app', 'Status'),
-            'detail_data' => Yii::t('app', 'Detail Data'),
             'func_for' => Yii::t('app', 'Func For'),
             'storename' => Yii::t('app', 'Storename'),
             'hash' => Yii::t('app', 'Hash'),
@@ -98,6 +103,14 @@ class Files extends \yii\db\ActiveRecord
     public function getCreatedBy()
     {
         return $this->hasOne(User::className(), ['id' => 'created_by']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUpdatedBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'updated_by']);
     }
 
     /**

@@ -4,7 +4,6 @@ namespace frontend\modules\user\controllers;
 
 use common\models\db\User;
 use common\models\db\UserRealNameAuth;
-use yii\base\ErrorException;
 use yii\web\Controller;
 use yii\web\Response;
 
@@ -24,8 +23,18 @@ class DefaultController extends Controller
 
     public function actionWebuploaderUpload()
     {
+        // 错误时
+//        {"code": 1, "msg": "error"}
+
+// 正确时， 其中 attachment 指的是保存在数据库中的路径，url 是该图片在web可访问的地址
+//        {"code": 0, "url": "http://domain/图片地址", "attachment": "图片地址"}
         \Yii::$app->response->format=Response::FORMAT_JSON;
-        return $_REQUEST;
+        $content = file_get_contents($_FILES['file']['tmp_name']);
+        file_put_contents(\Yii::getAlias('@wroot/storge/tmp/').$_FILES['file']['name'], $content);
+        return [
+            'code'=>1,
+            'msg'=>'error',
+        ];
     }
 
     /**
