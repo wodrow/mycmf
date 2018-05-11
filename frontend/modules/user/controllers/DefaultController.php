@@ -67,10 +67,7 @@ class DefaultController extends Controller
         if ($model->load(\Yii::$app->request->post())&&$model->validate()){
             if ($model->save()){
                 \Yii::$app->session->setFlash('success', "提交成功,请耐心等待结果");
-            }else{
-                \Yii::$app->session->setFlash('error', var_export($model->errors, true));
             }
-            var_dump($model->toArray());
         }
         return $this->render('real-name-auth', [
             'model' => $model,

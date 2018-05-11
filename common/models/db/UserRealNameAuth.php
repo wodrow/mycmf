@@ -31,20 +31,6 @@ class UserRealNameAuth extends \common\models\db\base\UserRealNameAuth
         ];
     }
 
-    public function rules()
-    {
-        return [
-            [['user_id', 'name', 'id_card_number', 'id_card_front_and_face_image', 'status'], 'required'],
-            [['user_id', 'status'], 'integer'],
-            [['auth_back_msg'], 'string'],
-            [['name'], 'string', 'max' => 20],
-            [['id_card_number'], 'string', 'max' => 18],
-            [['id_card_front_image', 'id_card_back_image', 'id_card_front_and_face_image'], 'string', 'max' => 200],
-            [['user_id'], 'unique'],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
-        ];
-    }
-
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {

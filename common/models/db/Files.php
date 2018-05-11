@@ -13,6 +13,14 @@ use common\components\budget\ApiResp;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
 
+/**
+ * Class Files
+ * @package common\models\db
+ *
+ * @property Budget $budget
+ * @property User $createdBy
+ * @property User $updatedBy
+ */
 class Files extends \common\models\db\base\Files
 {
     const TYPE_OTHER = 1;
@@ -69,5 +77,29 @@ class Files extends \common\models\db\base\Files
         $this->uploaded_ip = $data->uploaded_ip;
         $this->url = $data->url;
         $this->delete_url = $data->delete_url;*/
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBudget()
+    {
+        return $this->hasOne(Budget::className(), ['id' => 'budget_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCreatedBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'created_by']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUpdatedBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'updated_by']);
     }
 }

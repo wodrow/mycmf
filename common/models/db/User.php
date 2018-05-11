@@ -26,6 +26,7 @@ use yii\httpclient\Client;
  * @property AuthAssignment[] $authAssignments
  * @property AuthItem[] $itemNames
  * @property Files $avatarFile
+ * @property UserRealNameAuth $userRealNameAuth
  */
 class User extends \common\models\db\base\User
 {
@@ -99,5 +100,13 @@ class User extends \common\models\db\base\User
     public function getAvatarFile()
     {
         return $this->hasOne(Files::className(), ['id' => 'avatar']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserRealNameAuth()
+    {
+        return $this->hasOne(UserRealNameAuth::className(), ['user_id' => 'id']);
     }
 }
