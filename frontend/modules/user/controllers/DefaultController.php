@@ -2,6 +2,9 @@
 
 namespace frontend\modules\user\controllers;
 
+use common\components\budget\Smms;
+use common\models\db\Budget;
+use common\models\db\Files;
 use common\models\db\User;
 use common\models\db\UserRealNameAuth;
 use yii\web\Controller;
@@ -21,20 +24,29 @@ class DefaultController extends Controller
         return $this->render('index');
     }
 
-    public function actionWebuploaderUpload()
+    public function actionRealNameCheckWebuploaderUpload()
     {
-        // 错误时
-//        {"code": 1, "msg": "error"}
-
-// 正确时， 其中 attachment 指的是保存在数据库中的路径，url 是该图片在web可访问的地址
-//        {"code": 0, "url": "http://domain/图片地址", "attachment": "图片地址"}
         \Yii::$app->response->format=Response::FORMAT_JSON;
-        $content = file_get_contents($_FILES['file']['tmp_name']);
-        file_put_contents(\Yii::getAlias('@wroot/storge/tmp/').$_FILES['file']['name'], $content);
-        return [
+        $r = [
             'code'=>1,
             'msg'=>'error',
         ];
+        $file = new Files();
+        $budget = Budget::findOne(['name'=>Smms::NAME]);
+        $file->budget_id = $budget->id;
+        $file->type = $file::TYPE_IMAGE;
+        $file->status = $file::STATUS_ACTIVE;
+        $file->func_for = $file::FUNC_FOR_REAL_NAME_CHECK;
+        $data = $budget->operator->uploadLocalFile($_FILES['file']['tmp_name']);
+        $file->initDataByBudgetResp($data);
+        if ($file->save()){
+            $r['code'] = 0;
+            $r['url'] = $file->url;
+            $r['attachment'] = $file->id;
+        }else{
+            $r['msg'] = var_export($file->errors, true);
+        }
+        return $r;
     }
 
     /**

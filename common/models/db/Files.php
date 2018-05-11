@@ -21,6 +21,7 @@ class Files extends \common\models\db\base\Files
     const TYPE_TXT = 4;
     const TYPE_VIDEO = 5;
     const FUNC_FOR_AVATAR_CHANGE = 'avatar-change';
+    const FUNC_FOR_REAL_NAME_CHECK = 'real-name-check';
     const STATUS_ACTIVE = 10;
 
     public function behaviors()
@@ -32,6 +33,20 @@ class Files extends \common\models\db\base\Files
             'timestamp' => [
                 'class' => TimestampBehavior::className(),
             ],
+        ];
+    }
+
+    public function rules()
+    {
+        return [
+            [['type', 'url', 'delete_url', 'filename'], 'required'],
+            [['type', 'created_at', 'updated_at', 'created_by', 'updated_by', 'uploaded_at', 'size', 'width', 'height', 'budget_id', 'status'], 'integer'],
+            [['url', 'delete_url', 'filename', 'path', 'storename', 'hash'], 'string', 'max' => 200],
+            [['uploaded_ip'], 'string', 'max' => 30],
+            [['func_for'], 'string', 'max' => 20],
+            [['budget_id'], 'exist', 'skipOnError' => true, 'targetClass' => Budget::className(), 'targetAttribute' => ['budget_id' => 'id']],
+            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
+            [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['updated_by' => 'id']],
         ];
     }
 
