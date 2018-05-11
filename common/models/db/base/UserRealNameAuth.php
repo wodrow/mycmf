@@ -69,30 +69,6 @@ class UserRealNameAuth extends \yii\db\ActiveRecord
         ];
     }
 
-    public function beforeSave($insert)
-    {
-        if (parent::beforeSave($insert)) {
-            if ($insert){}else{
-                $old = static::findOne($this->id);
-                if ($old->cardFrontImage&&$this->id_card_front_image!=$old->id_card_front_image){
-                    $old->cardFrontImage->budget->opt->deleteByUrl($old->cardFrontImage->delete_url);
-                    $old->cardFrontImage->delete();
-                }
-                if ($old->cardBackImage&&$this->id_card_back_image!=$old->id_card_back_image){
-                    $old->cardBackImage->budget->opt->deleteByUrl($old->cardBackImage->delete_url);
-                    $old->cardBackImage->delete();
-                }
-                if ($old->cardFrontAndFaceImage&&$this->id_card_front_and_face_image!=$old->id_card_front_and_face_image){
-                    $old->cardFrontAndFaceImage->budget->opt->deleteByUrl($old->cardFrontAndFaceImage->delete_url);
-                    $old->cardFrontAndFaceImage->delete();
-                }
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     /**
      * @return \yii\db\ActiveQuery
      */
