@@ -27,6 +27,7 @@ Yii::$container = new yii\di\Container;
  * @property \herroffizier\yii2um\UploadManager $uploads
  * @property \creocoder\flysystem\LocalFilesystem $fs_local
  * @property \creocoder\flysystem\SftpFilesystem $sftp_local
+ * @property \xplqcloud\cos\Cos $cos
  */
 abstract class BaseApplication extends yii\base\Application
 {

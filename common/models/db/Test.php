@@ -19,5 +19,14 @@ use Yii;
  */
 class Test extends \common\models\db\base\Test
 {
-    #
+    public function rules()
+    {
+        return [
+            [['images', 'videos', 'content', 'json', 'serialize'], 'string'],
+            [['image', 'video'], 'file'],
+            [['time'], 'integer'],
+            [['name', 'password'], 'string', 'max' => 50],
+//            [['image', 'video'], 'string', 'max' => 200],
+        ];
+    }
 }

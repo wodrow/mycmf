@@ -71,7 +71,10 @@
         "creocoder/yii2-flysystem": "^0.9.0",
         "league/flysystem-sftp": "^1.0",
         "zh/yii2-qiniu-images": "dev-master",
-        "budyaga/yii2-cropper": "*"
+        "budyaga/yii2-cropper": "*",
+        "xplqcloud/cos": "^0.1.2",
+        "php-ffmpeg/php-ffmpeg": "^0.11.1",
+        "wbraganca/yii2-videojs-widget": "~1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

@@ -320,4 +320,23 @@ class TestController extends Controller
             'model' => $test,
         ]);
     }
+
+    public function actionTest24()
+    {
+        $test = new Test();
+        if (\Yii::$app->request->isPost){
+            $test->video = UploadedFile::getInstance($test, 'video');
+            if ($test->video && $test->validate()) {
+                $test->video->saveAs(\Yii::getAlias('@wroot/storge/tmp/') . $test->video->baseName . '.' . $test->video->extension);
+
+            }else{
+                var_dump($test->errors);
+            }
+            var_dump($test->toArray());
+            exit;
+        }
+        return $this->render('test24', [
+            'model' => $test,
+        ]);
+    }
 }
