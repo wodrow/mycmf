@@ -22,23 +22,29 @@ $this->beginContent('@frontend/views/layouts/base.php');
                     [
                         'url' => ['/user/default/index'],
                         'label' => '用户中心',
-                        'icon' => 'home' // This is a bootstrap icon name
+                        'icon' => 'home', // This is a bootstrap icon name
                     ],
                     [
                         'url' => ['/user/setting/index'],
                         'label' => '账号设置',
-                        'icon' => 'info-sign' // This is a bootstrap icon name
+                        'icon' => 'info-sign', // This is a bootstrap icon name
                     ],
                     [
                         'url' => ['/user/setting/change-avatar'],
                         'label' => '修改头像',
-                        'icon' => 'info-sign' // This is a bootstrap icon name
+                        'icon' => 'info-sign', // This is a bootstrap icon name
                     ],
                     [
                         'url' => ['/user/setting/reset-password'],
                         'label' => '重置密码',
-                        'icon' => 'info-sign' // This is a bootstrap icon name
-                    ]
+                        'icon' => 'info-sign', // This is a bootstrap icon name
+                    ],
+                    [
+                        'url' => ['/user/default/real-name-auth'],
+                        'label' => '实名认证',
+                        'icon' => 'info-sign', // This is a bootstrap icon name
+                        'visible' => false,
+                    ],
                 ],
             ]) ?>
             <?php
