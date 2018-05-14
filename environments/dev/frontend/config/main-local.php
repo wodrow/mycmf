@@ -6,6 +6,31 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '',
         ],
+        'authClientCollection' => [
+            'class' => \yii\authclient\Collection::className(),
+            'clients' => [
+                'qq' => [
+                    'class' => \common\widgets\auth2clients\QQClient::className(),
+                    'clientId' => '',
+                    'clientSecret' => '',
+                ],
+                'weibo' => [
+                    'class' => \common\widgets\auth2clients\WeiboClient::className(),
+                    'clientId' => '',
+                    'clientSecret' => '',
+                ],
+                'weixin' => [
+                    'class' => \common\widgets\auth2clients\WeiXinClient::className(),
+                    'clientId' => '',
+                    'clientSecret' => '',
+                ],
+                'github' => [
+                    'class' => \yii\authclient\clients\GitHub::className(),
+                    'clientId' => '',
+                    'clientSecret' => '',
+                ],
+            ],
+        ],
     ],
 ];
 
