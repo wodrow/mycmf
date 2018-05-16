@@ -9,6 +9,7 @@
 namespace common\models\db;
 
 use common\components\budget\Api;
+use common\components\budget\Nos;
 use common\components\budget\Smms;
 use yii\base\ErrorException;
 
@@ -25,6 +26,9 @@ class Budget extends \common\models\db\base\Budget
         switch ($this->name) {
             case Smms::NAME;
                 $operator = new Smms();
+                break;
+            case Nos::NAME;
+                $operator = new Nos();
                 break;
             default:
                 throw new ErrorException("没有找到图床！");

@@ -30,6 +30,7 @@ class Files extends \common\models\db\base\Files
     const TYPE_VIDEO = 5;
     const FUNC_FOR_AVATAR_CHANGE = 'avatar-change';
     const FUNC_FOR_REAL_NAME_CHECK = 'real-name-check';
+    const FUNC_FOR_VIDEO_UPLOAD = 'video-upload';
     const STATUS_ACTIVE = 10;
 
     public function behaviors()

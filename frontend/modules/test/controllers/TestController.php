@@ -11,9 +11,11 @@ namespace frontend\modules\test\controllers;
 
 use Aws\S3\S3Client;
 use Carbon\Carbon;
+use common\components\budget\Nos;
 use common\components\budget\Smms;
 use common\components\tools\Tools;
 use common\models\db\Budget;
+use common\models\db\Files;
 use common\models\db\Test;
 use FFMpeg\Coordinate\Dimension;
 use FFMpeg\Coordinate\TimeCode;
@@ -335,15 +337,25 @@ class TestController extends Controller
         if (\Yii::$app->request->isPost){
             $test->video = UploadedFile::getInstance($test, 'video');
             if ($test->video && $test->validate()) {
-                $_p = \Yii::getAlias('@wroot/storge/tmp/') . $test->video->baseName . '.' . $test->video->extension;
-                $test->video->saveAs($_p);
-                $ffmpeg = FFMpeg::create();
-                $video = $ffmpeg->open($_p);
-                $f = $video->getFormat()->all();
-                var_export($f['duration']);exit;
-                $video->filters()->resize(new Dimension(320, 240))->synchronize();
-                $video->frame(TimeCode::fromSeconds(0))->save(\Yii::getAlias('@wroot/storge/tmp/') . 'frame.jpg');
-                $video->save(new WebM(), \Yii::getAlias('@wroot/storge/tmp/').'export-webm.webm');
+//                $_p = \Yii::getAlias('@wroot/storge/tmp/') . $test->video->baseName . '.' . $test->video->extension;
+//                $test->video->saveAs($_p);
+//                $ffmpeg = FFMpeg::create();
+//                $video = $ffmpeg->open($_p);
+//                $f = $video->getFormat()->all();
+//                var_export($f['duration']);exit;
+//                $video->filters()->resize(new Dimension(320, 240))->synchronize();
+//                $video->frame(TimeCode::fromSeconds(0))->save(\Yii::getAlias('@wroot/storge/tmp/') . 'frame.jpg');
+//                $video->save(new WebM(), \Yii::getAlias('@wroot/storge/tmp/').'export-webm.webm');
+                $x = \Yii::getAlias('@wroot/storge/tmp/').'export-webm.webm';
+                $file = new Files();
+                $budget = Budget::findOne(['name'=>Nos::NAME]);
+                $file->budget_id = $budget->id;
+                $file->type = $file::TYPE_VIDEO;
+                $file->status = $file::STATUS_ACTIVE;
+                $file->func_for = $file::FUNC_FOR_VIDEO_UPLOAD;
+                $data = $budget->operator->uploadLocalFile($x);
+                var_dump($data);
+                exit;
             }else{
                 var_dump($test->errors);
             }
