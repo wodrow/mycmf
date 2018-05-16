@@ -335,6 +335,7 @@ class TestController extends Controller
     {
         $test = new Test();
         if (\Yii::$app->request->isPost){
+            echo "<pre>";
             $test->video = UploadedFile::getInstance($test, 'video');
             if ($test->video && $test->validate()) {
 //                $_p = \Yii::getAlias('@wroot/storge/tmp/') . $test->video->baseName . '.' . $test->video->extension;
@@ -354,13 +355,12 @@ class TestController extends Controller
                 $file->status = $file::STATUS_ACTIVE;
                 $file->func_for = $file::FUNC_FOR_VIDEO_UPLOAD;
                 $data = $budget->operator->uploadLocalFile($x);
-                var_dump($data);
-                exit;
+                $file->initDataByBudgetResp($data);
+                $file->save(false);
+                \Yii::$app->session->addFlash('success', "视频上传成功");
             }else{
                 var_dump($test->errors);
             }
-            var_dump($test->toArray());
-            exit;
         }
         return $this->render('test24', [
             'model' => $test,

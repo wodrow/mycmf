@@ -77,7 +77,8 @@
         "wbraganca/yii2-videojs-widget": "~1.0",
         "takashiki/yii2-cos-flysystem": "^1.0",
         "crazydb/yii2-ueditor": "*",
-        "league/flysystem-aws-s3-v3": "^1.0"
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "yurunsoft/chinese-util": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

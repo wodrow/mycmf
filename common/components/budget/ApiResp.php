@@ -22,4 +22,5 @@ class ApiResp
     public $uploaded_ip;
     public $url;
     public $delete_url;
+    public $content_type;
 }

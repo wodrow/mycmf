@@ -19,16 +19,16 @@ use kartik\widgets\FileInput;
 <div class="frontend-test-test-test21">
     <div class="row">
         <div class="col-lg-12">
-            <?php $form = ActiveForm::begin(['id' => 'form-profile']); ?>
             <?php
-            echo $form->field($model, 'video')->widget(FileInput::classname(), [
+            echo FileInput::widget([
+                'model' => $model,
+                'attribute' => 'video',
                 'options' => ['accept' => 'video/*'],
             ]);
             ?>
             <div class="form-group">
                 <?php echo Html::submitButton('Save', ['class' => 'btn btn-primary']) ?>
             </div>
-            <?php ActiveForm::end(); ?>
         </div>
         <div class="col-lg-12">
             <?php
@@ -50,14 +50,6 @@ use kartik\widgets\FileInput;
                         ['kind' => 'captions', 'src' => 'http://vjs.zencdn.net/vtt/captions.vtt', 'srclang' => 'en', 'label' => 'English']
                     ]
                 ]
-            ]);
-            ?>
-        </div>
-        <div class="col-lg-12">
-            <?php
-            echo \crazydb\ueditor\UEditor::widget([
-                'model' => $model,
-                'attribute' => 'content',
             ]);
             ?>
         </div>
