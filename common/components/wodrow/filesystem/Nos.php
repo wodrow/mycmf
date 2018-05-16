@@ -165,7 +165,7 @@ class Nos extends Component
      * @param string $filePath
      */
     function putObjectByFilePath($objectName,$filePath){
-        return $this->putObject($objectName, file_get_contents($filePath));
+        return $this->putObject($objectName, fopen($filePath, 'r+'));
     }
 
     /**
@@ -188,7 +188,7 @@ class Nos extends Component
      * @param string $filePath
      */
     function uploadObjectByFilePath($objectName, $filePath){
-        return $this->uploadObject($objectName, file_get_contents($filePath));
+        return $this->uploadObject($objectName, fopen($filePath, 'r+'));
     }
 
     /**
