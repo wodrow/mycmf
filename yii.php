@@ -28,6 +28,8 @@ Yii::$container = new yii\di\Container;
  * @property \creocoder\flysystem\LocalFilesystem $fs_local
  * @property \creocoder\flysystem\SftpFilesystem $sftp_local
  * @property \xplqcloud\cos\Cos $cos
+ * @property \takashiki\yii2\flysystem\CosFilesystem $cosFs
+ * @property \common\components\wodrow\filesystem\Nos $nos
  */
 abstract class BaseApplication extends yii\base\Application
 {

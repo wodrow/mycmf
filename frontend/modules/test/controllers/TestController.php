@@ -9,11 +9,18 @@
 namespace frontend\modules\test\controllers;
 
 
+use Aws\S3\S3Client;
 use Carbon\Carbon;
 use common\components\budget\Smms;
 use common\components\tools\Tools;
 use common\models\db\Budget;
 use common\models\db\Test;
+use FFMpeg\Coordinate\Dimension;
+use FFMpeg\Coordinate\TimeCode;
+use FFMpeg\FFMpeg;
+use FFMpeg\Format\Video\WebM;
+use FFMpeg\Format\Video\WMV;
+use FFMpeg\Format\Video\X264;
 use frontend\models\FormGetEmailCode;
 use frontend\widgets\wodrow\avatar\CropAvatar;
 use League\Flysystem\Adapter\Local;
@@ -22,6 +29,7 @@ use League\Flysystem\MountManager;
 use League\Flysystem\Sftp\SftpAdapter;
 use Phpml\Association\Apriori;
 use common\components\tools\FileHelper;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
@@ -327,8 +335,15 @@ class TestController extends Controller
         if (\Yii::$app->request->isPost){
             $test->video = UploadedFile::getInstance($test, 'video');
             if ($test->video && $test->validate()) {
-                $test->video->saveAs(\Yii::getAlias('@wroot/storge/tmp/') . $test->video->baseName . '.' . $test->video->extension);
-
+                $_p = \Yii::getAlias('@wroot/storge/tmp/') . $test->video->baseName . '.' . $test->video->extension;
+                $test->video->saveAs($_p);
+                $ffmpeg = FFMpeg::create();
+                $video = $ffmpeg->open($_p);
+                $f = $video->getFormat()->all();
+                var_export($f['duration']);exit;
+                $video->filters()->resize(new Dimension(320, 240))->synchronize();
+                $video->frame(TimeCode::fromSeconds(0))->save(\Yii::getAlias('@wroot/storge/tmp/') . 'frame.jpg');
+                $video->save(new WebM(), \Yii::getAlias('@wroot/storge/tmp/').'export-webm.webm');
             }else{
                 var_dump($test->errors);
             }

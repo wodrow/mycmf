@@ -6,6 +6,9 @@
  * Time: 上午9:20
  */
 
+/**
+ * @var \common\models\db\Test $model
+ */
 use kartik\form\ActiveForm;
 use common\components\tools\Url;
 use kartik\helpers\Html;
@@ -31,22 +34,30 @@ use kartik\widgets\FileInput;
             <?php
             echo \wbraganca\videojs\VideoJsWidget::widget([
                 'options' => [
-                    'class' => 'video-js vjs-default-skin vjs-big-play-centered',
+                    'class' => 'vjs-default-skin vjs-big-play-centered',
                     'poster' => "/storge/images/404.png",
                     'controls' => true,
                     'preload' => 'auto',
-                    'width' => '970',
+                    'width' => '100%',
                     'height' => '400',
                 ],
                 'tags' => [
                     'source' => [
-                        ['src' => 'http://vjs.zencdn.net/v/oceans.mp4', 'type' => 'video/mp4'],
-                        ['src' => 'http://vjs.zencdn.net/v/oceans.webm', 'type' => 'video/webm']
+//                        ['src' => 'http://vjs.zencdn.net/v/oceans.mp4', 'type' => 'video/mp4'],
+                        ['src' => Yii::getAlias('@wurl').'/storge/tmp/2018-03-17-164346.webm', 'type' => 'video/webm']
                     ],
                     'track' => [
                         ['kind' => 'captions', 'src' => 'http://vjs.zencdn.net/vtt/captions.vtt', 'srclang' => 'en', 'label' => 'English']
                     ]
                 ]
+            ]);
+            ?>
+        </div>
+        <div class="col-lg-12">
+            <?php
+            echo \crazydb\ueditor\UEditor::widget([
+                'model' => $model,
+                'attribute' => 'content',
             ]);
             ?>
         </div>

@@ -28,6 +28,39 @@ $config = [
             'password' => '',
             'port' => 22,
         ],
+        'cos'=>[ // yii2上传文件到腾讯云对象存储组件
+            'class'=>'xplqcloud\cos\Cos',
+            'app_id' => 'app_id',
+            'secret_id' => 'secret_id',
+            'secret_key' => 'secret_key',
+            'region' => 'region',
+            'bucket'=>'bucket',
+            'insertOnly'=>true,
+            'timeout' => 200
+        ],
+        'cosFs' => [
+            'class' => \takashiki\yii2\flysystem\CosFilesystem::class,
+            'app_id' => 'xxx',
+            'secret_id' => 'xxx',
+            'secret_key' => 'xxx',
+            'bucket' => 'xxx',
+            'domain' => 'xxx.file.myqcloud.com',
+
+            // not necessarily bellow
+            'version' => 'v4',
+            'protocol' => 'http',
+            'region' => 'sh',
+            'timeout' => 60,
+        ],
+        'nos' => [
+            'class' => \common\components\wodrow\filesystem\Nos::class,
+            'region' => '华东1',
+            'bucketName' => '',
+            'key' => '',
+            'secret' => '',
+            'domain' => '',
+            'endpoint' => 'http://nos-eastchina1.126.net',
+        ],
     ],
 ];
 

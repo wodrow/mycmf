@@ -1,0 +1,199 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: wodrow
+ * Date: 18-5-16
+ * Time: 上午9:13
+ */
+
+namespace common\components\wodrow\filesystem;
+
+
+use Aws\Exception\AwsException;
+use Aws\S3\S3Client;
+use yii\base\Component;
+use yii\base\Exception;
+
+/**
+ * Class Nos 网易云对象存储
+ * need league/flysystem-aws-s3-v3
+ * @package common\components\wodrow\filesystem
+ *
+ * @property S3Client $s3Client
+ */
+class Nos extends Component
+{
+    public $version = 'latest';
+    public $region;
+    public $key;
+    public $secret;
+    public $endpoint;
+    public $bucketName;
+    public $domain;
+
+    /**
+     * @var S3Client
+     */
+    private $_s3Client;
+
+    /**
+     * @return S3Client
+     */
+    public function getS3Client()
+    {
+        return $this->_s3Client;
+    }
+
+    public function setS3Client()
+    {
+        $this->_s3Client = new S3Client([
+            'version'     => $this->version,
+            'region'      => $this->region,
+            'credentials' => [
+                'key'    => $this->key,
+                'secret' => $this->secret,
+            ],
+            'endpoint'      => $this->endpoint,
+        ]);
+    }
+
+    /**
+     * 创建一个桶
+     * acl 指的是bucket的访问控制权限，有两种，私有读写，公共读私有写。
+     * 私有读写就是只有bucket的拥有者或授权用户才有权限操作
+     * 公共读私有写，任意用户可以读，只有授权用户才能写
+     *
+     * @param string    $bucketName 要创建的bucket名字
+     * @param string    $Acl,有效的值为private-->write,public-read-->read
+     * @return
+     */
+    public function createBucket($bucketName, $Acl){
+        try {
+            $result = $this->s3Client->createBucket([
+                'Bucket' => $bucketName,
+                'ACL' => $Acl
+            ]);
+            return $result;
+        }catch (AwsException $e) {
+            throw $e;
+        }
+    }
+
+    /**
+     * 判断桶是否存在
+     * @param string $bucketName 桶名
+     * @return bool
+     */
+    function doesBucketExist($bucketName){
+        try{
+            $res = $this->s3Client->doesBucketExist($bucketName);
+            return $res;
+        } catch (\Aws\Exception\AwsException $e){
+            throw $e;
+        }
+    }
+
+    /**
+     * 获取用户所有的桶
+     */
+    public function listBuckets()
+    {
+        $buckets = $this->s3Client->listBuckets();
+        return $buckets['Buckets'];
+    }
+
+    /**
+     * 根据给定的桶名删除桶
+     * @param string $bucketName 桶名
+     */
+    public function deleteBucket($bucketName){
+        try {
+            $deleteResult = $this->s3Client->deleteBucket(['Bucket' => $bucketName]);
+            return $deleteResult;
+        } catch (Exception $exception){
+            throw $exception;
+        }
+    }
+
+    /**
+     * 设置桶的Acl
+     * @param string $bucketName 桶名
+     * @param string $Acl 有效的值为private,public-read
+     */
+    public function putBucketAcl($bucketName, $Acl){
+        try{
+            $this->s3Client->putBucketAcl(array(
+                'ACL' => $Acl,
+                'Bucket' => $bucketName,));
+        } catch (\Aws\Exception\AwsException $exception){
+            throw $exception;
+        }
+    }
+
+    /**
+     * 获取桶的Acl
+     * @param string $bucketName 桶名
+     */
+    public function getBucketAcl($bucketName){
+        try{
+            $result = $this->s3Client->getBucketAcl(['Bucket'=>$bucketName]);
+            return $result;
+        } catch (\Aws\Exception\AwsException $e){
+            throw $e;
+        }
+    }
+
+    /**
+     * 字符串上传 [上传的字符串内容不超过100M]
+     * @param string $objectName 对象名
+     * @param $Body 'mixed type: string|resource|\Guzzle\Http\EntityBodyInterface'
+     */
+    function putObject($objectName, $Body){
+        try{
+            $result = $this->s3Client->putObject(['Bucket'=>$this->bucketName,
+                'Key'=>$objectName,
+                'Body'=>$Body]);
+            return $result;
+        } catch (\Aws\Exception\AwsException $exception){
+            throw $exception;
+        }
+    }
+
+    /**
+     * 本地文件上传 [上传的字符串内容不超过100M]
+     * @param string $objectName 对象名
+     * @param string $filePath
+     */
+    function putObjectByFilePath($objectName,$filePath){
+        return $this->putObject($objectName, file_get_contents($filePath));
+    }
+
+    /**
+     * 分片上传本地文件二进制
+     * @param string $objectName 对象名
+     * @param $body 'mixed type: string|resource|\Guzzle\Http\EntityBodyInterface'
+     */
+    function uploadObject($objectName, $body){
+        try{
+            $result = $this->s3Client->upload($this->bucketName, $objectName, $body,'public-read');
+            return $result;
+        } catch (\Aws\Exception\AwsException $exception){
+            throw $exception;
+        }
+    }
+
+    /**
+     * 分片上传本地文件二进制
+     * @param string $objectName 对象名
+     * @param string $filePath
+     */
+    function uploadObjectByFilePath($objectName, $filePath){
+        return $this->uploadObject($objectName, file_get_contents($filePath));
+    }
+
+    public function init()
+    {
+        parent::init(); // TODO: Change the autogenerated stub
+        $this->setS3Client();
+    }
+}
