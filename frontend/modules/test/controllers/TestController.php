@@ -25,6 +25,7 @@ use FFMpeg\Format\Video\WMV;
 use FFMpeg\Format\Video\X264;
 use frontend\models\FormGetEmailCode;
 use frontend\widgets\wodrow\avatar\CropAvatar;
+use GuzzleHttp\Client;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use League\Flysystem\MountManager;
@@ -365,5 +366,18 @@ class TestController extends Controller
         return $this->render('test24', [
             'model' => $test,
         ]);
+    }
+
+    public function actionTest25()
+    {
+        $client = new Client([
+            'base_uri' => "https://www.google.com.hk",
+//            'base_uri' => "http://test.mycmf.deepin.me.tt",
+        ]);
+        $resp = $client->request('GET', '', ['proxy' => 'http://127.0.0.1:1080']);
+//        $resp = $client->request('GET', '');
+        $body = $resp->getBody();
+        echo $body;
+        exit;
     }
 }
