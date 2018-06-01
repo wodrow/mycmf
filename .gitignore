@@ -4,19 +4,19 @@
 /yii_test.bat
 
 # phpstorm project files
-.idea
+/.idea
 
 # netbeans project files
-nbproject
+/nbproject
 
 # zend studio for eclipse project files
-.buildpath
-.project
-.settings
+/.buildpath
+/.project
+/.settings
 
 # code lob ster IDE
-*.clpprj
-*.csprj
+/*.clpprj
+/*.csprj
 
 # windows thumbnail cache
 Thumbs.db
@@ -26,13 +26,13 @@ Thumbs.db
 /composer.lock
 
 # composer itself is not needed
-composer.phar
+/composer.phar
 
 # Mac DS_Store Files
-.DS_Store
+/.DS_Store
 
 # phpunit itself is not needed
-phpunit.phar
+/phpunit.phar
 # local phpunit config
 /phpunit.xml
 
@@ -40,22 +40,28 @@ phpunit.phar
 /.vagrant
 
 # logs
-*.log
+/*.log
 
 # windows thumbnail cache
 /Thumbs.db
 
 # ctags
-.tags
-.tags_sorted_by_file
+/.tags
+/.tags_sorted_by_file
 
 # cache
 *~
 
 # env config
-.env
+/.env
 
 # init
 /index.php
 /dev
+
+# 宝塔linux env
+/.htaccess
+/.user.ini
+/404.html
+/index.html
 
