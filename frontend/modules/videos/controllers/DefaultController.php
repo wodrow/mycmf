@@ -34,7 +34,7 @@ class DefaultController extends Controller
     public function actionFileUpload()
     {
         \Yii::$app->response->format = Response::FORMAT_JSON;
-        /*$model_name = \Yii::$app->request->post('model_name');
+        $model_name = \Yii::$app->request->post('model_name');
         $attr_name = \Yii::$app->request->post('attr_name');
         $serial_number = \Yii::$app->request->post('serial_number');
         if (empty($_FILES[$model_name])) {
@@ -58,7 +58,7 @@ class DefaultController extends Controller
         $data = $budget->operator->uploadLocalFile($tmp_file);
         $file->initDataByBudgetResp($data);
         $file->save(false);
-        $out = [];*/
+        $out = [];
         return $out;
     }
 }
