@@ -55,9 +55,15 @@ class DefaultController extends Controller
         $file->func_for = $file::FUNC_FOR_VIDEO_UPLOAD;
         $file->size = $file_size;
         $file->content_type = $file_tpye;
-        $data = $budget->operator->uploadLocalFile($tmp_file);
-        $file->initDataByBudgetResp($data);
-        $file->save(false);
+        $file->filename = $old_file_name;
+        $f = Files::findOne(['budget_id'=>$file->budget_id, 'filename'=>$file->filename]);
+        if ($f){
+            var_dump($f->toArray());exit;
+        }else{
+            $data = $budget->operator->uploadLocalFile($_tmp_file);
+            $file->initDataByBudgetResp($data);
+            $file->save(false);
+        }
         $out = [];
         return $out;
     }
