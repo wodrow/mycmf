@@ -1,0 +1,10 @@
+*~
+*.swp
+
+/.idea
+
+# 宝塔linux env
+/.htaccess
+/.user.ini
+/404.html
+/index.html
