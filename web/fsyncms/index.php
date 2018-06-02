@@ -47,8 +47,8 @@
         exit;
 
     } else if ( file_exists("setup.php") ) {
-        echo "<hr><h2>Maybe the setup is not completed, else please delete setup.php</h2><hr>"; 
-        exit;
+//        echo "<hr><h2>Maybe the setup is not completed, else please delete setup.php</h2><hr>";
+//        exit;
     }
 
 	require_once 'weave_storage.php';
