@@ -31,7 +31,7 @@ use common\helpers\FileHelper;
                     'uploadExtraData' => [
                         'model_name' => FileHelper::classBasename($model),
                         'attr_name' => 'video_files',
-                        'serial_number' => date("YmdHis_", time()).Yii::$app->user->id."_".Yii::$app->security->generateRandomKey(20),
+                        'serial_number' => date("YmdHis_", time()).Yii::$app->user->id."_".Yii::$app->security->generateRandomString(20),
                     ],
                     'uploadAsync' => true,
                     'minFileCount' => 1,
