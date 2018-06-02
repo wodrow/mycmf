@@ -27,37 +27,26 @@ use common\helpers\FileHelper;
                 ],
                 'pluginOptions' => [
                     'uploadUrl' => Url::to(['/videos/default/file-upload']),
-//                    'previewFileType' => 'video',
+                    'previewFileType' => 'video',
                     'uploadExtraData' => [
                         'model_name' => FileHelper::classBasename($model),
                         'attr_name' => 'video_files',
                         'serial_number' => date("YmdHis_", time()).Yii::$app->user->id."_".Yii::$app->security->generateRandomKey(20),
                     ],
                     'uploadAsync' => true,
-                    // 最少上传的文件个数限制
                     'minFileCount' => 1,
-                    // 最多上传的文件个数限制
                     'maxFileCount' => 20,
-                    // 是否显示移除按钮，指input上面的移除按钮，非具体图片上的移除按钮
                     'showRemove' => true,
-                    // 是否显示上传按钮，指input上面的上传按钮，非具体图片上的上传按钮
                     'showUpload' => true,
-                    //是否显示[选择]按钮,指input上面的[选择]按钮,非具体图片上的上传按钮
                     'showBrowse' => true,
-                    // 展示图片区域是否可点击选择多文件
                     'browseOnZoneClick' => true,
-                    // 如果要设置具体图片上的移除、上传和展示按钮，需要设置该选项
                     'fileActionSettings' => [
-                        // 设置具体图片的查看属性为false,默认为true
                         'showZoom' => false,
-                        // 设置具体图片的上传属性为true,默认为true
                         'showUpload' => true,
-                        // 设置具体图片的移除属性为true,默认为true
                         'showRemove' => false,
                     ],
                 ],
                 'pluginEvents' => [
-                    // 上传成功后的回调方法，需要的可查看data后再做具体操作，一般不需要设置
                     "fileuploaded" => "function (event, data, id, index){
                         console.log(data.response);
                     }",
