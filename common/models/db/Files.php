@@ -32,6 +32,13 @@ class Files extends \common\models\db\base\Files
     const FUNC_FOR_REAL_NAME_CHECK = 'real-name-check';
     const FUNC_FOR_VIDEO_UPLOAD = 'video-upload';
     const STATUS_ACTIVE = 10;
+    const STATUS_UPLOAD = 1;
+    const STATUS_TRANSCODING = 2;
+    const STATUS_TRANSCODE_FAILED = 3;
+    const STATUS_TRANSCODE_SUCCESS = 4;
+    const STATUS_UP_TO_BED = 5;
+    const STATUS_UP_TO_FAILED = 6;
+    const STATUS_UP_TO_SUCCESS = 7;
 
     public function behaviors()
     {

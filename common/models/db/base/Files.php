@@ -27,7 +27,9 @@ use Yii;
  * @property string $func_for
  * @property string $storename
  * @property string $hash
+ * @property string $content_type
  *
+ * @property Document[] $documents
  * @property Budget $budget
  * @property User $createdBy
  * @property User $updatedBy
@@ -39,7 +41,7 @@ use Yii;
 class Files extends \yii\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
@@ -47,24 +49,26 @@ class Files extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
             [['type', 'url', 'delete_url', 'filename', 'created_at', 'updated_at'], 'required'],
             [['type', 'created_at', 'updated_at', 'created_by', 'updated_by', 'uploaded_at', 'size', 'width', 'height', 'budget_id', 'status'], 'integer'],
-            [['url', 'delete_url', 'filename', 'path', 'storename', 'hash'], 'string', 'max' => 200],
+            [['url', 'delete_url', 'filename', 'path', 'storename'], 'string', 'max' => 2000],
             [['uploaded_ip'], 'string', 'max' => 30],
             [['func_for'], 'string', 'max' => 20],
-            [['budget_id'], 'exist', 'skipOnError' => true, 'targetClass' => Budget::class, 'targetAttribute' => ['budget_id' => 'id']],
-            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['created_by' => 'id']],
-            [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['updated_by' => 'id']],
+            [['hash'], 'string', 'max' => 200],
+            [['content_type'], 'string', 'max' => 100],
+            [['budget_id'], 'exist', 'skipOnError' => true, 'targetClass' => Budget::className(), 'targetAttribute' => ['budget_id' => 'id']],
+            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
+            [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['updated_by' => 'id']],
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
@@ -89,7 +93,16 @@ class Files extends \yii\db\ActiveRecord
             'func_for' => Yii::t('app', 'Func For'),
             'storename' => Yii::t('app', 'Storename'),
             'hash' => Yii::t('app', 'Hash'),
+            'content_type' => Yii::t('app', 'Content Type'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDocuments()
+    {
+        return $this->hasMany(Document::className(), ['thumb_main' => 'id']);
     }
 
     /**
@@ -97,7 +110,7 @@ class Files extends \yii\db\ActiveRecord
      */
     public function getBudget()
     {
-        return $this->hasOne(Budget::class, ['id' => 'budget_id']);
+        return $this->hasOne(Budget::className(), ['id' => 'budget_id']);
     }
 
     /**
@@ -105,7 +118,7 @@ class Files extends \yii\db\ActiveRecord
      */
     public function getCreatedBy()
     {
-        return $this->hasOne(User::class, ['id' => 'created_by']);
+        return $this->hasOne(User::className(), ['id' => 'created_by']);
     }
 
     /**
@@ -113,7 +126,7 @@ class Files extends \yii\db\ActiveRecord
      */
     public function getUpdatedBy()
     {
-        return $this->hasOne(User::class, ['id' => 'updated_by']);
+        return $this->hasOne(User::className(), ['id' => 'updated_by']);
     }
 
     /**
@@ -121,7 +134,7 @@ class Files extends \yii\db\ActiveRecord
      */
     public function getUsers()
     {
-        return $this->hasMany(User::class, ['avatar' => 'id']);
+        return $this->hasMany(User::className(), ['avatar' => 'id']);
     }
 
     /**
@@ -129,7 +142,7 @@ class Files extends \yii\db\ActiveRecord
      */
     public function getUserRealNameAuths()
     {
-        return $this->hasMany(UserRealNameAuth::class, ['id_card_front_image' => 'id']);
+        return $this->hasMany(UserRealNameAuth::className(), ['id_card_front_image' => 'id']);
     }
 
     /**
@@ -137,7 +150,7 @@ class Files extends \yii\db\ActiveRecord
      */
     public function getUserRealNameAuths0()
     {
-        return $this->hasMany(UserRealNameAuth::class, ['id_card_back_image' => 'id']);
+        return $this->hasMany(UserRealNameAuth::className(), ['id_card_back_image' => 'id']);
     }
 
     /**
@@ -145,6 +158,6 @@ class Files extends \yii\db\ActiveRecord
      */
     public function getUserRealNameAuths1()
     {
-        return $this->hasMany(UserRealNameAuth::class, ['id_card_front_and_face_image' => 'id']);
+        return $this->hasMany(UserRealNameAuth::className(), ['id_card_front_and_face_image' => 'id']);
     }
 }

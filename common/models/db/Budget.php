@@ -9,6 +9,7 @@
 namespace common\models\db;
 
 use common\components\budget\Api;
+use common\components\budget\Local;
 use common\components\budget\Nos;
 use common\components\budget\Smms;
 use yii\base\ErrorException;
@@ -24,6 +25,9 @@ class Budget extends \common\models\db\base\Budget
     public function getOperator()
     {
         switch ($this->name) {
+            case Local::NAME;
+                $operator = new Local();
+                break;
             case Smms::NAME;
                 $operator = new Smms();
                 break;

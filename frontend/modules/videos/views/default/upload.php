@@ -7,7 +7,7 @@
  */
 /**
  * @var \yii\web\View $this
- * @var \frontend\modules\videos\models\FormVideoUpload $form
+ * @var \frontend\modules\videos\models\FormVideoUpload $model
  */
 use kartik\widgets\ActiveForm;
 use kartik\widgets\FileInput;
@@ -19,8 +19,8 @@ use common\helpers\FileHelper;
 <div class="frontend-videos-default-upload">
     <div class="row">
         <div class="col-lg-12">
-            <?php $_form = ActiveForm::begin(); ?>
-            <?=$_form->field($form, 'video_files')->widget(FileInput::class, [
+            <?php $form = ActiveForm::begin(); ?>
+            <?=$form->field($model, 'video_files')->widget(FileInput::class, [
                 'options'=>[
                     'multiple'=>true,
                     'accept' => "video/*",
@@ -29,9 +29,9 @@ use common\helpers\FileHelper;
                     'uploadUrl' => Url::to(['/videos/default/file-upload']),
                     'previewFileType' => 'video',
                     'uploadExtraData' => [
-                        'model_name' => FileHelper::classBasename($form),
+                        'model_name' => FileHelper::classBasename($model),
                         'attr_name' => 'video_files',
-                        'serial_number' => date("YmdHis_").Yii::$app->user->id."_".Yii::$app->security->generateRandomKey(20),
+                        'serial_number' => date("YmdHis_", time()).Yii::$app->user->id."_".Yii::$app->security->generateRandomKey(20),
                     ],
                     'uploadAsync' => true,
                     // 最少上传的文件个数限制
@@ -63,7 +63,7 @@ use common\helpers\FileHelper;
                     }",
                 ],
             ]) ?>
-            <?=$_form->field($form, 'code')->widget(\yii\captcha\Captcha::class) ?>
+            <?=$form->field($model, 'code')->widget(\yii\captcha\Captcha::class) ?>
             <div class="form-group">
                 <?= Html::submitButton(Yii::t('app', '上传'), ['class' => 'btn btn-primary']) ?>
             </div>

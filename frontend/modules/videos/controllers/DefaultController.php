@@ -27,7 +27,7 @@ class DefaultController extends Controller
     {
         $form = new FormVideoUpload();
         return $this->render('upload', [
-            'form'=>$form,
+            'model'=>$form,
         ]);
     }
 
@@ -47,16 +47,17 @@ class DefaultController extends Controller
         $file_size = $file['size'][$attr_name];
         $_tmp_file = \Yii::getAlias('@storage_root')."/tmp/{$old_file_name}";
         rename($tmp_file, $_tmp_file);
-        exit;
         $file = new Files();
         $budget = Budget::findOne(['name'=>Local::NAME]);
         $file->budget_id = $budget->id;
         $file->type = $file::TYPE_VIDEO;
-        $file->status = $file::STATUS_ACTIVE;
+        $file->status = $file::STATUS_UPLOAD;
         $file->func_for = $file::FUNC_FOR_VIDEO_UPLOAD;
+        $file->size = $file_size;
+        $file->content_type = $file_tpye;
         $data = $budget->operator->uploadLocalFile($tmp_file);
         $file->initDataByBudgetResp($data);
-//        $file->save(false);
+        $file->save(false);
         $out = [];
         return $out;
     }
