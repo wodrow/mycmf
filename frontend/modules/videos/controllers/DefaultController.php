@@ -31,6 +31,16 @@ class DefaultController extends Controller
     public function actionFileUpload()
     {
         \Yii::$app->response->format = Response::FORMAT_JSON;
+        $model_name = \Yii::$app->request->post('model_name');
+        $attr_name = \Yii::$app->request->post('attr_name');
+        if (empty($_FILES[$model_name])) {
+            return ['error'=>'没有找到上传的文件.'];
+        }
+        $file = $_FILES[$model_name];
+        var_dump($file);
+        $filenames = $file['name'];
+        var_dump($filenames);
+        exit;
         $out = [];
         return $out;
     }
