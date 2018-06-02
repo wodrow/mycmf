@@ -87,6 +87,9 @@ return [
         'utils' => [
             'class' => \frontend\modules\utils\UtilsModule::class,
         ],
+        'videos' => [
+            'class' => \frontend\modules\videos\VideosModule::class,
+        ],
     ],
     'as access' => [
         'class' => \frontend\components\behaviors\Check::class,
