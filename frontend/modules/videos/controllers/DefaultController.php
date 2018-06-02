@@ -36,6 +36,7 @@ class DefaultController extends Controller
         \Yii::$app->response->format = Response::FORMAT_JSON;
         $model_name = \Yii::$app->request->post('model_name');
         $attr_name = \Yii::$app->request->post('attr_name');
+        $serial_number = \Yii::$app->request->post('serial_number');
         if (empty($_FILES[$model_name])) {
             return ['error'=>'没有找到上传的文件.'];
         }
@@ -50,7 +51,7 @@ class DefaultController extends Controller
         $file = new Files();
         $budget = Budget::findOne(['name'=>Local::NAME]);
         $file->budget_id = $budget->id;
-        $file->type = $file::TYPE_IMAGE;
+        $file->type = $file::TYPE_VIDEO;
         $file->status = $file::STATUS_ACTIVE;
         $file->func_for = $file::FUNC_FOR_VIDEO_UPLOAD;
         $data = $budget->operator->uploadLocalFile($tmp_file);

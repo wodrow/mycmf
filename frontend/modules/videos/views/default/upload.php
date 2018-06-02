@@ -31,8 +31,9 @@ use common\helpers\FileHelper;
                     'uploadExtraData' => [
                         'model_name' => FileHelper::classBasename($form),
                         'attr_name' => 'video_files',
+                        'serial_number' => date("YmdHis_").Yii::$app->user->id."_".Yii::$app->security->generateRandomKey(20),
                     ],
-//                    'uploadAsync' => true,
+                    'uploadAsync' => true,
                     // 最少上传的文件个数限制
                     'minFileCount' => 1,
                     // 最多上传的文件个数限制
