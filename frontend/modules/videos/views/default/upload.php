@@ -20,14 +20,14 @@ use common\helpers\FileHelper;
     <div class="row">
         <div class="col-lg-12">
             <?php $form = ActiveForm::begin(); ?>
-            <?=$form->field($model, 'video_files')->widget(FileInput::class, [
+            <?php echo $form->field($model, 'video_files')->widget(FileInput::class, [
                 'options'=>[
-                    'multiple'=>true,
+                    'multiple' => true,
                     'accept' => "video/*",
                 ],
                 'pluginOptions' => [
                     'uploadUrl' => Url::to(['/videos/default/file-upload']),
-                    'previewFileType' => 'video',
+//                    'previewFileType' => 'video',
                     'uploadExtraData' => [
                         'model_name' => FileHelper::classBasename($model),
                         'attr_name' => 'video_files',
@@ -62,7 +62,7 @@ use common\helpers\FileHelper;
                         console.log(data.response);
                     }",
                 ],
-            ]) ?>
+            ]); ?>
             <?=$form->field($model, 'code')->widget(\yii\captcha\Captcha::class) ?>
             <div class="form-group">
                 <?= Html::submitButton(Yii::t('app', '上传'), ['class' => 'btn btn-primary']) ?>
