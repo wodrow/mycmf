@@ -35,7 +35,7 @@ use kartik\widgets\FileInput;
             echo \wbraganca\videojs\VideoJsWidget::widget([
                 'options' => [
                     'class' => 'vjs-default-skin vjs-big-play-centered',
-                    'poster' => "/storge/images/404.png",
+                    'poster' => "/storage/images/404.png",
                     'controls' => true,
                     'preload' => 'auto',
                     'width' => '100%',
@@ -44,7 +44,7 @@ use kartik\widgets\FileInput;
                 'tags' => [
                     'source' => [
 //                        ['src' => 'http://vjs.zencdn.net/v/oceans.mp4', 'type' => 'video/mp4'],
-                        ['src' => Yii::getAlias('@wurl').'/storge/tmp/2018-03-17-164346.webm', 'type' => 'video/webm']
+                        ['src' => Yii::getAlias('@wurl').'/storage/tmp/2018-03-17-164346.webm', 'type' => 'video/webm']
                     ],
                     'track' => [
                         ['kind' => 'captions', 'src' => 'http://vjs.zencdn.net/vtt/captions.vtt', 'srclang' => 'en', 'label' => 'English']

@@ -11,6 +11,8 @@ namespace common\components\budget;
 
 class Local extends Bed
 {
+    const NAME = 'local';
+
     public function uploadFormUrl($url)
     {
         // TODO: Implement uploadFormUrl() method.
@@ -18,7 +20,7 @@ class Local extends Bed
 
     public function uploadLocalFile($file)
     {
-        // TODO: Implement uploadLocalFile() method.
+
     }
 
     public function deleteByUrl($delete_url)

@@ -45,8 +45,8 @@ class TestController extends Controller
         return [
             'uploadPhoto' => [
                 'class' => 'budyaga\cropper\actions\UploadAction',
-                'url' => \Yii::getAlias('@wurl/storge/uploads/test/image'),
-                'path' => \Yii::getAlias('@wroot/storge/uploads/test/image'),
+                'url' => \Yii::getAlias('@wurl/storage/uploads/test/image'),
+                'path' => \Yii::getAlias('@wroot/storage/uploads/test/image'),
             ]
         ];
     }
@@ -248,7 +248,7 @@ class TestController extends Controller
     public function actionTest16()
     {
         $test = new \common\models\db\Test();
-        $test->image = \Yii::getAlias('@wurl/storge/images/404.png');
+        $test->image = \Yii::getAlias('@wurl/storage/images/404.png');
         return $this->render('test16', [
             'model' => $test,
         ]);
@@ -283,7 +283,7 @@ class TestController extends Controller
     public function actionTest18()
     {
         $test = new \common\models\db\Test();
-        $test->image = \Yii::getAlias('@wurl/storge/images/404.png');
+        $test->image = \Yii::getAlias('@wurl/storage/images/404.png');
         return $this->render('test18', [
             'model' => $test,
             'avatar_url' => $test->image,
@@ -339,16 +339,16 @@ class TestController extends Controller
             echo "<pre>";
             $test->video = UploadedFile::getInstance($test, 'video');
             if ($test->video && $test->validate()) {
-//                $_p = \Yii::getAlias('@wroot/storge/tmp/') . $test->video->baseName . '.' . $test->video->extension;
+//                $_p = \Yii::getAlias('@wroot/storage/tmp/') . $test->video->baseName . '.' . $test->video->extension;
 //                $test->video->saveAs($_p);
 //                $ffmpeg = FFMpeg::create();
 //                $video = $ffmpeg->open($_p);
 //                $f = $video->getFormat()->all();
 //                var_export($f['duration']);exit;
 //                $video->filters()->resize(new Dimension(320, 240))->synchronize();
-//                $video->frame(TimeCode::fromSeconds(0))->save(\Yii::getAlias('@wroot/storge/tmp/') . 'frame.jpg');
-//                $video->save(new WebM(), \Yii::getAlias('@wroot/storge/tmp/').'export-webm.webm');
-                $x = \Yii::getAlias('@wroot/storge/tmp/').'export-webm.webm';
+//                $video->frame(TimeCode::fromSeconds(0))->save(\Yii::getAlias('@wroot/storage/tmp/') . 'frame.jpg');
+//                $video->save(new WebM(), \Yii::getAlias('@wroot/storage/tmp/').'export-webm.webm');
+                $x = \Yii::getAlias('@wroot/storage/tmp/').'export-webm.webm';
                 $file = new Files();
                 $budget = Budget::findOne(['name'=>Nos::NAME]);
                 $file->budget_id = $budget->id;

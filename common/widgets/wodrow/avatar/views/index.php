@@ -9,7 +9,7 @@
 use common\components\widgets\JsBlock;
 ?>
 
-<img id="element_id" src="/storge/images/404.png" alt="">
+<img id="element_id" src="/storage/images/404.png" alt="">
 
 <?php JsBlock::begin(); ?>
 <script>

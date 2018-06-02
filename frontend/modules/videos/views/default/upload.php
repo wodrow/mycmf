@@ -32,7 +32,7 @@ use common\helpers\FileHelper;
                         'model_name' => FileHelper::classBasename($form),
                         'attr_name' => 'video_files',
                     ],
-                    'uploadAsync' => true,
+//                    'uploadAsync' => true,
                     // 最少上传的文件个数限制
                     'minFileCount' => 1,
                     // 最多上传的文件个数限制

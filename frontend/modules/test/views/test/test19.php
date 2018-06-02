@@ -20,7 +20,7 @@
         <div class="col-md-9">
             <!-- <h3>Demo:</h3> -->
             <div class="img-container">
-                <img id="image" src="/storge/images/404.png" alt="Picture">
+                <img id="image" src="/storage/images/404.png" alt="Picture">
             </div>
         </div>
         <div class="col-md-3">

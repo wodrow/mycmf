@@ -23,6 +23,8 @@ Yii::setAlias('@data', $_rootPath . '/data');
 
 Yii::setAlias('@wroot', $_rootPath . '/web');
 Yii::setAlias('@wurl', \common\config\Env::HOME_URL);
+Yii::setAlias('@storage_root', $_rootPath . '/web/storage');
+Yii::setAlias('@storage_url', \common\config\Env::HOME_URL.'/storage');
 
 //Yii::$classMap['yii\helpers\Markdown'] = '@common/helpers/Markdown.php';
 

@@ -17,7 +17,7 @@ use kartik\widgets\Widget;
  */
 class AvatarWidget extends Widget
 {
-    public $avatar_url = '/storge/images/404.png';
+    public $avatar_url = '/storage/images/404.png';
 
     public function run() {
         assets\Asset::register($this->view);

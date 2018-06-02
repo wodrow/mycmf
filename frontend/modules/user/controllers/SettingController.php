@@ -20,8 +20,8 @@ class SettingController extends Controller
         return [
             'uploadAvatar' => [
                 'class' => 'budyaga\cropper\actions\UploadAction',
-                'url' => \Yii::getAlias('@wurl/storge/tmp'),
-                'path' => \Yii::getAlias('@wroot/storge/tmp'),
+                'url' => \Yii::getAlias('@wurl/storage/tmp'),
+                'path' => \Yii::getAlias('@wroot/storage/tmp'),
             ]
         ];
     }
