@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'email_code')->textInput(['maxlength' => 32]) ?>
                 <?= $form->field($model, 'password')->passwordInput(['maxlength' => 18]) ?>
                 <?= $form->field($model, 'repassword')->passwordInput(['maxlength' => 18]) ?>
-                <?= $form->field($model, 'code')->widget(\yii\captcha\Captcha::className(), [
+                <?= $form->field($model, 'code')->widget(\yii\captcha\Captcha::class, [
                     'imageOptions' => [
                         'alt' => '点击换图',
                         'title' => '点击换图',

@@ -41,9 +41,9 @@ class Category extends \yii\db\ActiveRecord
             [['name', 'created_at', 'updated_at', 'status'], 'required'],
             [['parent_id', 'created_at', 'created_by', 'updated_at', 'updated_by', 'status'], 'integer'],
             [['name'], 'string', 'max' => 50],
-            [['parent_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['parent_id' => 'id']],
-            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
-            [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['updated_by' => 'id']],
+            [['parent_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::class, 'targetAttribute' => ['parent_id' => 'id']],
+            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['created_by' => 'id']],
+            [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['updated_by' => 'id']],
         ];
     }
 
@@ -69,7 +69,7 @@ class Category extends \yii\db\ActiveRecord
      */
     public function getBooks()
     {
-        return $this->hasMany(Book::className(), ['category_id' => 'id']);
+        return $this->hasMany(Book::class, ['category_id' => 'id']);
     }
 
     /**
@@ -77,7 +77,7 @@ class Category extends \yii\db\ActiveRecord
      */
     public function getParent()
     {
-        return $this->hasOne(Category::className(), ['id' => 'parent_id']);
+        return $this->hasOne(Category::class, ['id' => 'parent_id']);
     }
 
     /**
@@ -85,7 +85,7 @@ class Category extends \yii\db\ActiveRecord
      */
     public function getCategories()
     {
-        return $this->hasMany(Category::className(), ['parent_id' => 'id']);
+        return $this->hasMany(Category::class, ['parent_id' => 'id']);
     }
 
     /**
@@ -93,7 +93,7 @@ class Category extends \yii\db\ActiveRecord
      */
     public function getCreatedBy()
     {
-        return $this->hasOne(User::className(), ['id' => 'created_by']);
+        return $this->hasOne(User::class, ['id' => 'created_by']);
     }
 
     /**
@@ -101,6 +101,6 @@ class Category extends \yii\db\ActiveRecord
      */
     public function getUpdatedBy()
     {
-        return $this->hasOne(User::className(), ['id' => 'updated_by']);
+        return $this->hasOne(User::class, ['id' => 'updated_by']);
     }
 }

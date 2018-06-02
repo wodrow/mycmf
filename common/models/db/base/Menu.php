@@ -38,7 +38,7 @@ class Menu extends \yii\db\ActiveRecord
             [['data'], 'string'],
             [['name'], 'string', 'max' => 128],
             [['route'], 'string', 'max' => 256],
-            [['parent'], 'exist', 'skipOnError' => true, 'targetClass' => Menu::className(), 'targetAttribute' => ['parent' => 'id']],
+            [['parent'], 'exist', 'skipOnError' => true, 'targetClass' => Menu::class, 'targetAttribute' => ['parent' => 'id']],
         ];
     }
 
@@ -62,7 +62,7 @@ class Menu extends \yii\db\ActiveRecord
      */
     public function getParent0()
     {
-        return $this->hasOne(Menu::className(), ['id' => 'parent']);
+        return $this->hasOne(Menu::class, ['id' => 'parent']);
     }
 
     /**
@@ -70,6 +70,6 @@ class Menu extends \yii\db\ActiveRecord
      */
     public function getMenus()
     {
-        return $this->hasMany(Menu::className(), ['parent' => 'id']);
+        return $this->hasMany(Menu::class, ['parent' => 'id']);
     }
 }

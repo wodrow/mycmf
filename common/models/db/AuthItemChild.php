@@ -20,7 +20,7 @@ class AuthItemChild extends \common\models\db\base\AuthItemChild
      */
     public function getParent0()
     {
-        return $this->hasOne(AuthItem::className(), ['name' => 'parent']);
+        return $this->hasOne(AuthItem::class, ['name' => 'parent']);
     }
 
     /**
@@ -28,6 +28,6 @@ class AuthItemChild extends \common\models\db\base\AuthItemChild
      */
     public function getChild0()
     {
-        return $this->hasOne(AuthItem::className(), ['name' => 'child']);
+        return $this->hasOne(AuthItem::class, ['name' => 'child']);
     }
 }

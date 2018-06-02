@@ -40,10 +40,10 @@ class UserRealNameAuth extends \common\models\db\base\UserRealNameAuth
             [['name'], 'string', 'max' => 20],
             [['id_card_number'], 'string', 'max' => 18],
             [['user_id'], 'unique'],
-            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
-            [['id_card_front_image'], 'exist', 'skipOnError' => true, 'targetClass' => Files::className(), 'targetAttribute' => ['id_card_front_image' => 'id']],
-            [['id_card_back_image'], 'exist', 'skipOnError' => true, 'targetClass' => Files::className(), 'targetAttribute' => ['id_card_back_image' => 'id']],
-            [['id_card_front_and_face_image'], 'exist', 'skipOnError' => true, 'targetClass' => Files::className(), 'targetAttribute' => ['id_card_front_and_face_image' => 'id']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
+            [['id_card_front_image'], 'exist', 'skipOnError' => true, 'targetClass' => Files::class, 'targetAttribute' => ['id_card_front_image' => 'id']],
+            [['id_card_back_image'], 'exist', 'skipOnError' => true, 'targetClass' => Files::class, 'targetAttribute' => ['id_card_back_image' => 'id']],
+            [['id_card_front_and_face_image'], 'exist', 'skipOnError' => true, 'targetClass' => Files::class, 'targetAttribute' => ['id_card_front_and_face_image' => 'id']],
         ];
     }
 
@@ -73,7 +73,7 @@ class UserRealNameAuth extends \common\models\db\base\UserRealNameAuth
      */
     public function getUser()
     {
-        return $this->hasOne(User::className(), ['id' => 'user_id']);
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
     /**
@@ -81,7 +81,7 @@ class UserRealNameAuth extends \common\models\db\base\UserRealNameAuth
      */
     public function getCardFrontImage()
     {
-        return $this->hasOne(Files::className(), ['id' => 'id_card_front_image']);
+        return $this->hasOne(Files::class, ['id' => 'id_card_front_image']);
     }
 
     /**
@@ -89,7 +89,7 @@ class UserRealNameAuth extends \common\models\db\base\UserRealNameAuth
      */
     public function getCardBackImage()
     {
-        return $this->hasOne(Files::className(), ['id' => 'id_card_back_image']);
+        return $this->hasOne(Files::class, ['id' => 'id_card_back_image']);
     }
 
     /**
@@ -97,6 +97,6 @@ class UserRealNameAuth extends \common\models\db\base\UserRealNameAuth
      */
     public function getCardFrontAndFaceImage()
     {
-        return $this->hasOne(Files::className(), ['id' => 'id_card_front_and_face_image']);
+        return $this->hasOne(Files::class, ['id' => 'id_card_front_and_face_image']);
     }
 }

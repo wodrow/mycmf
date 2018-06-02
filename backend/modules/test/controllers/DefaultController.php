@@ -18,7 +18,7 @@ class DefaultController extends Controller
     {
         return [
             'crop'=>[
-                'class' => CropAction::className(),
+                'class' => CropAction::class,
                 'config'=>[
                     'bigImageWidth' => '200',     //大图默认宽度
                     'bigImageHeight' => '200',    //大图默认高度

@@ -7,25 +7,25 @@ $config = [
             'cookieValidationKey' => '',
         ],
         'authClientCollection' => [
-            'class' => \yii\authclient\Collection::className(),
+            'class' => \yii\authclient\Collection::class,
             'clients' => [
                 'qq' => [
-                    'class' => \common\widgets\auth2clients\QQClient::className(),
+                    'class' => \common\widgets\auth2clients\QQClient::class,
                     'clientId' => '',
                     'clientSecret' => '',
                 ],
                 'weibo' => [
-                    'class' => \common\widgets\auth2clients\WeiboClient::className(),
+                    'class' => \common\widgets\auth2clients\WeiboClient::class,
                     'clientId' => '',
                     'clientSecret' => '',
                 ],
                 'weixin' => [
-                    'class' => \common\widgets\auth2clients\WeiXinClient::className(),
+                    'class' => \common\widgets\auth2clients\WeiXinClient::class,
                     'clientId' => '',
                     'clientSecret' => '',
                 ],
                 'github' => [
-                    'class' => \yii\authclient\clients\GitHub::className(),
+                    'class' => \yii\authclient\clients\GitHub::class,
                     'clientId' => '',
                     'clientSecret' => '',
                 ],
@@ -77,20 +77,20 @@ if (!YII_ENV_TEST) {
         'generators' => [
             //...
             'fixtureClass'=>[
-                'class'=>\insolita\fixturegii\generators\ClassGenerator::className(),
+                'class'=>\insolita\fixturegii\generators\ClassGenerator::class,
                 'templates'=>[
                     //add your custom
                 ]
             ],
             'fixtureData'=>[
-                'class'=>\insolita\fixturegii\generators\DataGenerator::className(),
+                'class'=>\insolita\fixturegii\generators\DataGenerator::class,
                 'tableResolverClass'=>'You can set own implementation',
                 'templates'=>[
                     //add your custom
                 ]
             ],
             'fixtureTemplate'=>[
-                'class'=>\insolita\fixturegii\generators\TemplateGenerator::className(),
+                'class'=>\insolita\fixturegii\generators\TemplateGenerator::class,
                 'tableResolverClass'=>'You can set own implementation',
                 'columnResolverClass'=>'You can set own implementation',
                 'templates'=>[

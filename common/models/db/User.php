@@ -83,7 +83,7 @@ class User extends \common\models\db\base\User
      */
     public function getAuthAssignments()
     {
-        return $this->hasMany(AuthAssignment::className(), ['user_id' => 'id']);
+        return $this->hasMany(AuthAssignment::class, ['user_id' => 'id']);
     }
 
     /**
@@ -91,7 +91,7 @@ class User extends \common\models\db\base\User
      */
     public function getItemNames()
     {
-        return $this->hasMany(AuthItem::className(), ['name' => 'item_name'])->viaTable('{{%auth_assignment}}', ['user_id' => 'id']);
+        return $this->hasMany(AuthItem::class, ['name' => 'item_name'])->viaTable('{{%auth_assignment}}', ['user_id' => 'id']);
     }
 
     /**
@@ -99,7 +99,7 @@ class User extends \common\models\db\base\User
      */
     public function getAvatarFile()
     {
-        return $this->hasOne(Files::className(), ['id' => 'avatar']);
+        return $this->hasOne(Files::class, ['id' => 'avatar']);
     }
 
     /**
@@ -107,6 +107,6 @@ class User extends \common\models\db\base\User
      */
     public function getUserRealNameAuth()
     {
-        return $this->hasOne(UserRealNameAuth::className(), ['user_id' => 'id']);
+        return $this->hasOne(UserRealNameAuth::class, ['user_id' => 'id']);
     }
 }

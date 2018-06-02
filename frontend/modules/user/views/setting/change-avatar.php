@@ -18,7 +18,7 @@ use budyaga\cropper\Widget;
     <div class="row">
         <div class="col-lg-12">
             <?php $form = ActiveForm::begin(['id' => 'form-profile']); ?>
-            <?php echo $form->field($model, 'avatar')->widget(Widget::className(), [
+            <?php echo $form->field($model, 'avatar')->widget(Widget::class, [
                 'uploadUrl' => Url::toRoute('uploadAvatar'),
             ]) ?>
             <div class="form-group">

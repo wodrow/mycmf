@@ -75,6 +75,6 @@ class Budget extends \yii\db\ActiveRecord
      */
     public function getFiles()
     {
-        return $this->hasMany(Files::className(), ['budget_id' => 'id']);
+        return $this->hasMany(Files::class, ['budget_id' => 'id']);
     }
 }

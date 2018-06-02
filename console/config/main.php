@@ -12,7 +12,7 @@ return [
     'controllerNamespace' => 'console\controllers',
     'controllerMap' => [
         'schedule' => [
-            'class' => \omnilight\scheduling\ScheduleController::className(),
+            'class' => \omnilight\scheduling\ScheduleController::class,
             'scheduleFile' => '@app/schedule.php'
         ],
         'fixture' => [
@@ -22,8 +22,8 @@ return [
     ],
     'components' => [
         'user' => [
-            'class' => \common\rewrite\web\User::className(),
-            'identityClass' => \common\models\User::className(),
+            'class' => \common\rewrite\web\User::class,
+            'identityClass' => \common\models\User::class,
             'isInConsole' => true,
             'enableAutoLogin' => true,
             'enableSession' => false,
@@ -31,11 +31,11 @@ return [
     ],
     'modules' => [
         'crawler' => [
-            'class' => \console\modules\crawler\CrawlerModule::className(),
+            'class' => \console\modules\crawler\CrawlerModule::class,
         ],
     ],
     'as login' => [
-        'class' => \console\behaviors\UserLogin::className(),
+        'class' => \console\behaviors\UserLogin::class,
     ],
     'params' => $params,
 ];

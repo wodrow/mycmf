@@ -84,7 +84,7 @@ return [
 //        },
 //    ],
     [
-        'class' => \common\components\grid\KEnumColumn::className(),
+        'class' => \common\components\grid\KEnumColumn::class,
         'attribute' => 'status',
         'enum' => \common\models\Enum::getStatus(),
     ],

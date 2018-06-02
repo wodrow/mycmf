@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'prefix:ntext',
             [
-                'class' => \kartik\grid\DataColumn::className(),
+                'class' => \kartik\grid\DataColumn::class,
                 'attribute' => 'message',
 //                'width'=>'10em',
 //                'headerOptions' => ['width' => '100%'],

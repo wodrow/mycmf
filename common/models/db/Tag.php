@@ -19,12 +19,12 @@ class Tag extends \common\models\db\base\Tag
     {
         return [
             'timestamp' => [
-                'class' => TimestampBehavior::className(),
+                'class' => TimestampBehavior::class,
                 'createdAtAttribute' => 'created_at',
                 'updatedAtAttribute' => 'updated_at',
             ],
             'blameable' => [
-                'class' => BlameableBehavior::className(),
+                'class' => BlameableBehavior::class,
                 'createdByAttribute' => 'created_by',
                 'updatedByAttribute' => 'updated_by',
                 'value' => \Yii::$app->user->id,
@@ -57,7 +57,7 @@ class Tag extends \common\models\db\base\Tag
      */
     public function getCreatedBy()
     {
-        return $this->hasOne(\common\models\db\User::className(), ['id' => 'created_by']);
+        return $this->hasOne(\common\models\db\User::class, ['id' => 'created_by']);
     }
 
     /**
@@ -65,6 +65,6 @@ class Tag extends \common\models\db\base\Tag
      */
     public function getUpdatedBy()
     {
-        return $this->hasOne(\common\models\db\User::className(), ['id' => 'updated_by']);
+        return $this->hasOne(\common\models\db\User::class, ['id' => 'updated_by']);
     }
 }

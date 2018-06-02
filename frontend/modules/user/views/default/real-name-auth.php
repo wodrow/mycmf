@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php $form = ActiveForm::begin(); ?>
             <?=$form->field($model, 'name')->textInput() ?>
             <?=$form->field($model, 'id_card_number')->textInput() ?>
-            <?=$form->field($model, 'id_card_front_image')->widget(\common\widgets\bailangzhan\webuploader\FileInput::className(), [
+            <?=$form->field($model, 'id_card_front_image')->widget(\common\widgets\bailangzhan\webuploader\FileInput::class, [
                 'clientOptions' => [
                     'server' => Url::to('real-name-check-webuploader-upload'),
                 ],
@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'linkModel' => 'cardFrontImage',
                 'linkAttribute' => 'url',
             ])?>
-            <?=$form->field($model, 'id_card_back_image')->widget(\common\widgets\bailangzhan\webuploader\FileInput::className(), [
+            <?=$form->field($model, 'id_card_back_image')->widget(\common\widgets\bailangzhan\webuploader\FileInput::class, [
                 'clientOptions' => [
                     'server' => Url::to('real-name-check-webuploader-upload'),
                 ],
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'linkModel' => 'cardBackImage',
                 'linkAttribute' => 'url',
             ])?>
-            <?=$form->field($model, 'id_card_front_and_face_image')->widget(\common\widgets\bailangzhan\webuploader\FileInput::className(), [
+            <?=$form->field($model, 'id_card_front_and_face_image')->widget(\common\widgets\bailangzhan\webuploader\FileInput::class, [
                 'clientOptions' => [
                     'server' => Url::to('real-name-check-webuploader-upload'),
                 ],

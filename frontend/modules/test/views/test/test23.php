@@ -18,7 +18,7 @@ use kartik\helpers\Html;
     <div class="row">
         <div class="col-lg-12">
             <?php $form = ActiveForm::begin(['id' => 'form-profile']); ?>
-            <?php echo $form->field($model, 'image')->widget(Widget::className(), [
+            <?php echo $form->field($model, 'image')->widget(Widget::class, [
                 'uploadUrl' => Url::toRoute('uploadPhoto'),
             ]) ?>
             <div class="form-group">

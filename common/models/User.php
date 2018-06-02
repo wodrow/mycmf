@@ -41,7 +41,7 @@ class User extends \common\models\db\User implements IdentityInterface
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            TimestampBehavior::class,
         ];
     }
 

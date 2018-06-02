@@ -15,7 +15,7 @@ $config = [
             'class' => 'api\modules\other\OtherModule',
         ],
         'crawler' => [
-            'class' => \api\modules\crawler\CrawlerModule::className(),
+            'class' => \api\modules\crawler\CrawlerModule::class,
         ],
     ],
     'components' => [
@@ -28,8 +28,8 @@ $config = [
 //            ],
         ],
         'user' => [
-            'class' => \common\rewrite\web\User::className(),
-            'identityClass' => \api\models\User::className(),
+            'class' => \common\rewrite\web\User::class,
+            'identityClass' => \api\models\User::class,
             'enableAutoLogin' => true,
             'enableSession' => false,
         ],
@@ -47,7 +47,7 @@ $config = [
     ],
     'params' => $params,
     'as token-must-be-check' => [
-        'class' => \api\behaviors\TokenCheck::className(),
+        'class' => \api\behaviors\TokenCheck::class,
         'except' => [
             'gii/*',
             'site/signup',

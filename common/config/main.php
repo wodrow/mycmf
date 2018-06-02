@@ -8,25 +8,11 @@ $config = [
 //        'assetsAutoCompress',
     ],
     'components' => [
-        'redis' => [
-            'class' => 'yii\redis\Connection',
-            'hostname' => '120.92.150.43',
-            'port' => 6379,
-            'database' => 0,
-        ],
-        'cache' => [
-            'class' => \yii\redis\Cache::className(),
-            'keyPrefix' => 'cache_redis_',
-        ],
-        'session' => [
-            'class' => \yii\redis\Session::className(),
-            'keyPrefix' => 'session_redis_',
-        ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
-                    'class' => \yii\log\DbTarget::className(),
+                    'class' => \yii\log\DbTarget::class,
                     'levels' => ['error'],
                 ],
             ],

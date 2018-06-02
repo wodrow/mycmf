@@ -27,6 +27,6 @@ class FormRealNameAuth extends UserRealNameAuth
      */
     public function getUserRealNameAuth()
     {
-        return $this->hasOne(UserRealNameAuth::className(), ['user_id' => 'id']);
+        return $this->hasOne(UserRealNameAuth::class, ['user_id' => 'id']);
     }
 }

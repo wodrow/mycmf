@@ -12,7 +12,7 @@
 <div class="test-test-test5">
     <div class="col-lg-12">
         <?php $form = \kartik\form\ActiveForm::begin(); ?>
-        <?php // $form->field($test, 'vedio')->widget(\dosamigos\fileupload\FileUpload::className()); ?>
+        <?php // $form->field($test, 'vedio')->widget(\dosamigos\fileupload\FileUpload::class); ?>
         <?php \kartik\form\ActiveForm::end(); ?>
     </div>
     <dov class="col-lg-12">

@@ -17,7 +17,7 @@ return [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
-                    'class' => \yii\log\DbTarget::className(),
+                    'class' => \yii\log\DbTarget::class,
 //                    'class' => 'baibaratsky\yii\rollbar\log\Target',
                     'levels' => ['error'],
                 ],
@@ -27,7 +27,7 @@ return [
             'csrfParam' => '_csrf-frontend',
         ],
         'user' => [
-            'class' => \common\rewrite\web\User::className(),
+            'class' => \common\rewrite\web\User::class,
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
@@ -82,14 +82,14 @@ return [
             'class' => 'frontend\modules\test\TestModule',
         ],
         'crawler' => [
-            'class' => \frontend\modules\crawler\CrawlerModule::className(),
+            'class' => \frontend\modules\crawler\CrawlerModule::class,
         ],
         'utils' => [
-            'class' => \frontend\modules\utils\UtilsModule::className(),
+            'class' => \frontend\modules\utils\UtilsModule::class,
         ],
     ],
     'as access' => [
-        'class' => \frontend\components\behaviors\Check::className(),
+        'class' => \frontend\components\behaviors\Check::class,
         'except' => [
             'site/*',
             'pub/*',

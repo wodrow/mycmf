@@ -4,7 +4,7 @@
 <div class="test-test-test3">
     <?php $form = \kartik\form\ActiveForm::begin(); ?>
     <?=$form->field($model, 'text')->textInput() ?>
-    <?=$form->field($model, 'attachment[]')->widget(\kartik\file\FileInput::className(), [
+    <?=$form->field($model, 'attachment[]')->widget(\kartik\file\FileInput::class, [
         'options' => ['multiple' => true],
         'pluginOptions' => [
             // 需要预览的文件格式

@@ -37,10 +37,10 @@ class Files extends \common\models\db\base\Files
     {
         return [
             'blameable' => [
-                'class' => BlameableBehavior::className(),
+                'class' => BlameableBehavior::class,
             ],
             'timestamp' => [
-                'class' => TimestampBehavior::className(),
+                'class' => TimestampBehavior::class,
             ],
         ];
     }
@@ -53,9 +53,9 @@ class Files extends \common\models\db\base\Files
             [['url', 'delete_url', 'filename', 'path', 'storename', 'hash'], 'string', 'max' => 200],
             [['uploaded_ip'], 'string', 'max' => 30],
             [['func_for'], 'string', 'max' => 20],
-            [['budget_id'], 'exist', 'skipOnError' => true, 'targetClass' => Budget::className(), 'targetAttribute' => ['budget_id' => 'id']],
-            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
-            [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['updated_by' => 'id']],
+            [['budget_id'], 'exist', 'skipOnError' => true, 'targetClass' => Budget::class, 'targetAttribute' => ['budget_id' => 'id']],
+            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['created_by' => 'id']],
+            [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['updated_by' => 'id']],
         ];
     }
 
@@ -91,7 +91,7 @@ class Files extends \common\models\db\base\Files
      */
     public function getBudget()
     {
-        return $this->hasOne(Budget::className(), ['id' => 'budget_id']);
+        return $this->hasOne(Budget::class, ['id' => 'budget_id']);
     }
 
     /**
@@ -99,7 +99,7 @@ class Files extends \common\models\db\base\Files
      */
     public function getCreatedBy()
     {
-        return $this->hasOne(User::className(), ['id' => 'created_by']);
+        return $this->hasOne(User::class, ['id' => 'created_by']);
     }
 
     /**
@@ -107,6 +107,6 @@ class Files extends \common\models\db\base\Files
      */
     public function getUpdatedBy()
     {
-        return $this->hasOne(User::className(), ['id' => 'updated_by']);
+        return $this->hasOne(User::class, ['id' => 'updated_by']);
     }
 }

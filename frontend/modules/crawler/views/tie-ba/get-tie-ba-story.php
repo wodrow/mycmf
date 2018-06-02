@@ -23,7 +23,7 @@
         <div class="col-lg-9">
             <?php $form = \kartik\form\ActiveForm::begin(); ?>
             <?=$form->field($save_form, 'title')->textInput() ?>
-            <?=$form->field($save_form, 'contents')->widget(\yii\redactor\widgets\Redactor::className()) ?>
+            <?=$form->field($save_form, 'contents')->widget(\yii\redactor\widgets\Redactor::class) ?>
             <?=\kartik\helpers\Html::submitButton('提交', ['class'=>"btn btn-primary"]) ?>
             <?php \kartik\form\ActiveForm::end(); ?>
         </div>

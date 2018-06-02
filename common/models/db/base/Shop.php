@@ -40,9 +40,9 @@ class Shop extends \yii\db\ActiveRecord
             [['name', 'created_at', 'updated_at', 'owner_by', 'status'], 'required'],
             [['created_at', 'created_by', 'updated_at', 'updated_by', 'owner_by', 'status'], 'integer'],
             [['name'], 'string', 'max' => 200],
-            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
-            [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['updated_by' => 'id']],
-            [['owner_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['owner_by' => 'id']],
+            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['created_by' => 'id']],
+            [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['updated_by' => 'id']],
+            [['owner_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['owner_by' => 'id']],
         ];
     }
 
@@ -68,7 +68,7 @@ class Shop extends \yii\db\ActiveRecord
      */
     public function getBooks()
     {
-        return $this->hasMany(Book::className(), ['shop_id' => 'id']);
+        return $this->hasMany(Book::class, ['shop_id' => 'id']);
     }
 
     /**
@@ -76,7 +76,7 @@ class Shop extends \yii\db\ActiveRecord
      */
     public function getCreatedBy()
     {
-        return $this->hasOne(User::className(), ['id' => 'created_by']);
+        return $this->hasOne(User::class, ['id' => 'created_by']);
     }
 
     /**
@@ -84,7 +84,7 @@ class Shop extends \yii\db\ActiveRecord
      */
     public function getUpdatedBy()
     {
-        return $this->hasOne(User::className(), ['id' => 'updated_by']);
+        return $this->hasOne(User::class, ['id' => 'updated_by']);
     }
 
     /**
@@ -92,6 +92,6 @@ class Shop extends \yii\db\ActiveRecord
      */
     public function getOwnerBy()
     {
-        return $this->hasOne(User::className(), ['id' => 'owner_by']);
+        return $this->hasOne(User::class, ['id' => 'owner_by']);
     }
 }

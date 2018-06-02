@@ -68,7 +68,7 @@ class User extends \yii\db\ActiveRecord
             [['email'], 'unique'],
             [['token'], 'unique'],
             [['key'], 'unique'],
-            [['avatar'], 'exist', 'skipOnError' => true, 'targetClass' => Files::className(), 'targetAttribute' => ['avatar' => 'id']],
+            [['avatar'], 'exist', 'skipOnError' => true, 'targetClass' => Files::class, 'targetAttribute' => ['avatar' => 'id']],
         ];
     }
 
@@ -102,7 +102,7 @@ class User extends \yii\db\ActiveRecord
      */
     public function getAuthAssignments()
     {
-        return $this->hasMany(AuthAssignment::className(), ['user_id' => 'id']);
+        return $this->hasMany(AuthAssignment::class, ['user_id' => 'id']);
     }
 
     /**
@@ -110,7 +110,7 @@ class User extends \yii\db\ActiveRecord
      */
     public function getItemNames()
     {
-        return $this->hasMany(AuthItem::className(), ['name' => 'item_name'])->viaTable('{{%auth_assignment}}', ['user_id' => 'id']);
+        return $this->hasMany(AuthItem::class, ['name' => 'item_name'])->viaTable('{{%auth_assignment}}', ['user_id' => 'id']);
     }
 
     /**
@@ -118,7 +118,7 @@ class User extends \yii\db\ActiveRecord
      */
     public function getBooks()
     {
-        return $this->hasMany(Book::className(), ['created_by' => 'id']);
+        return $this->hasMany(Book::class, ['created_by' => 'id']);
     }
 
     /**
@@ -126,7 +126,7 @@ class User extends \yii\db\ActiveRecord
      */
     public function getBooks0()
     {
-        return $this->hasMany(Book::className(), ['updated_by' => 'id']);
+        return $this->hasMany(Book::class, ['updated_by' => 'id']);
     }
 
     /**
@@ -134,7 +134,7 @@ class User extends \yii\db\ActiveRecord
      */
     public function getCategories()
     {
-        return $this->hasMany(Category::className(), ['created_by' => 'id']);
+        return $this->hasMany(Category::class, ['created_by' => 'id']);
     }
 
     /**
@@ -142,7 +142,7 @@ class User extends \yii\db\ActiveRecord
      */
     public function getCategories0()
     {
-        return $this->hasMany(Category::className(), ['updated_by' => 'id']);
+        return $this->hasMany(Category::class, ['updated_by' => 'id']);
     }
 
     /**
@@ -150,7 +150,7 @@ class User extends \yii\db\ActiveRecord
      */
     public function getCompaigns()
     {
-        return $this->hasMany(Compaign::className(), ['created_by' => 'id']);
+        return $this->hasMany(Compaign::class, ['created_by' => 'id']);
     }
 
     /**
@@ -158,7 +158,7 @@ class User extends \yii\db\ActiveRecord
      */
     public function getCompaigns0()
     {
-        return $this->hasMany(Compaign::className(), ['updated_by' => 'id']);
+        return $this->hasMany(Compaign::class, ['updated_by' => 'id']);
     }
 
     /**
@@ -166,7 +166,7 @@ class User extends \yii\db\ActiveRecord
      */
     public function getDocuments()
     {
-        return $this->hasMany(Document::className(), ['created_by' => 'id']);
+        return $this->hasMany(Document::class, ['created_by' => 'id']);
     }
 
     /**
@@ -174,7 +174,7 @@ class User extends \yii\db\ActiveRecord
      */
     public function getDocuments0()
     {
-        return $this->hasMany(Document::className(), ['updated_by' => 'id']);
+        return $this->hasMany(Document::class, ['updated_by' => 'id']);
     }
 
     /**
@@ -182,7 +182,7 @@ class User extends \yii\db\ActiveRecord
      */
     public function getShops()
     {
-        return $this->hasMany(Shop::className(), ['created_by' => 'id']);
+        return $this->hasMany(Shop::class, ['created_by' => 'id']);
     }
 
     /**
@@ -190,7 +190,7 @@ class User extends \yii\db\ActiveRecord
      */
     public function getShops0()
     {
-        return $this->hasMany(Shop::className(), ['updated_by' => 'id']);
+        return $this->hasMany(Shop::class, ['updated_by' => 'id']);
     }
 
     /**
@@ -198,7 +198,7 @@ class User extends \yii\db\ActiveRecord
      */
     public function getShops1()
     {
-        return $this->hasMany(Shop::className(), ['owner_by' => 'id']);
+        return $this->hasMany(Shop::class, ['owner_by' => 'id']);
     }
 
     /**
@@ -206,7 +206,7 @@ class User extends \yii\db\ActiveRecord
      */
     public function getTags()
     {
-        return $this->hasMany(Tag::className(), ['created_by' => 'id']);
+        return $this->hasMany(Tag::class, ['created_by' => 'id']);
     }
 
     /**
@@ -214,7 +214,7 @@ class User extends \yii\db\ActiveRecord
      */
     public function getTags0()
     {
-        return $this->hasMany(Tag::className(), ['updated_by' => 'id']);
+        return $this->hasMany(Tag::class, ['updated_by' => 'id']);
     }
 
     /**
@@ -222,7 +222,7 @@ class User extends \yii\db\ActiveRecord
      */
     public function getAvatar0()
     {
-        return $this->hasOne(Files::className(), ['id' => 'avatar']);
+        return $this->hasOne(Files::class, ['id' => 'avatar']);
     }
 
     /**
@@ -230,6 +230,6 @@ class User extends \yii\db\ActiveRecord
      */
     public function getUserRealNameAuth()
     {
-        return $this->hasOne(UserRealNameAuth::className(), ['user_id' => 'id']);
+        return $this->hasOne(UserRealNameAuth::class, ['user_id' => 'id']);
     }
 }

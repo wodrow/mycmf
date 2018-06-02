@@ -1,6 +1,6 @@
 <?php
 define('DOMAIN', $_SERVER['HTTP_HOST']);
-if (substr(DOMAIN, 0, 5) == 'test.'){
+if (DOMAIN != '120.92.150.43'){
     defined('YII_DEBUG') or define('YII_DEBUG', true);
     defined('YII_ENV') or define('YII_ENV', 'dev');
 }else{

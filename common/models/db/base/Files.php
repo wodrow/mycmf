@@ -57,9 +57,9 @@ class Files extends \yii\db\ActiveRecord
             [['url', 'delete_url', 'filename', 'path', 'storename', 'hash'], 'string', 'max' => 200],
             [['uploaded_ip'], 'string', 'max' => 30],
             [['func_for'], 'string', 'max' => 20],
-            [['budget_id'], 'exist', 'skipOnError' => true, 'targetClass' => Budget::className(), 'targetAttribute' => ['budget_id' => 'id']],
-            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],
-            [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['updated_by' => 'id']],
+            [['budget_id'], 'exist', 'skipOnError' => true, 'targetClass' => Budget::class, 'targetAttribute' => ['budget_id' => 'id']],
+            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['created_by' => 'id']],
+            [['updated_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['updated_by' => 'id']],
         ];
     }
 
@@ -97,7 +97,7 @@ class Files extends \yii\db\ActiveRecord
      */
     public function getBudget()
     {
-        return $this->hasOne(Budget::className(), ['id' => 'budget_id']);
+        return $this->hasOne(Budget::class, ['id' => 'budget_id']);
     }
 
     /**
@@ -105,7 +105,7 @@ class Files extends \yii\db\ActiveRecord
      */
     public function getCreatedBy()
     {
-        return $this->hasOne(User::className(), ['id' => 'created_by']);
+        return $this->hasOne(User::class, ['id' => 'created_by']);
     }
 
     /**
@@ -113,7 +113,7 @@ class Files extends \yii\db\ActiveRecord
      */
     public function getUpdatedBy()
     {
-        return $this->hasOne(User::className(), ['id' => 'updated_by']);
+        return $this->hasOne(User::class, ['id' => 'updated_by']);
     }
 
     /**
@@ -121,7 +121,7 @@ class Files extends \yii\db\ActiveRecord
      */
     public function getUsers()
     {
-        return $this->hasMany(User::className(), ['avatar' => 'id']);
+        return $this->hasMany(User::class, ['avatar' => 'id']);
     }
 
     /**
@@ -129,7 +129,7 @@ class Files extends \yii\db\ActiveRecord
      */
     public function getUserRealNameAuths()
     {
-        return $this->hasMany(UserRealNameAuth::className(), ['id_card_front_image' => 'id']);
+        return $this->hasMany(UserRealNameAuth::class, ['id_card_front_image' => 'id']);
     }
 
     /**
@@ -137,7 +137,7 @@ class Files extends \yii\db\ActiveRecord
      */
     public function getUserRealNameAuths0()
     {
-        return $this->hasMany(UserRealNameAuth::className(), ['id_card_back_image' => 'id']);
+        return $this->hasMany(UserRealNameAuth::class, ['id_card_back_image' => 'id']);
     }
 
     /**
@@ -145,6 +145,6 @@ class Files extends \yii\db\ActiveRecord
      */
     public function getUserRealNameAuths1()
     {
-        return $this->hasMany(UserRealNameAuth::className(), ['id_card_front_and_face_image' => 'id']);
+        return $this->hasMany(UserRealNameAuth::class, ['id_card_front_and_face_image' => 'id']);
     }
 }

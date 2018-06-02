@@ -14,7 +14,7 @@ use zh\qiniu\QiniuFileInput;
     <div class="row">
         <div class="col-lg-12">
             <?php $form = ActiveForm::begin() ?>
-            <?= $form->field($model, 'images')->widget(QiniuFileInput::className(),[
+            <?= $form->field($model, 'images')->widget(QiniuFileInput::class,[
                 //'options' => [
                 //   'class' => 'btn-danger'//按钮class
                 //],

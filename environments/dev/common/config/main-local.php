@@ -17,12 +17,26 @@ $config = [
             // for the mailer to send real emails.
             'useFileTransport' => true,
         ],
+        'redis' => [
+            'class' => 'yii\redis\Connection',
+            'hostname' => '127.0.0.1',
+            'port' => 6379,
+            'database' => 0,
+        ],
+        'cache' => [
+            'class' => \yii\redis\Cache::class,
+            'keyPrefix' => '',
+        ],
+        'session' => [
+            'class' => \yii\redis\Session::class,
+            'keyPrefix' => '',
+        ],
         'fs_local' => [
-            'class' => \creocoder\flysystem\LocalFilesystem::className(),
+            'class' => \creocoder\flysystem\LocalFilesystem::class,
             'path' => '/var/www/test',
         ],
         'sftp_local' => [
-            'class' => \creocoder\flysystem\SftpFilesystem::className(),
+            'class' => \creocoder\flysystem\SftpFilesystem::class,
             'host' => 'localhost',
             'username' => '',
             'password' => '',
@@ -65,9 +79,9 @@ $config = [
 ];
 
 if (YII_ENV=='dev'){
-    $config['components']['db']['dsn'] = 'mysql:host=127.0.0.1;dbname=mycmf';
-    $config['components']['db']['username'] = 'root';
-    $config['components']['db']['password'] = 'root';
+    $config['components']['db']['dsn'] = 'mysql:host=120.92.150.43;dbname=test_mycmf';
+    $config['components']['db']['username'] = 'wodrow';
+    $config['components']['db']['password'] = 'Yc51234511';
 }
 
 return $config;

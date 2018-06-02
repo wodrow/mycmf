@@ -15,7 +15,7 @@ return [
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
-            'class' => \common\rewrite\web\User::className(),
+            'class' => \common\rewrite\web\User::class,
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
@@ -40,7 +40,7 @@ return [
             'controllerMap' => [
                 'assignment' => [
                     'class' => 'mdm\admin\controllers\AssignmentController',
-                    'userClassName' => \common\models\User::className(),
+                    'userClassName' => \common\models\User::class,
                     'idField' => 'user_id',
                     'usernameField' => 'username',
                     'extraColumns' => [
@@ -62,7 +62,7 @@ return [
                             }
                         ],
                         [
-                            'class' => \common\components\grid\EnumColumn::className(),
+                            'class' => \common\components\grid\EnumColumn::class,
                             'attribute' => 'status',
                             'enum' => \common\models\User::getStatus(),
                         ],
@@ -84,20 +84,20 @@ return [
 //            'sourceLanguage' => 'en',
         ],
         'gridview' => [
-            'class' => \kartik\grid\Module::className(),
+            'class' => \kartik\grid\Module::class,
             // see settings on http://demos.krajee.com/grid#module
         ],
         'datecontrol' => [
-            'class' => \kartik\datecontrol\Module::className(),
+            'class' => \kartik\datecontrol\Module::class,
             // see settings on http://demos.krajee.com/datecontrol#module
         ],
         // If you use tree table
         /*'treemanager' =>  [
-            'class' => \kartik\tree\Module::className(),
+            'class' => \kartik\tree\Module::class,
             // see settings on http://demos.krajee.com/tree-manager#module
         ],*/
         'dynagrid'=>[
-            'class'=>\kartik\dynagrid\Module::className(),
+            'class'=>\kartik\dynagrid\Module::class,
             // other settings (refer documentation)
         ],
         'treemanager' =>  [
@@ -124,7 +124,7 @@ return [
         ],
     ],
     'as access' => [
-        'class' => \mdm\admin\components\AccessControl::className(),
+        'class' => \mdm\admin\components\AccessControl::class,
         'allowActions' => [
             'debug/*',
             'gii/*',

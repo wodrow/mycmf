@@ -16,7 +16,7 @@ use kartik\helpers\Html;
         <?php $form = \kartik\form\ActiveForm::begin([
             'options'=>['enctype'=>'multipart/form-data'],
         ]); ?>
-        <?php echo $form->field($test,'file')->widget(\kartik\widgets\FileInput::className(), [
+        <?php echo $form->field($test,'file')->widget(\kartik\widgets\FileInput::class, [
             'options' => [
                 'accept' => 'video/*',
                 'multiple' => false,
