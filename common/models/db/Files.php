@@ -72,7 +72,9 @@ class Files extends \common\models\db\base\Files
     public function initDataByBudgetResp($data)
     {
         foreach ($data as $k => $v) {
-            $this->$k = $v;
+            if ($v){
+                $this->$k = $v;
+            }
         }
         /*$this->width = $data->width;
         $this->height = $data->height;

@@ -58,13 +58,13 @@ class DefaultController extends Controller
         $file->filename = $old_file_name;
         $f = Files::findOne(['budget_id'=>$file->budget_id, 'filename'=>$file->filename]);
         if ($f){
-            var_dump($f->toArray());exit;
+            $file = $f;
         }else{
             $data = $budget->operator->uploadLocalFile($_tmp_file);
             $file->initDataByBudgetResp($data);
             $file->save(false);
         }
-        $out = [];
+        $out = ['file_id'=>$file->id];
         return $out;
     }
 }
