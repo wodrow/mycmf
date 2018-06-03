@@ -24,6 +24,10 @@ class DefaultController extends Controller
         return $this->render('index');
     }
 
+    /**
+     * 实名认证资料上传 [ajax]
+     * @return array
+     */
     public function actionRealNameCheckWebuploaderUpload()
     {
         \Yii::$app->response->format=Response::FORMAT_JSON;
