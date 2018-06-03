@@ -14,6 +14,7 @@ use yii\base\Model;
 class FormVideoUpload extends Model
 {
     public $video_files;
+    public $file_ids;
     public $code;
 
     public function attributeLabels()
@@ -27,8 +28,10 @@ class FormVideoUpload extends Model
     public function rules()
     {
         return [
-            ['video_files', 'required'],
-//            ['video_files', 'file'],
+//            ['video_files', 'required'],
+            ['video_files', 'file', 'maxFiles' => 20, 'mimeTypes' => "video/*"],
+            ['file_ids', 'trim'],
+            ['file_ids', 'required'],
             ['code', 'trim'],
             ['code', 'required'],
             ['code', 'captcha'],

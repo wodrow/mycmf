@@ -57,7 +57,8 @@ class ArrayHelper
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
     public static function str2arr($str, $glue = ','){
-        return explode($glue, $str);
+        $arr = explode($glue, $str);
+        return array_filter($arr);
     }
     /**
      * 数组转换为字符串，主要用于把分隔符调整到第二个参数

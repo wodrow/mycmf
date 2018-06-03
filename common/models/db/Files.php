@@ -31,14 +31,15 @@ class Files extends \common\models\db\base\Files
     const FUNC_FOR_AVATAR_CHANGE = 'avatar-change';
     const FUNC_FOR_REAL_NAME_CHECK = 'real-name-check';
     const FUNC_FOR_VIDEO_UPLOAD = 'video-upload';
-    const STATUS_ACTIVE = 10;
     const STATUS_UPLOAD = 1;
-    const STATUS_TRANSCODING = 2;
-    const STATUS_TRANSCODE_FAILED = 3;
-    const STATUS_TRANSCODE_SUCCESS = 4;
+    const STATUS_TO_BE_TRANSCODE = 2;
+    const STATUS_TRANSCODING = 3;
+    const STATUS_TRANSCODE_FAILED = 4;
+    const STATUS_TRANSCODE_SUCCESS = 5;
     const STATUS_UP_TO_BED = 5;
-    const STATUS_UP_TO_FAILED = 6;
-    const STATUS_UP_TO_SUCCESS = 7;
+    const STATUS_UP_TO_FAILED = 7;
+    const STATUS_UP_TO_SUCCESS = 8;
+    const STATUS_ACTIVE = 10;
 
     public function behaviors()
     {

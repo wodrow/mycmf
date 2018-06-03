@@ -15,6 +15,7 @@ use common\models\db\Files;
 use frontend\modules\videos\models\FormVideoUpload;
 use yii\web\Controller;
 use yii\web\Response;
+use common\components\tools\ArrayHelper;
 
 class DefaultController extends Controller
 {
@@ -26,6 +27,20 @@ class DefaultController extends Controller
     public function actionUpload()
     {
         $form = new FormVideoUpload();
+        if (\Yii::$app->request->isPost){
+            $form->load(\Yii::$app->request->post());
+            if ($form->validate()){
+                $video_ids = $form->file_ids;
+                $video_ids_arr = ArrayHelper::str2arr($video_ids, ";");
+                foreach ($video_ids_arr as $k => $v){
+                    $video = Files::findOne($v);
+                    $video->status = Files::STATUS_TO_BE_TRANSCODE;
+                    $video->save();
+                }
+            }
+            \Yii::$app->session->addFlash('success', "添加上传处理队列成功!");
+            return $this->redirect(['/videos']);
+        }
         return $this->render('upload', [
             'model'=>$form,
         ]);
