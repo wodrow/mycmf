@@ -24,6 +24,7 @@ Yii::$container = new yii\di\Container;
  * @property \common\rewrite\web\User $user
  * @property \yii\db\Connection $db_test
  * @property \yii\db\Connection $db_genealogy
+ * @property \yii\queue\db\Queue $queue
  * @property \herroffizier\yii2um\UploadManager $uploads
  * @property \creocoder\flysystem\LocalFilesystem $fs_local
  * @property \creocoder\flysystem\SftpFilesystem $sftp_local

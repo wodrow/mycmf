@@ -2,8 +2,16 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = Yii::$app->name." -- ".\common\config\Env::VERSION;
+
+//var_dump(YII_ENV);exit;
+
+//Yii::$app->queue->delay(5)->push(new \common\jobs\queue\Test([
+//    'xxx' => $this->title,
+//]));
+//exit;
 ?>
+
 <div class="site-index">
 
     <div class="jumbotron">
