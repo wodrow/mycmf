@@ -1,0 +1,98 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: wodrow
+ * Date: 18-6-8
+ * Time: 下午1:34
+ */
+?>
+
+<!-- Include the core media player JavaScript. -->
+<script type="text/javascript" src="/js/ckplayer/ckplayer/ckplayer.js"></script>
+<div id="video" style="width:600px;height:400px;"></div>
+<script type="text/javascript">
+    var videoObject = {
+        container: '#video',//“#”代表容器的ID，“.”或“”代表容器的class
+        variable: 'player',//该属性必需设置，值等于下面的new chplayer()的对象
+        video:'/storage/videos/test.flv'//视频地址
+    };
+//    var player=new ckplayer(videoObject);
+</script>
+
+<script>
+    /**
+     *视频播放
+     *参数说明
+     u - 媒体URL
+     w - 媒体宽度width
+     h - 媒体高度height
+     */
+
+//播放Mediaplayer格式的视频，包括.avi .mpg .mpeg .wmv .wma .asf .mid .mp3等
+    function pv_m(u, w, h){
+        var pv='';
+        pv += '<object width="'+w+'" height="'+h+'" id="iask_v" classid="CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6" codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=6,4,5,715" standby="Loading Microsoft Windows Media Player components..." type="application/x-oleobject">';
+        pv += '<param name="FileName" value="'+u+'">';
+        pv += '<param name="AutoStart" value="1">';
+        pv += '<param name="AutoSize" value="1">';
+        pv += '<param name="ShowControls" value="1">';
+        pv += '<param name="ShowPositionControls" value="0">';
+        pv += '<param name="ShowAudioControls" value="1">';
+        pv += '<param name="ShowTracker" value="1">';
+        pv += '<param name="ShowDisplay" value="0">';
+        pv += '<param name="ShowStatusBar" value="1">';
+        pv += '<param name="ShowGotoBar" value="0">';
+        pv += '<param name="ShowCaptioning" value="0">';
+        pv += '<param name="PlayCount" value="1">';
+        pv += '<param name="AnimationAtStart" value="0">';
+        pv += '<param name="TransparentAtStart" value="0">';
+        pv += '<param name="AllowScan" value="0">';
+        pv += '<param name="EnableContextMenu" value="0">';
+        pv += '<param name="ClickToPlay" value="0">';
+        pv += '<param name="InvokeURLs" value="1">';
+        pv += '<param name="DefaultFrame" value="">';
+        pv += '<embed src="'+u+'" width="'+w+'" height="'+h+'" type="application/x-mplayer2" pluginspage="http://www.microsoft.com/isapi/redir.dll?prd=windows&;sbp=mediaplayer&ar=media&sba=plugin&" name="MediaPlayer" showcontrols="1" showpositioncontrols="0" showaudiocontrols="1" showtracker="1" showdisplay="0" showstatusbar="1" autosize="0" showgotobar="0" showcaptioning="0" autostart="1" autorewind="0" animationatstart="0" transparentatstart="0" allowscan="1" enablecontextmenu="1" clicktoplay="0" invokeurls="1" defaultframe=""></embed>';
+        pv += '</object>';
+        document.write(pv);
+    }
+
+    //播放Realplay格式的视频，包括.rm .ram .rmvb等
+    function pv_r(u, w, h){
+        var pv='';
+        pv += '<object width="'+w+'" height="'+h+'" id="iask_v" classid="clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA">';
+        pv += '<param name="SRC" value="'+u+'">';
+        pv += '<param name="AUTOSTART" value="1">';
+        pv += '<param name="CONTROLS" value="Imagewindow,StatusBar,ControlPanel">';
+        pv += '<param name="_ExtentX" value="18415">';
+        pv += '<param name="_ExtentY" value="9102">';
+        pv += '<param name="SHUFFLE" value="0">';
+        pv += '<param name="PREFETCH" value="0">';
+        pv += '<param name="NOLABELS" value="0">';
+        pv += '<param name="CONSOLE" value="Clip1">';
+        pv += '<param name="LOOP" value="0">';
+        pv += '<param name="NUMLOOP" value="0">';
+        pv += '<param name="CENTER" value="0">';
+        pv += '<param name="MAINTAINASPECT" value="0">';
+        pv += '<param name="BACKGROUNDCOLOR" value="#000000">';
+        pv += '<embed src="'+u+'" width="'+w+'" height="'+h+'" type="audio/x-pn-realaudio-plugin" console="Clip1" controls="Imagewindow,StatusBar,ControlPanel" autostart="true">';
+        pv += '</object>';
+        document.write(pv);
+    }
+
+    //播放Quicktime格式的视频，包括.mov .amr .3gp等
+    function pv_q(u, w, h){
+        var pv='';
+        pv += '<object width="'+w+'" height="'+h+'" classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" codebase="http://www.apple.com/qtactivex/qtplugin.cab">';
+        pv += '<param name="src" value="'+u+'">';
+        pv += '<param name="controller" value="true">';
+        pv += '<param name="type" value="video/quicktime">';
+        pv += '<param name="autoplay" value="true">';
+        pv += '<param name="target" value="myself">';
+        pv += '<param name="bgcolor" value="black">';
+        pv += '<param name="pluginspage" value="http://www.apple.com/quicktime/download/index.html">';
+        pv += '<embed src="'+u+'" width="'+w+'" height="'+h+'" controller="true" align="middle" bgcolor="black" target="myself" type="video/quicktime" pluginspage="http://www.apple.com/quicktime/download/index.html"></embed>';
+        pv += '</object>';
+        document.write(pv);
+    }
+    pv_r("/storage/videos/test.rmvb", 600, 400);
+</script>

@@ -380,4 +380,14 @@ class TestController extends Controller
         echo $body;
         exit;
     }
+
+    public function actionTest26()
+    {
+        return $this->render('test26');
+    }
+
+    public function actionTest27()
+    {
+        return $this->render('test27');
+    }
 }
