@@ -10,3 +10,6 @@ myyii2cmf
 ## add yii2-admin in it
 
 ## add pheme\settings for config with datatable
+
+composer dump-autoload --optimize
+composer global require hirak/prestissimo

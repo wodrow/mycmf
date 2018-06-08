@@ -1,5 +1,5 @@
 <?php
-define("BOOT_TIME", time());
+//define("BOOTSTRAP_TIME", time());
 $_rootPath = dirname(dirname(__DIR__));
 Yii::setAlias('@root', $_rootPath); // 根目录
 Yii::setAlias('@common', dirname(__DIR__));
