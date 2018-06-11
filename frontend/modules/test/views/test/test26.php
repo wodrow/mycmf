@@ -94,5 +94,7 @@
         pv += '</object>';
         document.write(pv);
     }
-    pv_r("/storage/videos/test.rmvb", 600, 400);
+    pv_m("/storage/videos/test.wmv", 600, 400); //播放Mediaplayer格式的视频，包括.avi .mpg .mpeg .wmv .wma .asf .mid .mp3等
+    pv_r("/storage/videos/test.rmvb", 600, 400); //播放Realplay格式的视频，包括.rm .ram .rmvb等
+    pv_q("/storage/videos/test.3gp", 600, 400); //播放Quicktime格式的视频，包括.mov .amr .3gp等
 </script>
