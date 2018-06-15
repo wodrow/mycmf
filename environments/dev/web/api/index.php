@@ -1,11 +1,11 @@
 <?php
 define('DOMAIN', $_SERVER['HTTP_HOST']);
-if (DOMAIN != '120.92.150.43'){
-    defined('YII_DEBUG') or define('YII_DEBUG', true);
-    defined('YII_ENV') or define('YII_ENV', 'dev');
+if (DOMAIN == 'mycmf.free.ngrok.cc'){
+    defined('YII_DEBUG') or define('YII_DEBUG', false);
+    defined('YII_ENV') or define('YII_ENV', 'prod');
 }else{
     defined('YII_DEBUG') or define('YII_DEBUG', true);
-    defined('YII_ENV') or define('YII_ENV', 'prod');
+    defined('YII_ENV') or define('YII_ENV', 'dev');
 }
 
 require __DIR__.'/../../vendor/autoload.php';
