@@ -34,7 +34,7 @@ $config = [
     ],
 ];
 
-if (!YII_ENV_TEST) {
+if (Yii_ENV!='prod') {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [

@@ -78,7 +78,7 @@ $config = [
     ],
 ];
 
-if (YII_ENV=='dev'){
+if (Yii_ENV!='prod'){
     $config['components']['db']['dsn'] = 'mysql:host=120.92.150.43;dbname=test_mycmf';
     $config['components']['db']['username'] = 'wodrow';
     $config['components']['db']['password'] = 'Yc51234511';
