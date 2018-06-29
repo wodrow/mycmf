@@ -79,7 +79,15 @@
         "crazydb/yii2-ueditor": "*",
         "league/flysystem-aws-s3-v3": "^1.0",
         "yurunsoft/chinese-util": "^1.0",
-        "chatfeed/yii2-doc": "dev-master"
+        "chatfeed/yii2-doc": "dev-master",
+        "zertex/yii2-avatar-generator": "^1.1",
+        "chiliec/yii2-vote": "^4.2",
+        "inquid/yii2-tensorflow-js": "dev-master",
+        "kriss/yii2-log-reader": "2.*",
+        "razonyang/yii2-log": "dev-master",
+        "x000000/storage-manager": "^0.3.2",
+        "lubosdz/yii2-captcha-extended": "^1.0",
+        "froala/yii2-froala-editor": "^2.8"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

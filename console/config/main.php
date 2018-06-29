@@ -19,6 +19,15 @@ return [
             'class' => 'yii\console\controllers\FixtureController',
             'namespace' => 'common\fixtures',
         ],
+        'migrate' => [
+            'class' => \yii\console\controllers\MigrateController::class,
+            'migrationPath' => [
+                '@vendor/razonyang/yii2-log/src/migrations',
+            ],
+        ],
+        'log' => [
+            'class' => \razonyang\yii\log\LogController::class,
+        ],
     ],
     'components' => [
         'user' => [

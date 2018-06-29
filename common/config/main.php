@@ -10,13 +10,24 @@ $config = [
     ],
     'components' => [
         'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
+//            'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
-                    'class' => \yii\log\DbTarget::class,
+//                    'class' => \yii\log\DbTarget::class,
+                    'class' => \razonyang\yii\log\DbTarget::class,
                     'levels' => ['error'],
+                    'logTable' => 'log',
+                    // rotate settings
+                    'rotateInterval' => 100000,
+                    // rotate mutex settings
+                    'rotateMutex' => 'mutex',
+                    'rotateMutexKey' => 'log_rotate',
+                    'rotateMutexAcquireTimeout' => 0,
                 ],
             ],
+        ],
+        'mutex' => [
+            'class' => \yii\mutex\FileMutex::class,
         ],
         'queue' => [
             'class' => \yii\queue\db\Queue::class,
