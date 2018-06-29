@@ -78,7 +78,8 @@
         "takashiki/yii2-cos-flysystem": "^1.0",
         "crazydb/yii2-ueditor": "*",
         "league/flysystem-aws-s3-v3": "^1.0",
-        "yurunsoft/chinese-util": "^1.0"
+        "yurunsoft/chinese-util": "^1.0",
+        "chatfeed/yii2-doc": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
