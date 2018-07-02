@@ -87,7 +87,16 @@
         "razonyang/yii2-log": "dev-master",
         "x000000/storage-manager": "^0.3.2",
         "lubosdz/yii2-captcha-extended": "^1.0",
-        "froala/yii2-froala-editor": "^2.8"
+        "froala/yii2-froala-editor": "^2.8",
+        "fedemotta/yii2-bootstrap-list-filter": "*",
+        "codiverum/yii2-relation-search-filter": "*",
+        "akiraz2/yii2-stat": "dev-master",
+        "lesha724/yii2-bootstrap-tree": "*",
+        "devanych/yii2-cart": "*",
+        "chabibnr/yii2-change-password": "dev-master",
+        "cozumel/yii2-twemoji": "dev-master",
+        "krtv/yii2-jms-serializer": "^2.0",
+        "kowap/yii2-lightgallery": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
