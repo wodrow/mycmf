@@ -90,9 +90,7 @@
         "froala/yii2-froala-editor": "^2.8",
         "fedemotta/yii2-bootstrap-list-filter": "*",
         "codiverum/yii2-relation-search-filter": "*",
-        "akiraz2/yii2-stat": "dev-master",
         "lesha724/yii2-bootstrap-tree": "*",
-        "devanych/yii2-cart": "*",
         "chabibnr/yii2-change-password": "dev-master",
         "cozumel/yii2-twemoji": "dev-master",
         "kowap/yii2-lightgallery": "dev-master"

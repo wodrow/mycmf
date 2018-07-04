@@ -84,7 +84,7 @@ $config = [
         ],*/
     ],
     /** ------ 服务层 ------ **/
-    'services' => [
+    /*'services' => [
         'test' => [
             'class' => 'common\servers\Test',
             // 子服务
@@ -94,7 +94,7 @@ $config = [
                 ],
             ],
         ],
-    ],
+    ],*/
 ];
 
 Yii::$container->set('leandrogehlen\treegrid\TreeGridAsset', [
