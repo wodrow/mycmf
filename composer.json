@@ -95,7 +95,6 @@
         "devanych/yii2-cart": "*",
         "chabibnr/yii2-change-password": "dev-master",
         "cozumel/yii2-twemoji": "dev-master",
-        "krtv/yii2-jms-serializer": "^2.0",
         "kowap/yii2-lightgallery": "dev-master"
     },
     "require-dev": {
