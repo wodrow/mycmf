@@ -93,7 +93,8 @@
         "lesha724/yii2-bootstrap-tree": "*",
         "chabibnr/yii2-change-password": "dev-master",
         "cozumel/yii2-twemoji": "dev-master",
-        "kowap/yii2-lightgallery": "dev-master"
+        "fabpot/goutte": "^3.2",
+        "msp/lightgallery": "^0.1.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

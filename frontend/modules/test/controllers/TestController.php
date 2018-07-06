@@ -390,4 +390,9 @@ class TestController extends Controller
     {
         return $this->render('test27');
     }
+
+    public function actionTest28()
+    {
+        return $this->render('test28');
+    }
 }
